@@ -1,15 +1,33 @@
 import { Link } from "react-router-dom";
 import LoginImage from "../assets/login.png";
+import { useState } from "react";
+import { useLoginMutation } from "../features/auth/authApi";
 
 const Login = () => {
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const[login,{data}]=useLoginMutation()
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({
+      username,
+      password
+    })
+  };
+  console.log(data)
+
   return (
-    <section className="h-[calc(100vh-11rem)] flex justify-center items-center">
+    <section className="h-[calc(100vh-9rem)] flex justify-center items-center ">
       <div className="wrapper lg:w-3/5 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0">
-          {/* col-1  registation form*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center">
+          {/* col-1  login form*/}
           <div>
-            <h2 className="text-center text-3xl font-semibold mb-4">Please Login</h2>
-            <form className="max-w-md mx-auto">
+            <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-3">
+            Sign in to your account
+            </h2>
+            <form className="max-w-md mx-auto" onSubmit={handleLogin}>
               <div className="relative z-0 w-full mb-3 group">
                 <label
                   htmlFor="username"
@@ -23,6 +41,7 @@ const Login = () => {
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   placeholder="Enter your user name"
                   required
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
 
@@ -39,6 +58,7 @@ const Login = () => {
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                   placeholder="Enter your password"
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
 

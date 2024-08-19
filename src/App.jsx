@@ -5,10 +5,15 @@ import Registration  from "./pages/Registration";
 import Login  from "./pages/Login";
 
 import { Route,Routes } from "react-router-dom";
+import useAuthCheck from "./hooks/useAuthCheck";
 
 
 function App() {
-  return (
+const  authChecked=useAuthCheck()
+
+  return !authChecked? (<div>
+    Checking authentication
+  </div>): (
     <>
       <Navbar />
       <main className="pt-24">
