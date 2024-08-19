@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/Home";
 import PublicRoutes from "./routes/PublicRoutes";
+import Menu from "./pages/Menu";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -17,9 +18,10 @@ function App() {
   ) : (
     <>
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-28">
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/menu" element={<Menu />} />
           <Route
             exact
             path="/login"
