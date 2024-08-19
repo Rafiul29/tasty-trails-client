@@ -1,28 +1,44 @@
 import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import Header from "./components/common/Header";
-import Registration  from "./pages/Registration";
-import Login  from "./pages/Login";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
 
-import { Route,Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/Home";
-
+import PublicRoutes from "./routes/PublicRoutes";
 
 function App() {
-const  authChecked=useAuthCheck()
+  const authChecked = useAuthCheck();
 
-  return !authChecked? (<div>
-    Checking authentication
-  </div>): (
+  return !authChecked ? (
+    <div>Checking authentication</div>
+  ) : (
     <>
       <Navbar />
       <main className="pt-24">
-      <Routes>
-        <Route exact path='/' element={<Home/>} />
-        <Route exact path='/login' element={<Login/>} />
-        <Route exact path='/register' element={<Registration/>} />
-      </Routes>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="/login"
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            exact
+            path="/register"
+            element={
+              <PublicRoutes>
+                <Registration />
+              </PublicRoutes>
+            }
+          />
+        </Routes>
       </main>
       {/* <Header /> */}
       {/* <Footer /> */}
