@@ -2,7 +2,7 @@ import React from 'react'
 
 const Header = () => {
   return (
-    <div>Header</div>
+    <div className='bg-slate-500 py-20 wrapper'>Header</div>
   )
 }
 
