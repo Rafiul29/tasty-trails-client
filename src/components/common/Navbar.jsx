@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import useAuth from "../../hooks/useAuth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLoggedOut } from "../../features/auth/authSlice";
 
 const Navbar = () => {
@@ -12,10 +12,28 @@ const Navbar = () => {
   const isLoggedIn = useAuth();
 
   const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+
   const handleLogout = () => {
-    dispatch(userLoggedOut());
-    localStorage.removeItem("auth");
-    setIsDropdownOpen(!isDropdownOpen)
+    fetch(`${import.meta.env.VITE_APP_API_URL}/api/auth/logout/`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${auth.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success) {
+          dispatch(userLoggedOut());
+          localStorage.removeItem("auth");
+          setIsDropdownOpen(!isDropdownOpen);
+        } else {
+          dispatch(userLoggedOut());
+          localStorage.removeItem("auth");
+          setIsDropdownOpen(!isDropdownOpen);
+        }
+      });
   };
 
   return (

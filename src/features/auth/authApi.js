@@ -42,8 +42,32 @@ export const authApi=apiSlice.injectEndpoints({
           //do nothing
         }
       },
-    })
-  })
+    }),
+    // logout:builder.query({
+    //   query:()=>({
+    //     url:"/api/auth/logout/",
+    //   }),
+    // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+    //     try {
+    //       const result = await queryFulfilled;
+    //       // update localstorage
+    //       localStorage.removeItem("auth");
+
+    //       dispatch(
+    //         userLoggedIn({
+    //           accessToken: undefined,
+    //           user: undefined,
+    //         })
+    //       );
+
+    //     } catch (err) {
+    //       //do nothing
+    //     }
+    //   },
+    // }),
+  })  
 })
+
+
 
 export const {useRegisterMutation,useLoginMutation}=authApi
