@@ -44,7 +44,7 @@ const Registration = () => {
 
   const navigate=useNavigate()
   useEffect(() => {
-    console.log(responseError,data)
+   
     if(responseError?.data || data?.username){
       setError(responseError?.data?.error ||data?.username[0])
     }
@@ -78,9 +78,9 @@ const Registration = () => {
             Create your account
             </h2>
             
-           
             {error!=='' && <Error message={error}/>}
             {success!=='' && <Success message={success}/>}
+            
             <form className="" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 md:gap-6">
                 <div className="relative z-0 w-full mb-3 group">

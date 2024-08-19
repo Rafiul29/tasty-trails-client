@@ -22,7 +22,6 @@ export const authApi=apiSlice.injectEndpoints({
     async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          console.log({result})
           // update localstorage
           localStorage.setItem(
             "auth",

@@ -1,22 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginImage from "../assets/login.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoginMutation } from "../features/auth/authApi";
+import ButtonLoading from "../components/ui/ButtonLoading";
+import Error from "../components/ui/Error";
 
 const Login = () => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  const[login,{data}]=useLoginMutation()
+  const [error, setError] = useState("");
+
+  const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
   const handleLogin = (e) => {
     e.preventDefault();
     login({
       username,
-      password
-    })
+      password,
+    });
   };
-  console.log(data)
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (responseError?.data) {
+      setError(responseError?.data?.error);
+    }
+
+    if (data?.token && data?.user) {
+      console.log(data);
+      navigate("/");
+    }
+  }, [data, responseError, navigate]);
 
   return (
     <section className="h-[calc(100vh-9rem)] flex justify-center items-center ">
@@ -25,8 +41,11 @@ const Login = () => {
           {/* col-1  login form*/}
           <div>
             <h2 className="text-center text-3xl font-extrabold text-gray-900 mb-3">
-            Sign in to your account
+              Sign in to your account
             </h2>
+            <div className="max-w-md mx-auto">
+              {error !== "" && <Error message={error} />}
+            </div>
             <form className="max-w-md mx-auto" onSubmit={handleLogin}>
               <div className="relative z-0 w-full mb-3 group">
                 <label
@@ -64,10 +83,11 @@ const Login = () => {
 
               <div className="flex flex-col gap-1">
                 <button
+                  disabled={isLoading}
                   type="submit"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Submit
+                  {!isLoading ? "Submit" : <ButtonLoading />}
                 </button>
                 <p className="">
                   <span className="text-rose-500">Don't have an account? </span>
