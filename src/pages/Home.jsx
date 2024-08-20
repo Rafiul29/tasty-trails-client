@@ -3,9 +3,9 @@ import MenuCategory from '../components/category/MenuCategory'
 
 const Home = () => {
   return (
-    <div>
+    <div className='wrapper'>
     <MenuCategory/>
-        </div>
+    </div>
   )
 }
 

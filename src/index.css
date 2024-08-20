@@ -5,5 +5,5 @@
 
 
 .wrapper{
- @apply container mx-auto px-4 md:px-1
+ @apply container mx-auto px-4 md:px-4
 }

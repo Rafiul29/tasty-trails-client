@@ -135,7 +135,7 @@ const Navbar = () => {
                   id="dropdownNavbarLink"
                   className="flex items-center justify-center w-10 h-10 p-2 text-gray-900 rounded-full hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
-                  <FaUserCircle className="w-8 h-8" aria-hidden="true" />
+                  <FaUserCircle className="w-6 h-6" aria-hidden="true" />
                 </button>
                 {isDropdownOpen && (
                   <div

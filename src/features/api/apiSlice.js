@@ -6,7 +6,7 @@ export const apiSlice = createApi({
     baseUrl: import.meta.env.VITE_APP_API_URL,  // Corrected here
     prepareHeaders: async (headers, { getState, endpoint }) => {
       const token = getState()?.auth?.accessToken
-      console.log(token)
+      console.log({token})
       if (token) {
         headers.set("Authorization", `Token ${token}`);
       }
