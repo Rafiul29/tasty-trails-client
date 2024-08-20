@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import MenuCategory from "../components/category/MenuCategory";
-import MenuDisplay from "../components/menulist/MenuDisplay";
+import MenuDisplay from "../components/menu/MenuDisplay";
 import { searchCategoryRemove } from "../features/category/categorySlice";
 
 const Menu = () => {

@@ -1,19 +1,15 @@
-import MenuCategory from "../components/category/MenuCategory";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import CategoryMenuSlider from "../components/category/CategoryMenuSlider";
 
-const Home = () => {
+const CategoryMenuSlider = () => {
   return (
     <div className="wrapper">
-      {/* <CategoryMenuSlider/> */}
-      {/* <div className="slider">
+      <div className="slider">
         <Swiper
           spaceBetween={30}
           className="mySwipe h-48 py-20"
@@ -50,10 +46,10 @@ const Home = () => {
             <div className="swiper-button-next border-2 font-bold bg-orange-100 border-orange-200 text-slate-900 hover:bg-orange-400 cursor-pointer hover:text-white h-10 w-10  hover:border-amber-500 duration-500  rounded-full"></div>
           </div>
         </div>
-      </div> */}
+      </div>
       {/* <MenuCategory /> */}
     </div>
   );
 };
 
-export default Home;
+export default CategoryMenuSlider;

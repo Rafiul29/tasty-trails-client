@@ -7,3 +7,65 @@
 .wrapper{
  @apply container mx-auto px-4 md:px-4
 }
+/* 
+
+
+.swiper-button-prev {
+  position: absolute !important;
+  top: 1.5rem;
+  left:85%; 
+  padding: 20px !important;
+  font-size: 10px !important;
+  cursor: pointer !important;
+
+  @apply h-2 w-2 overflow-hidden  rounded-full text-sm text-gray-400  border-2
+
+}
+
+.swiper-button-next{
+
+  position: absolute !important;
+  top: 1.5rem !important;
+  right: 0 !important;
+ 
+  padding: 20px !important;
+  font-size:10px !important;
+  cursor: pointer !important;
+  @apply  h-2 w-2 overflow-hidden  rounded-full text-sm p-20 border
+  @apply bg-slate-800
+} */
+
+.slider{
+position: relative;
+}
+
+.button-swiper{
+  padding: 20px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem !important;
+  
+}
+
+.swiper-button-prev,
+.swiper-button-next{
+  top: unset !important;
+  left: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  position: unset !important;
+  font-size: unset !important;
+}
+
+.button-arrangemnt{
+  position: absolute;
+  top:20px;
+  right: 0;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after{
+  font-size: 1rem;
+  font-weight: bold;
+}

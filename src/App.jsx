@@ -9,6 +9,7 @@ import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/Home";
 import PublicRoutes from "./routes/PublicRoutes";
 import Menu from "./pages/Menu";
+import MenuItemDetails from "./pages/MenuItemDetails";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/menu" element={<Menu />} />
+          <Route exact path="/menu/:id" element={<MenuItemDetails/>} />
           <Route
             exact
             path="/login"
