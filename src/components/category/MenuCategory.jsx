@@ -7,13 +7,11 @@ import { useDispatch } from "react-redux";
 import { searchCategoryRemove } from "../../features/category/categorySlice";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import CategoryMenuSlider from "./CategoryMenuSlider";
 
 const MenuCategory = () => {
   const {
@@ -62,7 +60,7 @@ const MenuCategory = () => {
           >
             <SwiperSlide>
               <div
-                className="flex flex-col justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-20"
+                className="flex flex-col justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-24"
                 onClick={() => handleAllMenu()}
               >
                 <div className="overflow-hidden  h-16 w-16 ">

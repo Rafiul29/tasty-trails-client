@@ -13,7 +13,7 @@ const MenuCategoryCard = ({ category }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-20"
+    <div className="flex flex-col justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-24"
     onClick={() => handeCategorySearch(name)}>
       <div
         className="overflow-hidden  h-16 w-16 "
