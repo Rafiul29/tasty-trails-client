@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import CategoryMenuSlider from "../components/category/CategoryMenuSlider";
+
 
 const Home = () => {
   return (

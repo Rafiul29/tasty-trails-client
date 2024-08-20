@@ -10,12 +10,15 @@ import Home from "./pages/Home";
 import PublicRoutes from "./routes/PublicRoutes";
 import Menu from "./pages/Menu";
 import MenuItemDetails from "./pages/MenuItemDetails";
+import Loading from "./components/ui/Loading";
 
 function App() {
   const authChecked = useAuthCheck();
 
   return !authChecked ? (
-    <div>Checking authentication</div>
+    <div className="min-h-screen flex justify-center items-center">
+      <Loading/>
+    </div>
   ) : (
     <>
       <Navbar />

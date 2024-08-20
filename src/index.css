@@ -5,42 +5,17 @@
 
 
 .wrapper{
- @apply container mx-auto px-4 md:px-4
-}
-/* 
-
-
-.swiper-button-prev {
-  position: absolute !important;
-  top: 1.5rem;
-  left:85%; 
-  padding: 20px !important;
-  font-size: 10px !important;
-  cursor: pointer !important;
-
-  @apply h-2 w-2 overflow-hidden  rounded-full text-sm text-gray-400  border-2
-
+ @apply container mx-auto px-4 md:px-3
 }
 
-.swiper-button-next{
-
-  position: absolute !important;
-  top: 1.5rem !important;
-  right: 0 !important;
- 
-  padding: 20px !important;
-  font-size:10px !important;
-  cursor: pointer !important;
-  @apply  h-2 w-2 overflow-hidden  rounded-full text-sm p-20 border
-  @apply bg-slate-800
-} */
 
 .slider{
+
 position: relative;
 }
 
 .button-swiper{
-  padding: 20px;
+  /* padding: 20px; */
   display: flex !important;
   justify-content: center;
   align-items: center;

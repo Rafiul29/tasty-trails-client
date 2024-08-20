@@ -1,3 +1,5 @@
+import menuNotFoundImage from '../../assets/notFoundMenu.png'
+
 import Loading from "../ui/Loading";
 import allFootMenu from "../../assets/allfootmenu.jpeg";
 import { useGetCategoriesQuery } from "../../features/category/categoryApi";
@@ -29,38 +31,43 @@ const MenuCategory = () => {
   };
 
   if (isLoading) {
-    content = <Loading />;
+    content =  content = <div className="my-2 h-56">
+    <Loading />
+  </div>;;
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
   } else if (!isLoading && !isError && categoryMenuList?.length === 0) {
-    content = <div>No menu category found</div>;
+    content =  <div className="flex justify-center items-center ">
+    <img className="object-cover" src={menuNotFoundImage} alt="Not found image" />
+  </div>;
   } else if (!isLoading && !isError && categoryMenuList.length > 0) {
     content = (
       <>
         <div className="slider">
           <Swiper
-            spaceBetween={5}
-            className="mySwipe"
+            spaceBetween={15}
+            className="mySwipe py-14"
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            // loop={true}
             modules={[Navigation]}
             breakpoints={{
-              300: {
+              350: {
                 slidesPerView: 3,
               },
               768: {
-                slidesPerView: 5,
+                slidesPerView: 6,
               },
               1024: {
-                slidesPerView: 10,
+                slidesPerView: 13,
               },
             }}
           >
             <SwiperSlide>
               <div
-                className="flex flex-col justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-24"
+                className="flex flex-col group justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-24"
                 onClick={() => handleAllMenu()}
               >
                 <div className="overflow-hidden  h-16 w-16 ">
@@ -70,7 +77,7 @@ const MenuCategory = () => {
                     alt="wd"
                   />
                 </div>
-                <p className="text-center capitalize">All</p>
+                <p className="text-center capitalize group-hover:text-orange-400 duration-300">All</p>
               </div>
             </SwiperSlide>
             {categoryMenuList?.map((category, id) => (
@@ -90,7 +97,7 @@ const MenuCategory = () => {
     );
   }
 
-  return <div className="wrapper py-10">{content}</div>;
+  return <div className="">{content}</div>;
 };
 
 export default MenuCategory;
