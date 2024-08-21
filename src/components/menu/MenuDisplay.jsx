@@ -50,9 +50,9 @@ const MenuDisplay = () => {
   }
 
   return (
-    <section className="">
+    <section className="md:py-10 py-6">
       <div className="wrapper">
-        <div className="mb-2">
+        <div className="mb-4">
           <h2 className="text-2xl tracking-wider font-medium">
             Explore Popular Dishes in Your Area
           </h2>
