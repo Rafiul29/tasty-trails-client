@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAddFavouriteMutation } from "../../features/favourite/favouriteApi";
+import { useAddToCartItemMutation } from "../../features/carts/cartsApi";
 
 const MenuItem = ({ menuitem }) => {
   const { id, name, description, ingredients, image, price } = menuitem || {};
@@ -8,7 +9,6 @@ const MenuItem = ({ menuitem }) => {
   //
   const { user } = useSelector((state) => state.auth);
   const { user_id } = user || {};
-  console.log(user_id);
 
   const navigate = useNavigate();
 
@@ -30,13 +30,19 @@ const MenuItem = ({ menuitem }) => {
     }
   };
 
-  console.log(favouriteData);
+  const [addToCartItem, { data: addToCartData }] = useAddToCartItemMutation();
+
+  console.log(addToCartData);
 
   const handleAddToCart = (id) => {
     if (!user_id) {
       navigate("/login", { state: { from: `/menu/${id}` } });
     } else {
-      // console.log("add to cart");
+      addToCartItem({
+        user: user_id,
+        menu_item: id,
+      });
+      navigate("/carts");
     }
   };
 

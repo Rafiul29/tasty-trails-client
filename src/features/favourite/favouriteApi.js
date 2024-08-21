@@ -9,9 +9,12 @@ export const favouriteApi = apiSlice.injectEndpoints({
     getUserFavouriteMenu: builder.query({
       query: (id) => `/menu/favourite/?user_id=${id}`,
       keepUnusedDataFor: 600,
-      providesTags: (result, error, id) => 
+      providesTags: (result, error, id) =>
         result
-          ? [...result.map(({ id }) => ({ type: "Favourite", id })), "Favourites"]
+          ? [
+              ...result.map(({ id }) => ({ type: "Favourite", id })),
+              "Favourites",
+            ]
           : ["Favourites"],
     }),
 
@@ -23,8 +26,8 @@ export const favouriteApi = apiSlice.injectEndpoints({
         body: data,
       }),
       invalidatesTags: (result, error, arg) => [
-        "Favourites",  
-        { type: "Favourite", id: arg.id }, 
+        "Favourites",
+        { type: "Favourite", id: arg.id },
       ],
     }),
 
@@ -35,8 +38,8 @@ export const favouriteApi = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: (result, error, arg) => [
-        "Favourites",  
-        { type: "Favourite", id: arg.favId }, 
+        "Favourites",
+        { type: "Favourite", id: arg.favId },
       ],
     }),
   }),
