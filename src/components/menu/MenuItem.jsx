@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAddFavouriteMutation } from "../../features/favourite/favouriteApi";
 
 const MenuItem = ({ menuitem }) => {
-  const { id, name, description, ingredients, image, price, slug } =
-    menuitem || {};
+  const { id, name, description, ingredients, image, price } = menuitem || {};
 
   //
   const { user } = useSelector((state) => state.auth);
@@ -13,8 +12,10 @@ const MenuItem = ({ menuitem }) => {
 
   const navigate = useNavigate();
 
-  const [addFavourite, { data: favouriteData, isLoading:addFavouriteLoading, isError, error }] =
-    useAddFavouriteMutation();
+  const [
+    addFavourite,
+    { data: favouriteData, isLoading: addFavouriteLoading },
+  ] = useAddFavouriteMutation();
 
   // save menu item
   const handleSaveAsFavourite = (id) => {
@@ -23,8 +24,9 @@ const MenuItem = ({ menuitem }) => {
     } else {
       addFavourite({
         user: user_id,
-        menu_item	: id,
+        menu_item: id,
       });
+      navigate("/favourite");
     }
   };
 
@@ -79,7 +81,7 @@ const MenuItem = ({ menuitem }) => {
               </svg>
               Add To Cart
             </button>
-            <button 
+            <button
               disabled={addFavouriteLoading}
               onClick={() => handleSaveAsFavourite(id)}
               type="button"

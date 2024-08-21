@@ -90,8 +90,8 @@ const MenuCategory = () => {
                 </p>
               </div>
             </SwiperSlide>
-            {categoryMenuList?.map((category, id) => (
-              <SwiperSlide key={id}>
+            {categoryMenuList?.map((category) => (
+              <SwiperSlide key={category.id}>
                 <MenuCategoryCard category={category} />
               </SwiperSlide>
             ))}

@@ -91,14 +91,16 @@ const Navbar = () => {
                 Menu
               </Link>
             </li>
-            <li>
-              <Link
-                to="/pricing"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Pricing
-              </Link>
-            </li>
+            {isLoggedIn && (
+              <li>
+                <Link
+                  to="/favourite"
+                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Favoruite
+                </Link>
+              </li>
+            )}
             <li>
               <Link
                 to="/contact"
@@ -131,7 +133,7 @@ const Navbar = () => {
             <li>
               <div className="relative">
                 <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   id="dropdownNavbarLink"
                   className="flex items-center justify-center w-10 h-10 p-2 text-gray-900 rounded-full hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                 >
