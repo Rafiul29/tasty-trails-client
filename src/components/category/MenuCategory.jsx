@@ -108,7 +108,7 @@ const MenuCategory = () => {
   }
 
   return (
-    <section className="section md:py-10 py-2">
+    <section className="section">
       <div className="wrapper">
         <div className="section-title space-y-2 mb-4 md:mb-0">
           <h2 className="text-2xl tracking-wider font-medium">

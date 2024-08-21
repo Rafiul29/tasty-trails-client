@@ -8,9 +8,11 @@
  @apply container mx-auto px-4 md:px-4;
 }
 
+.main-padding{
+  @apply pt-28 md:pt-36 lg:pt-40 
+}
 
 .slider{
-
 position: relative;
 }
 

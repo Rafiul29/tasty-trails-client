@@ -4,11 +4,11 @@ import MenuDisplay from "../components/menu/MenuDisplay";
 
 const Home = () => {
   return (
-    <div className="pt-28">
+    <main className="pt-28">
     <Hero/>
     <MenuCategory/>
     <MenuDisplay/>
-    </div>
+    </main>
   );
 };
 

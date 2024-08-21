@@ -24,7 +24,7 @@ function App() {
   ) : (
     <>
       <Navbar />
-      <main>
+ 
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/menu" element={<Menu />} />
@@ -48,7 +48,7 @@ function App() {
             }
           />
         </Routes>
-      </main>
+
       {/* <Header /> */}
       {/* <Footer /> */}
     </>

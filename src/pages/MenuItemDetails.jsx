@@ -1,3 +1,4 @@
+import notFoundImage from "../assets/notFound.avif";
 import { useParams } from "react-router-dom";
 import { useGetMenuItemQuery } from "../features/menus/menusApi";
 import Loading from "../components/ui/Loading";
@@ -6,28 +7,42 @@ import MenuItem from "../components/menu/MenuItem";
 
 const MenuItemDetails = () => {
   const { id } = useParams();
-  console.log(id);
   const {
     data: menuItemDetails,
     isLoading,
     isError,
     error,
   } = useGetMenuItemQuery(id);
+  console.log(menuItemDetails, error?.data?.detail);
 
   let content = null;
   if (isLoading) {
-    content = <Loading />;
+    content = (
+      <div className="my-2 h-56">
+        <Loading />
+      </div>
+    );
   } else if (!isLoading && isError) {
-    content = <Error message={"No menu item found"} />;
-  } else if (!isLoading && !isError && !menuItemDetails?.id) {
-    content = <Error message={error} />;
+    content = (
+      <div className=" h-25 w-25 flex flex-col justify-center items-center">
+        <img
+          style={{ width: "400px" }}
+          className=" object-cover"
+          src={notFoundImage}
+          alt="Not found image"
+        />
+        <Error message={error?.data?.detail} />
+      </div>
+    );
   } else if (!isLoading && !isError && menuItemDetails?.id) {
     content = <MenuItem menuitem={menuItemDetails} />;
   }
 
-  return <div>
-    {content}
-  </div>;
+  return (
+    <main className="main-padding">
+      <div className="wrapper">{content}</div>
+    </main>
+  );
 };
 
 export default MenuItemDetails;
