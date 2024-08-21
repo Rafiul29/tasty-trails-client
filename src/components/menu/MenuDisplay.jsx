@@ -20,15 +20,21 @@ const MenuDisplay = () => {
   let content = null;
 
   if (isLoading) {
-    content = <div className="my-2 h-56">
-      <Loading />
-    </div>;
+    content = (
+      <div className="my-2 h-56">
+        <Loading />
+      </div>
+    );
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
   } else if (!isLoading && !isError && menulists?.length === 0) {
     content = (
       <div className="flex justify-center items-center ">
-        <img className="object-cover" src={menuNotFoundImage} alt="Not found image" />
+        <img
+          className="object-cover"
+          src={menuNotFoundImage}
+          alt="Not found image"
+        />
       </div>
     );
   } else if (!isLoading && !isError && menulists.length > 0) {
@@ -43,7 +49,18 @@ const MenuDisplay = () => {
     );
   }
 
-  return <div className="">{content}</div>;
+  return (
+    <section className="">
+      <div className="wrapper">
+        <div className="mb-2">
+          <h2 className="text-2xl tracking-wider font-medium">
+            Explore Popular Dishes in Your Area
+          </h2>
+        </div>
+        {content}
+      </div>
+    </section>
+  );
 };
 
 export default MenuDisplay;

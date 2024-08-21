@@ -1,4 +1,4 @@
-import menuNotFoundImage from '../../assets/notFoundMenu.png'
+import menuNotFoundImage from "../../assets/notFoundMenu.png";
 
 import Loading from "../ui/Loading";
 import allFootMenu from "../../assets/allfootmenu.jpeg";
@@ -31,22 +31,30 @@ const MenuCategory = () => {
   };
 
   if (isLoading) {
-    content =  content = <div className="my-2 h-56">
-    <Loading />
-  </div>;;
+    content = content = (
+      <div className="my-2 h-56">
+        <Loading />
+      </div>
+    );
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
   } else if (!isLoading && !isError && categoryMenuList?.length === 0) {
-    content =  <div className="flex justify-center items-center ">
-    <img className="object-cover" src={menuNotFoundImage} alt="Not found image" />
-  </div>;
+    content = (
+      <div className="flex justify-center items-center ">
+        <img
+          className="object-cover"
+          src={menuNotFoundImage}
+          alt="Not found image"
+        />
+      </div>
+    );
   } else if (!isLoading && !isError && categoryMenuList.length > 0) {
     content = (
       <>
         <div className="slider">
           <Swiper
             spaceBetween={15}
-            className="mySwipe py-14"
+            className="mySwipe pt-14"
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
@@ -72,12 +80,14 @@ const MenuCategory = () => {
               >
                 <div className="overflow-hidden  h-16 w-16 ">
                   <img
-                    className="w-full h-full  object-cover rounded-full"
+                    className="w-full h-full  object-cover rounded-full "
                     src={allFootMenu}
                     alt="wd"
                   />
                 </div>
-                <p className="text-center capitalize group-hover:text-orange-400 duration-300">All</p>
+                <p className="text-center capitalize group-hover:text-orange-400 duration-300">
+                  All
+                </p>
               </div>
             </SwiperSlide>
             {categoryMenuList?.map((category, id) => (
@@ -97,7 +107,22 @@ const MenuCategory = () => {
     );
   }
 
-  return <div className="">{content}</div>;
+  return (
+    <section className="section py-10">
+      <div className="wrapper">
+        <div className="section-title space-y-2 mb-4 md:mb-0">
+          <h2 className="text-2xl tracking-wider font-medium">
+            Taste the Extraordinary Explore Our Menu
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Browse our menu for a taste of expertly crafted meals that promise
+            to delight.
+          </p>
+        </div>
+        {content}
+      </div>
+    </section>
+  );
 };
 
 export default MenuCategory;

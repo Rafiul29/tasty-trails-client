@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b shadow-md fixed top-0 left-0 right-0 z-50 dark:bg-gray-900 dark:border-gray-700 h-18">
+    <nav className="bg-white border-b shadow-md fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl dark:bg-gray-900 dark:border-gray-700 h-18">
       <div className="wrapper  flex flex-wrap items-center justify-between mx-auto py-4 ">
         <Link
           to="/"

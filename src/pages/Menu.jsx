@@ -9,7 +9,7 @@ const Menu = () => {
   dispatch(searchCategoryRemove());
 
   return (
-    <div className="wrapper">
+    <div className="pt-28 space-y-4">
       <MenuCategory />
       <MenuDisplay />
     </div>
