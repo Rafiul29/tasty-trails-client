@@ -1,16 +1,52 @@
+import { useState } from "react";
 import { useGetMenuItemQuery } from "../../features/menus/menusApi";
+import {
+  useDeleteCartItemMutation,
+  useUpdateCartItemMutation,
+} from "../../features/carts/cartsApi";
 
 const CartItem = ({ cart }) => {
-  const {
-    id,
-    menu_item,
-    is_active,
-    user,
-    quantity,
-    cart: cartitemId,
-  } = cart || {};
+  const { id, menu_item, user, quantity } = cart || {};
 
   const { data: menuItemDetails } = useGetMenuItemQuery(menu_item);
+
+  // update quantity
+  const [updateCartItem, { data, isError, isLoading, error }] =
+    useUpdateCartItemMutation();
+
+    // delete cart item
+  const [deleteCartItem] = useDeleteCartItemMutation();
+
+  //decrese cart quantity
+  const handleDecreseQty = (id) => {
+    updateCartItem({
+      id: id,
+      data: {
+        user: user,
+        menu_item: menu_item,
+        quantity: quantity - 1,
+      },
+    });
+  };
+
+  // increase quantity
+  const handleIncreaseQty = (id) => {
+    updateCartItem({
+      id: id,
+      data: {
+        user: user,
+        menu_item: menu_item,
+        quantity: quantity + 1,
+      },
+    });
+  };
+
+  // delete handle cart item
+  const handleDeleteCartItem = (id) => {
+    deleteCartItem(id);
+  };
+
+
 
   return (
     <>
@@ -29,6 +65,7 @@ const CartItem = ({ cart }) => {
           <div className="flex items-center">
             {/* decrease quantity */}
             <button
+              onClick={() => handleDecreseQty(id)}
               className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-orange-500 bg-white border border-orange-300 rounded-full focus:outline-none hover:bg-orange-100 focus:ring-4 focus:ring-orange-200 dark:bg-orange-800 dark:text-orange-400 dark:border-orange-600 dark:hover:bg-orange-700 dark:hover:border-orange-600 dark:focus:ring-orange-700"
               type="button"
             >
@@ -49,11 +86,20 @@ const CartItem = ({ cart }) => {
                 />
               </svg>
             </button>
-            <div className="text-orange-600">
-              {quantity}
+
+            <div>
+              <input
+                type="text"
+                id="first_product"
+                className="bg-gray-50 w-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder={quantity}
+                required
+                // value={quantity}
+              />
             </div>
             {/* increase quantity */}
             <button
+              onClick={() => handleIncreaseQty(id)}
               className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-orange-500 bg-white border border-orange-300 rounded-full focus:outline-none hover:bg-orange-100 focus:ring-4 focus:ring-orange-200 dark:bg-orange-800 dark:text-orange-400 dark:border-orange-600 dark:hover:bg-orange-700 dark:hover:border-orange-600 dark:focus:ring-orange-700"
               type="button"
             >
@@ -81,6 +127,7 @@ const CartItem = ({ cart }) => {
         </td>
         <td className="px-6 py-4">
           <button
+            onClick={() => handleDeleteCartItem(id)}
             type="button"
             className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
           >

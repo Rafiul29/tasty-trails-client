@@ -22,21 +22,21 @@ export const cartsApi = apiSlice.injectEndpoints({
 
     // Add a menu item to the favourites
     updateCartItem: builder.mutation({
-      query: (data) => ({
-        url: ``,
+      query: ({id,data}) => ({
+        url: `/carts/list/${id}/`,
         method: "PUT",
         body: data,
       }),
     }),
 
     // Delete a favourite menu item
-    deleteFavourite: builder.mutation({
+    deleteCartItem: builder.mutation({
       query: (id) => ({
-        url: ``,
+        url: `/carts/list/${id}/`,
         method: "DELETE",
       }),
     }),
   }),
 });
 
-export const {useGetUserCartItemQuery,useAddToCartItemMutation} = cartsApi;
+export const {useGetUserCartItemQuery,useAddToCartItemMutation,useUpdateCartItemMutation,useDeleteCartItemMutation} = cartsApi;

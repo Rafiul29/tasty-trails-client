@@ -1,10 +1,11 @@
-import menuNotFoundImage from "../assets/notFoundMenu.png";
+import emtyCartImage from "../assets/emtyCart.png";
 
 import { useSelector } from "react-redux";
 import { useGetUserCartItemQuery } from "../features/carts/cartsApi";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
 import CartItem from "../components/carts/CartItem";
+import { Link } from "react-router-dom";
 
 const Carts = () => {
   const { user } = useSelector((state) => state.auth);
@@ -29,12 +30,37 @@ const Carts = () => {
     content = <Error message={error?.data} />;
   } else if (!isLoading && !isError && cartItems?.length === 0) {
     content = (
-      <div className="flex justify-center items-center ">
+      <div className="flex flex-col justify-center items-center space-y-3 bg-white">
         <img
           className="object-cover"
-          src={menuNotFoundImage}
+          src={emtyCartImage}
           alt="Not found image"
         />
+        <h3 className="text-2xl">
+          <strong>Your Cart is Empty</strong>
+        </h3>
+        <h4>Add something to make me happy :)</h4>
+        <Link
+          to="/menu"
+          className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+        >
+          Choose plan
+          <svg
+            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </Link>
       </div>
     );
   } else if (!isLoading && !isError && cartItems?.length > 0) {
