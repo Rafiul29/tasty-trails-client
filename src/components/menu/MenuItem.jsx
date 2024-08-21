@@ -1,6 +1,42 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useAddFavouriteMutation } from "../../features/favourite/favouriteApi";
+
 const MenuItem = ({ menuitem }) => {
   const { id, name, description, ingredients, image, price, slug } =
     menuitem || {};
+
+  //
+  const { user } = useSelector((state) => state.auth);
+  const { user_id } = user || {};
+  console.log(user_id);
+
+  const navigate = useNavigate();
+
+  const [addFavourite, { data: favouriteData, isLoading:addFavouriteLoading, isError, error }] =
+    useAddFavouriteMutation();
+
+  // save menu item
+  const handleSaveAsFavourite = (id) => {
+    if (!user_id) {
+      navigate("/login", { state: { from: `/menu/${id}` } });
+    } else {
+      addFavourite({
+        user: user_id,
+        menu_item	: id,
+      });
+    }
+  };
+
+  console.log(favouriteData);
+
+  const handleAddToCart = (id) => {
+    if (!user_id) {
+      navigate("/login", { state: { from: `/menu/${id}` } });
+    } else {
+      // console.log("add to cart");
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -28,6 +64,7 @@ const MenuItem = ({ menuitem }) => {
           </p>
           <div className="">
             <button
+              onClick={() => handleAddToCart(id)}
               type="button"
               className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
             >
@@ -42,7 +79,9 @@ const MenuItem = ({ menuitem }) => {
               </svg>
               Add To Cart
             </button>
-            <button
+            <button 
+              disabled={addFavouriteLoading}
+              onClick={() => handleSaveAsFavourite(id)}
               type="button"
               className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
             >

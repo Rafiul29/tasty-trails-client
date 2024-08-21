@@ -13,7 +13,7 @@ const MenuItemDetails = () => {
     isError,
     error,
   } = useGetMenuItemQuery(id);
-  console.log(menuItemDetails, error?.data?.detail);
+
 
   let content = null;
   if (isLoading) {
