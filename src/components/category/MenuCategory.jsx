@@ -22,7 +22,7 @@ const MenuCategory = () => {
     isError,
     error,
   } = useGetCategoriesQuery();
-  let content = null;
+
 
   const dispatch = useDispatch();
 
@@ -30,6 +30,8 @@ const MenuCategory = () => {
     dispatch(searchCategoryRemove());
   };
 
+  // what do render
+  let content = null;
   if (isLoading) {
     content = content = (
       <div className="my-2 h-56">

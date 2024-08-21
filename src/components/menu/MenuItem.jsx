@@ -68,7 +68,7 @@ const MenuItem = ({ menuitem }) => {
           <p className="text-xl tracking-wider text-gray-700">{description}</p>
           <p className="space-x-3 text-xl">
             <span>Price:</span>{" "}
-            <span className="text-orange-500 font-semibold">{price}৳</span>
+            <span className="text-orange-500 font-semibold">{price} ৳</span>
           </p>
           <div className="">
             <button

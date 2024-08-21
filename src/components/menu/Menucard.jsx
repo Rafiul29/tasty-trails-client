@@ -42,7 +42,7 @@ const Menucard = ({ menu }) => {
             </svg>
           </Link>
 
-          <p>{price}</p>
+          <p className="text-orange-500 font-semibold">{price} ৳</p>
         </div>
       </div>
     </div>
