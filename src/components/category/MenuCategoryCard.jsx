@@ -7,13 +7,13 @@ const MenuCategoryCard = ({ category }) => {
 
   const dispatch = useDispatch();
 
-  const handeCategorySearch = (name) => {
-    dispatch(searchCategory({ name: name }));
+  const handeCategorySearch = (slug) => {
+    dispatch(searchCategory({ name: slug }));
   };
 
   return (
     <div className="flex flex-col group justify-center items-center gap-1  bg-orange-50 hover:bg-orange-100 p-2 duration-500 border border-orange-100 hover:border-orange-200 rounded-md cursor-pointer h-30 w-24"
-    onClick={() => handeCategorySearch(name)}>
+    onClick={() => handeCategorySearch(slug)}>
       <div
         className="overflow-hidden  h-16 w-16 "
       >
