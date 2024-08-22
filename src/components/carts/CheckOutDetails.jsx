@@ -6,7 +6,7 @@ const CheckOutDetails = () => {
   const {total,tax,grand_total}=data?.result||{}
   console.log(data)
   return (
-    <div className="p-6  bg-white border border-blue-200 rounded-lg shadow dark:bg-blue-800 dark:border-blue-700 space-y-3">
+    <div className="p-6  bg-white border  shadow space-y-3 rounded-xl">
       <div className="flex justify-between">
         <span className="font-semibold">Total price:</span>
         <span className="text-orange-500 font-semibold">{grand_total} ৳</span>
