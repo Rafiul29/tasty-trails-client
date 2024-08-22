@@ -7,15 +7,14 @@ const Menucard = ({ menu }) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/menu/${id}`}>
-        <img className="rounded-t-lg h-56 w-full" src={image} alt={name} />
+        <img className="rounded-t-lg h-44 w-full" src={image} alt={name} />
       </Link>
 
-      <div className="p-5 ">
-        <a href="#">
+      <div className="p-3">
+       
           <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
             {name.slice(0, 20)} ...
           </h5>
-        </a>
         <p className="mb-3 text-sm text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>

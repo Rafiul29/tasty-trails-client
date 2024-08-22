@@ -36,7 +36,12 @@ export const cartsApi = apiSlice.injectEndpoints({
         method: "DELETE",
       }),
     }),
+    cartCheckout: builder.query({
+      query: () => ({
+        url: `/carts/checkout/`,
+      }),
+    }),
   }),
 });
 
-export const {useGetUserCartItemQuery,useAddToCartItemMutation,useUpdateCartItemMutation,useDeleteCartItemMutation} = cartsApi;
+export const {useGetUserCartItemQuery,useAddToCartItemMutation,useUpdateCartItemMutation,useDeleteCartItemMutation,useCartCheckoutQuery} = cartsApi;
