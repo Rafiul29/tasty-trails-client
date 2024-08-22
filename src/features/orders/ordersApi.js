@@ -1,19 +1,17 @@
+import { data } from "autoprefixer";
 import { apiSlice } from "../api/apiSlice";
 
 export const ordersApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
    
-    // Get the user's favourite menu items
     getAllOrders: builder.query({
-      query: (id) => `/menu/favourite/?user_id=${id}`,
+      query: () => `/orders/list/`,
     }),
 
-     // Get the user's favourite menu items
-     getUserOrders: builder.query({
-      query: (id) => `/menu/favourite/?user_id=${id}`,
+    getUserOrders: builder.query({
+      query: (id) => `/orders/list/?user_id=${id}`,
     }),
-    
-    // Add a menu item to the favourites
+
     addOrder: builder.mutation({
       query: (data) => ({
         url: "orders/list/",
@@ -21,9 +19,25 @@ export const ordersApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    UpdateOrdersStatus: builder.mutation({
+      query: ({id,data}) => ({
+        url: `orders/list/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
+
+    OrderItems: builder.mutation({
+      query: (id) => `/orders/items/`,
+    }),
+
   }),
 });
 
 export const {
- useAddOrderMutation
+  useAddOrderMutation,
+  useGetAllOrdersQuery,
+  useGetUserOrdersQuery,
+  useUpdateOrdersStatusMutation
 } = ordersApi;

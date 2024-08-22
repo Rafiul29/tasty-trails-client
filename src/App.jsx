@@ -9,12 +9,15 @@ import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/Home";
 import PublicRoutes from "./routes/PublicRoutes";
 import PrivetRoutes from "./routes/PrivetRoutes";
+import AdminRoutes from "./routes/AdminRoutes";
 import Menu from "./pages/Menu";
 import MenuItemDetails from "./pages/MenuItemDetails";
 import Loading from "./components/ui/Loading";
 import Favourite from "./pages/Favourite";
 import Carts from "./pages/Carts";
 import CartCheckout from "./pages/CartCheckout";
+import Orders from "./pages/Orders";
+import AllOrders from "./pages/AllOrders";
 
 // https://lottie.host/c22c41cc-945d-4128-91cb-e1282306e4b7/DEzt4GBIHb.json
 // https://lottie.host/a959a4d2-6df4-461d-ac5c-f0e82df01c05/N83XjzAzm4.json
@@ -30,9 +33,11 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        {/*always public */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/menu" element={<Menu />} />
         <Route exact path="/menu/:id" element={<MenuItemDetails />} />
+        {/* always privet */}
         <Route
           exact
           path="favourite"
@@ -51,7 +56,7 @@ function App() {
             </PrivetRoutes>
           }
         />
-                <Route
+        <Route
           exact
           path="cart/checkout"
           element={
@@ -60,6 +65,27 @@ function App() {
             </PrivetRoutes>
           }
         />
+        <Route
+          exact
+          path="orders"
+          element={
+            <PrivetRoutes>
+              <Orders />
+            </PrivetRoutes>
+          }
+        />
+
+        {/* always admin */}
+        <Route
+          exact
+          path="all/orders"
+          element={
+            <AdminRoutes>
+              <AllOrders />
+            </AdminRoutes>
+          }
+        />
+        {/*some times public */}
         <Route
           exact
           path="/login"
