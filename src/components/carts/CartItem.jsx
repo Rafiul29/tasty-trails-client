@@ -120,7 +120,7 @@ const CartItem = ({ cart }) => {
             </button>
           </div>
         </td>
-        <td className="px-6 py-4 text-orange-500 font-semibold">
+        <td className="px-6 py-4 font-semibold text-black">
           {menuItemDetails?.price * quantity} ৳
         </td>
         <td className="px-6 py-4">

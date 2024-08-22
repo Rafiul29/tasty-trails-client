@@ -14,6 +14,7 @@ import MenuItemDetails from "./pages/MenuItemDetails";
 import Loading from "./components/ui/Loading";
 import Favourite from "./pages/Favourite";
 import Carts from "./pages/Carts";
+import CartCheckout from "./pages/CartCheckout";
 
 // https://lottie.host/c22c41cc-945d-4128-91cb-e1282306e4b7/DEzt4GBIHb.json
 // https://lottie.host/a959a4d2-6df4-461d-ac5c-f0e82df01c05/N83XjzAzm4.json
@@ -47,6 +48,15 @@ function App() {
           element={
             <PrivetRoutes>
               <Carts />
+            </PrivetRoutes>
+          }
+        />
+                <Route
+          exact
+          path="cart/checkout"
+          element={
+            <PrivetRoutes>
+              <CartCheckout />
             </PrivetRoutes>
           }
         />

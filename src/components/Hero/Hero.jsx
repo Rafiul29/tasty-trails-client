@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <header className="md:py-10">
+    <header className="md:py-6">
       <div className="wrapper ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 place-items">
           <div className="lg:col-span-3 place-content-center">

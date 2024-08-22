@@ -4,23 +4,23 @@ import { useCartCheckoutQuery } from "../../features/carts/cartsApi";
 const CheckOutDetails = () => {
   const { data } = useCartCheckoutQuery();
   const {total,tax,grand_total}=data?.result||{}
-  console.log(data)
+
   return (
     <div className="p-6  bg-white border  shadow space-y-3 rounded-xl">
       <div className="flex justify-between">
         <span className="font-semibold">Total price:</span>
-        <span className="text-orange-500 font-semibold">{grand_total} ৳</span>
+        <span className="font-medium">{total} ৳</span>
       </div>
       <div className="flex justify-between">
         <span className="font-medium">Tax</span>
-        <span className="text-orange-500 font-semibold">{tax} ৳</span>
+        <span className="font-medium">{tax} ৳</span>
       </div>
       <div className="flex justify-between">
         <span className="font-medium">Total</span>
-        <span className="text-orange-500 font-semibold">{total} ৳</span>
+        <span className="font-medium">{grand_total} ৳</span>
       </div>
       <hr />
-      <button className="flex items-center justify-center px-3 py-2 text-sm font-medium w-full text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+      <Link to="/cart/checkout" className="flex items-center justify-center px-3 py-2 text-sm font-medium w-full text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
         Checkout
         <svg
           className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
@@ -37,7 +37,7 @@ const CheckOutDetails = () => {
             d="M1 5h12m0 0L9 1m4 4L9 9"
           />
         </svg>
-      </button>
+      </Link>
 
       <Link
         to="/menu"
