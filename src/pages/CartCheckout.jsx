@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useCartCheckoutQuery } from "../features/carts/cartsApi";
+import { useAddOrderMutation } from "../features/orders/ordersApi";
+import ButtonLoading from "../components/ui/ButtonLoading";
+import { useSelector } from "react-redux";
 
 const CartCheckout = () => {
-  
+  const { user } = useSelector((state) => state.auth);
+  const { user_id } = user || {};
+
   const { data } = useCartCheckoutQuery();
   const { total, tax, grand_total } = data?.result || {};
 
@@ -15,6 +20,9 @@ const CartCheckout = () => {
   const [state, setState] = useState("");
   const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+
+  const [addOrder, { data: orderData, isLoading, isError, error }] =
+    useAddOrderMutation();
 
   const handlePay = (e) => {
     e.preventDefault();
@@ -29,7 +37,24 @@ const CartCheckout = () => {
       postal_code,
       country
     );
+    addOrder({
+      user: user_id,
+      status: "Pending",
+      delivery_address: {
+        name,
+        email,
+        phone_no,
+        address_line_1,
+        address_line_2,
+        city,
+        state,
+        postal_code,
+        country,
+        user: user_id,
+      },
+    });
   };
+
 
   return (
     <main className="main-padding">
@@ -221,10 +246,11 @@ const CartCheckout = () => {
                   <span className="font-medium">{grand_total} ৳</span>
                 </div>
                 <button
-                  type="sumit"
+                  disabled={isLoading || !data?.result}
+                  type="submit"
                   className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 uppercase"
                 >
-                  Pay Now
+                  {!isLoading ? "Pay Now" : <ButtonLoading />}
                 </button>
               </div>
             </div>
