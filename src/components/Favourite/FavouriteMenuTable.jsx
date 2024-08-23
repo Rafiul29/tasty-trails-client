@@ -27,10 +27,10 @@ const FavouriteMenuTable = ({ favMenu }) => {
       </th>
       <td className="px-6 py-4 text-orange-500 font-semibold">{price}৳</td>
 
-      <td className="px-6 py-4 space-x-3">
+      <td className="px-6 py-4 flex gap-3">
         <Link
           to={`/menu/${id}`}
-          className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+          className=" text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
         >
           <svg
             className="w-5 h-5 dark:text-white"

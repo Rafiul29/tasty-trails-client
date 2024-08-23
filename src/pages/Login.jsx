@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <main className="main-padding ">
-      <section className="h-[calc(100vh-16rem)] flex items-center">
+      <section className="h-[calc(100vh-16rem)] flex items-center ">
       <div className="wrapper lg:w-3/5  ">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center">
           {/* col-1  login form*/}
