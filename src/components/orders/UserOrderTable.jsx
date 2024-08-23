@@ -70,7 +70,7 @@ const UserOrderTable = ({ orders }) => {
                 </td>
                 <td className="px-6 py-4 ">{order.status}</td>
                 <td className="px-6 py-4 ">
-                  {moment(order.address_line_1).format("L")}
+                  {moment(order.order_date).format("L")}
                 </td>
 
                 <td className="px-6 py-4 space-x-3">

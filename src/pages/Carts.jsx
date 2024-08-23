@@ -23,7 +23,7 @@ const Carts = () => {
   let content = null;
   if (isLoading) {
     content = content = (
-      <div className="my-2 h-56">
+      <div className="my-2 w-full h-full flex justify-center items-center">
         <Loading />
       </div>
     );
