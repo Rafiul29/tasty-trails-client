@@ -7,21 +7,22 @@ const AllOrdersTable = ({ allOrders }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderId, setOrderId] = useState(undefined);
 
-  const[updateOrdersStatus,{data,isLoading,isError,error}]=useUpdateOrdersStatusMutation()
+  const [updateOrdersStatus, { data, isLoading, isError, error }] =
+    useUpdateOrdersStatusMutation();
 
   const handleOrderDetails = (id) => {
     setOrderId(id);
     setIsModalOpen(true);
   };
 
-  const handelChnageOrderStatus = (e,id) => {
-   let status=e.target.value
+  const handelChnageOrderStatus = (e, id) => {
+    let status = e.target.value;
     updateOrdersStatus({
-      id:id,
-      data:{
-        status:status,
-      }
-    })
+      id: id,
+      data: {
+        status: status,
+      },
+    });
   };
 
   return (
@@ -31,7 +32,7 @@ const AllOrdersTable = ({ allOrders }) => {
           <OrderModal orderId={orderId} onClose={() => setIsModalOpen(false)} />
         )}
       </div>
-      <h2 className="text-center text-4xl text-gray-700 ">All Orders</h2>
+      <h2 className="text-3xl md:text-4xl text-center">All Orders</h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -120,7 +121,7 @@ const AllOrdersTable = ({ allOrders }) => {
                       id=""
                       className="w-28 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       defaultValue={order.status}
-                      onChange={(e)=>handelChnageOrderStatus(e,order.id)}
+                      onChange={(e) => handelChnageOrderStatus(e, order.id)}
                     >
                       <option value="Pending">Pending</option>
                       <option value="Processing">Processing</option>

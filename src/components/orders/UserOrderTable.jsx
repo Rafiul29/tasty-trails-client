@@ -18,7 +18,7 @@ const UserOrderTable = ({ orders }) => {
           <OrderModal orderId={orderId} onClose={() => setIsModalOpen(false)} />
         )}
       </div>
-      <h2 className="text-center text-4xl text-gray-700 ">Your Orders</h2>
+      <h2 className="text-center text-3xl md:text-4xl text-gray-700 ">Your Orders</h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

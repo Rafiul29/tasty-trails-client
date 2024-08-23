@@ -69,12 +69,13 @@ const Registration = () => {
   // },[data?.success])
 
   return (
-    <section className="h-[calc(100vh-9rem)] flex justify-center items-center ">
-      <div className="wrapper lg:w-3/5 ">
+   <main className="main-padding">
+     <section className=" h-[calc(100vh-10rem)] md:h-[calc(100vh-15rem)] flex items-center">
+      <div className="wrapper lg:w-3/5">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0 items-center">
           {/* col-1  registation form*/}
           <div>
-            <h2 className="text-center  text-3xl font-extrabold text-gray-900 mb-3">
+            <h2 className="text-center text-2xl  md:text-3xl font-extrabold text-gray-900 mb-3">
             Create your account
             </h2>
             
@@ -93,7 +94,7 @@ const Registration = () => {
                   <input
                     type="text"
                     id="first_name"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your first name"
                     required
                     onChange={(e) => setFirstName(e.target.value)}
@@ -109,7 +110,7 @@ const Registration = () => {
                   <input
                     type="text"
                     id="last_name"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your first name"
                     required
                     onChange={(e) => setLastName(e.target.value)}
@@ -126,7 +127,7 @@ const Registration = () => {
                 <input
                   type="text"
                   id="username"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your user name"
                   required
                   onChange={(e) => setUserName(e.target.value)}
@@ -142,7 +143,7 @@ const Registration = () => {
                 <input
                   type="email"
                   id="email"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your email address"
                   required
                   onChange={(e) => setEmail(e.target.value)}
@@ -158,7 +159,7 @@ const Registration = () => {
                 <input
                   type="tel"
                   id="phone_no"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your phone number"
                   required
                   onChange={(e) => setPhoneNo(e.target.value)}
@@ -175,7 +176,7 @@ const Registration = () => {
                   <input
                     type="password"
                     id="password"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your password"
                     required
                     onChange={(e) => setPassword(e.target.value)}
@@ -191,7 +192,7 @@ const Registration = () => {
                   <input
                     type="password"
                     id="confirm_password"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your confirm password"
                     required
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -202,30 +203,26 @@ const Registration = () => {
                 <button
                 disabled={isLoading}
                   type="submit"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
                 >
                  {!isLoading? "Submit":(<ButtonLoading/>)}
                 </button>
                 <p className="">
-                  <span className="text-rose-500">
+                  <span>
                     {" "}
                     Already have an account?{" "}
                   </span>
                   <Link
                     to="/login"
-                    className="font-medium text-violet-700 ml-2 underline"
+                    className="font-medium text-blue-600 ml-2 underline"
                   >
                     Login
                   </Link>
-                </p>
-               
-              </div>
-           
+                </p>              
+              </div>          
             </form>
             
-           
           </div>
-
           {/* col-2 */}
           <div className="overflow-hidden md:block hidden">
             <img
@@ -237,6 +234,7 @@ const Registration = () => {
         </div>
       </div>
     </section>
+   </main>
   );
 };
 

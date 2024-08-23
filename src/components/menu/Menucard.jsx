@@ -14,8 +14,8 @@ const Menucard = ({ menu }) => {
        
           <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
             {name.slice(0, 20)} ...
-          </h5>
-        <p className="mb-3 text-sm text-gray-700 dark:text-gray-400">
+          </h5> 
+        <p className="mb-3 text-sm  tracking-wider text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>
         <div className="flex justify-between items-center">

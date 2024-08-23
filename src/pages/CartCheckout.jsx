@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCartCheckoutQuery } from "../features/carts/cartsApi";
 import { useAddOrderMutation } from "../features/orders/ordersApi";
 import ButtonLoading from "../components/ui/ButtonLoading";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const CartCheckout = () => {
   const { user } = useSelector((state) => state.auth);
@@ -21,22 +22,11 @@ const CartCheckout = () => {
   const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const [addOrder, { data: orderData, isLoading, isError, error }] =
+  const [addOrder, { data: orderData, isLoading, error }] =
     useAddOrderMutation();
 
   const handlePay = (e) => {
     e.preventDefault();
-    console.log(
-      name,
-      email,
-      phone_no,
-      address_line_1,
-      address_line_2,
-      city,
-      state,
-      postal_code,
-      country
-    );
     addOrder({
       user: user_id,
       status: "Pending",
@@ -55,6 +45,15 @@ const CartCheckout = () => {
     });
   };
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (orderData?.id) {
+      navigate("/orders");
+    } else {
+      console.log(error);
+    }
+  }, [orderData, navigate, error]);
 
   return (
     <main className="main-padding">
@@ -248,7 +247,7 @@ const CartCheckout = () => {
                 <button
                   disabled={isLoading || !data?.result}
                   type="submit"
-                  className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 uppercase"
+                  className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 me-2  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 uppercase"
                 >
                   {!isLoading ? "Pay Now" : <ButtonLoading />}
                 </button>

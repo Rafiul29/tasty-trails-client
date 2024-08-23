@@ -60,21 +60,21 @@ const MenuItem = ({ menuitem }) => {
         {/* right */}
         <div className="space-y-4 place-content-center">
           <h3
-            className=" text-3xl md:text-4xl tracking-wider 
-            font-semibold text-orange-400"
+            className="text-2xl md:text-3xl tracking-wider 
+            font-medium text-orange-400"
           >
             {name}
           </h3>
-          <p className="text-xl tracking-wider text-gray-700">{description}</p>
+          <p className="text-lg tracking-wide text-gray-800">{description}</p>
           <p className="space-x-3 text-xl">
-            <span>Price:</span>{" "}
+            <span className="text-gray-900 font-medium">Price:</span>{" "}
             <span className="text-orange-500 font-semibold">{price} ৳</span>
           </p>
           <div className="">
             <button
               onClick={() => handleAddToCart(id)}
               type="button"
-              className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+              className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
             >
               <svg
                 className="w-5 h-5 me-2"
@@ -91,7 +91,7 @@ const MenuItem = ({ menuitem }) => {
               disabled={addFavouriteLoading}
               onClick={() => handleSaveAsFavourite(id)}
               type="button"
-              className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+              className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
             >
               <svg
                 className="w-5 h-5 me-2 text-white dark:text-white"
@@ -110,7 +110,7 @@ const MenuItem = ({ menuitem }) => {
         </div>
       </div>
       <div className="space-y-3">
-        <h4 className="capitalize text-2xl font-medium ">ingredients:</h4>
+        <h4 className="capitalize text-2xl font-medium text-gray-900">ingredients:</h4>
         <div className="space-y-1 text-lg tracking-wider text-gray-700">
           {ingredients.split(",").map((item, i) => (
             <p className="flex gap-2 items-center" key={i}>

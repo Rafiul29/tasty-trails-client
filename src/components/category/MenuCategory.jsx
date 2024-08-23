@@ -100,8 +100,8 @@ const MenuCategory = () => {
           </Swiper>
           <div className="button-arrangemnt">
             <div className="button-swiper">
-              <div className="swiper-button-prev border-2 bg-orange-100 border-orange-200 font-bold text-slate-900 hover:bg-orange-400 cursor-pointer hover:text-white h-10 w-10  hover:border-amber-500 duration-500  rounded-full"></div>
-              <div className="swiper-button-next border-2 font-bold bg-orange-100 border-orange-200 text-slate-900 hover:bg-orange-400 cursor-pointer hover:text-white h-10 w-10  hover:border-amber-500 duration-500  rounded-full"></div>
+              <div className="swiper-button-prev border-2 text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium = text-sm p-5 h-10 w-10 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 rounded-full"></div>
+              <div className="swiper-button-next border-2 text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium = text-sm p-5 h-10 w-10 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 rounded-full"></div>
             </div>
           </div>
         </div>
