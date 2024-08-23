@@ -1,8 +1,7 @@
 import { apiSlice } from "../api/apiSlice";
 
 export const ordersApi = apiSlice.injectEndpoints({
-  tagTypes: ["Orders", "Order", "OrderItems"],  // Define the tag types
-
+  tagTypes: ["Orders", "Order", "OrderItems"],  
   endpoints: (builder) => ({
 
     getAllOrders: builder.query({
@@ -33,7 +32,7 @@ export const ordersApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Orders"],  // Invalidate the Orders list to trigger a re-fetch
+      invalidatesTags: ["Orders"], 
     }),
 
     updateOrdersStatus: builder.mutation({
@@ -43,8 +42,8 @@ export const ordersApi = apiSlice.injectEndpoints({
         body: data,
       }),
       invalidatesTags: (result, error, { id }) => [
-        { type: "Order", id },  // Invalidate the specific order
-        "Orders",  // Invalidate the list of orders to trigger a re-fetch
+        { type: "Order", id },  
+        "Orders",  
       ],
     }),
 

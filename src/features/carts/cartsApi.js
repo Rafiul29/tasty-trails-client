@@ -24,7 +24,7 @@ export const cartsApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Orders"], // Invalidate the list to trigger a re-fetch
+      invalidatesTags: ["Orders"], 
     }),
 
     updateCartItem: builder.mutation({
@@ -33,10 +33,10 @@ export const cartsApi = apiSlice.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      // Ensure `id` is defined in `invalidatesTags`
+     
       invalidatesTags: (result, error, { id }) => [
-        { type: "Order", id }, // Invalidate the specific item
-        "Orders", // Invalidate the list to trigger a re-fetch
+        { type: "Order", id }, 
+        "Orders",
       ],
     }),
 
@@ -45,10 +45,10 @@ export const cartsApi = apiSlice.injectEndpoints({
         url: `/carts/list/${id}/`,
         method: "DELETE",
       }),
-      // Ensure `id` is defined in `invalidatesTags`
+     
       invalidatesTags: (result, error, id) => [
-        { type: "Order", id }, // Invalidate the specific item
-        "Orders", // Invalidate the list to trigger a re-fetch
+        { type: "Order", id },
+        "Orders", 
       ],
     }),
 
