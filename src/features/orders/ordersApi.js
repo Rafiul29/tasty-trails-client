@@ -20,16 +20,15 @@ export const ordersApi = apiSlice.injectEndpoints({
       }),
     }),
 
-    UpdateOrdersStatus: builder.mutation({
+    updateOrdersStatus: builder.mutation({
       query: ({id,data}) => ({
         url: `orders/list/${id}`,
         method: "PUT",
         body: data,
       }),
     }),
-
-    OrderItems: builder.mutation({
-      query: (id) => `/orders/items/`,
+    orderItems: builder.query({
+      query: (id) => `/orders/items/?order_id=${id}`,
     }),
 
   }),
@@ -39,5 +38,6 @@ export const {
   useAddOrderMutation,
   useGetAllOrdersQuery,
   useGetUserOrdersQuery,
-  useUpdateOrdersStatusMutation
+  useUpdateOrdersStatusMutation,
+  useOrderItemsQuery,
 } = ordersApi;
