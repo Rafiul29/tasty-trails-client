@@ -64,7 +64,7 @@ const Favourite = () => {
               {favouriteMenu.map((favMenu) => (
                 <FavouriteMenuTable key={favMenu.id} favMenu={favMenu} />
               ))}
-            </tbody>
+            </tbody> 
           </table>
         </div>
       </>

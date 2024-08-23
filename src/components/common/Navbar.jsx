@@ -4,13 +4,14 @@ import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import useAuth from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedOut } from "../../features/auth/authSlice";
+import { useAuthAdmin } from "../../hooks/useAuthAdmin";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isLoggedIn = useAuth();
-
+  const isAdmin = useAuthAdmin();
   const dispatch = useDispatch();
 
   const auth = useSelector((state) => state.auth);
@@ -161,14 +162,27 @@ const Navbar = () => {
                           Dashboard
                         </Link>
                       </li>
-                      <li>
-                        <Link
-                          to="/all/orders"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          All Orders
-                        </Link>
-                      </li>
+                      {isLoggedIn && (
+                        <li>
+                          <Link
+                            to="/orders"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Orders
+                          </Link>
+                        </li>
+                      )}
+                      {isAdmin && (
+                        <li>
+                          <Link
+                            to="/all/orders"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            All Orders
+                          </Link>
+                        </li>
+                      )}
+
                       <li>
                         <Link
                           to="/earnings"
