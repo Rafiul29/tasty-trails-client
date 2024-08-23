@@ -1,14 +1,27 @@
 import moment from "moment";
 import OrderModal from "./OrderModal";
 import { useState } from "react";
+import { useUpdateOrdersStatusMutation } from "../../features/orders/ordersApi";
 
-const UserOrderTable = ({ orders }) => {
+const AllOrdersTable = ({ allOrders }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderId, setOrderId] = useState(undefined);
+
+  const[updateOrdersStatus,{data,isLoading,isError,error}]=useUpdateOrdersStatusMutation()
 
   const handleOrderDetails = (id) => {
     setOrderId(id);
     setIsModalOpen(true);
+  };
+
+  const handelChnageOrderStatus = (e,id) => {
+   let status=e.target.value
+    updateOrdersStatus({
+      id:id,
+      data:{
+        status:status,
+      }
+    })
   };
 
   return (
@@ -18,7 +31,7 @@ const UserOrderTable = ({ orders }) => {
           <OrderModal orderId={orderId} onClose={() => setIsModalOpen(false)} />
         )}
       </div>
-      <h2 className="text-center text-4xl text-gray-700 ">Your Orders</h2>
+      <h2 className="text-center text-4xl text-gray-700 ">All Orders</h2>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -26,12 +39,12 @@ const UserOrderTable = ({ orders }) => {
               <th scope="col" className="px-6 py-3">
                 Order Number
               </th>
-              {/* <th scope="col" className="px-6 py-3">
-                  Name 
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Email 
-                </th> */}
+              <th scope="col" className="px-6 py-3">
+                Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Email
+              </th>
               <th scope="col" className="px-6 py-3">
                 Phone
               </th>
@@ -45,13 +58,14 @@ const UserOrderTable = ({ orders }) => {
               <th scope="col" className="px-6 py-3">
                 Order Date
               </th>
+
               <th scope="col" className="px-6 py-3">
-                Details
+                Action
               </th>
             </tr>
           </thead>
           <tbody>
-            {orders?.map((order) => (
+            {allOrders?.map((order) => (
               <tr
                 key={order.id}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
@@ -62,6 +76,8 @@ const UserOrderTable = ({ orders }) => {
                 >
                   {order.order_number}
                 </th>
+                <td className="px-6 py-4 ">{order.delivery_address.name}</td>
+                <td className="px-6 py-4 ">{order.delivery_address.email}</td>
                 <td className="px-6 py-4 ">
                   {order.delivery_address.phone_no}
                 </td>
@@ -72,8 +88,7 @@ const UserOrderTable = ({ orders }) => {
                 <td className="px-6 py-4 ">
                   {moment(order.address_line_1).format("L")}
                 </td>
-
-                <td className="px-6 py-4 space-x-3">
+                <td className="px-6 py-4 space-x-3 flex">
                   <button
                     onClick={() => handleOrderDetails(order.id)}
                     type="button"
@@ -100,6 +115,19 @@ const UserOrderTable = ({ orders }) => {
                       />
                     </svg>
                   </button>
+                  <form>
+                    <select
+                      id=""
+                      className="w-28 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      defaultValue={order.status}
+                      onChange={(e)=>handelChnageOrderStatus(e,order.id)}
+                    >
+                      <option value="Pending">Pending</option>
+                      <option value="Processing">Processing</option>
+                      <option value="Delivered">Delivered</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </form>
                 </td>
               </tr>
             ))}
@@ -110,4 +138,4 @@ const UserOrderTable = ({ orders }) => {
   );
 };
 
-export default UserOrderTable;
+export default AllOrdersTable;

@@ -22,11 +22,12 @@ export const ordersApi = apiSlice.injectEndpoints({
 
     updateOrdersStatus: builder.mutation({
       query: ({id,data}) => ({
-        url: `orders/list/${id}`,
-        method: "PUT",
+        url: `orders/list/${id}/`,
+        method: "PATCH",
         body: data,
       }),
     }),
+
     orderItems: builder.query({
       query: (id) => `/orders/items/?order_id=${id}`,
     }),

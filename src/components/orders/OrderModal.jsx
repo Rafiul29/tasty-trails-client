@@ -30,13 +30,13 @@ const OrderModal = ({ onClose, orderId }) => {
   } else if (!isLoading && !isError && OrderMenus.length > 0) {
     content = (
       <>
-        <div className="p-2 md:p-4 grid grid-cols-4 ">
+        <div className="p-2 md:p-3 grid grid-cols-4 font-medium ">
           <p className="col-span-2">Name</p>
           <p>Quantity</p>
           <p>Price</p>
         </div>
         {OrderMenus.map((orderMenu) => (
-          <div key={orderMenu.id} className="p-2 md:p-4 grid grid-cols-4">
+          <div key={orderMenu.id} className="p-2 md:p-3 grid grid-cols-4">
             <p className="col-span-2 text-base leading-relaxed text-gray-500 dark:text-gray-400">
               {orderMenu.menu_item.name}
             </p>
