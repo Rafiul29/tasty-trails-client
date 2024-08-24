@@ -49,7 +49,7 @@ const AddMenu = () => {
     }
   },[data])
 
-  console.log(data);
+
   return (
     <main className="main-padding ">
       <div className="md:container lg:max-w-5xl mx-auto px-5 md:pt-10 pt-5">

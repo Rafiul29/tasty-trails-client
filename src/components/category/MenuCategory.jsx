@@ -1,7 +1,7 @@
 import menuNotFoundImage from "../../assets/notFoundMenu.png";
 
 import Loading from "../ui/Loading";
-import allFootMenu from "../../assets/allfootmenu.jpeg";
+import allFootMenu from "../../assets/allFootMenu.jpg";
 import { useGetCategoriesQuery } from "../../features/category/categoryApi";
 import Error from "../ui/Error";
 import MenuCategoryCard from "./MenuCategoryCard";
