@@ -18,6 +18,7 @@ import Carts from "./pages/Carts";
 import CartCheckout from "./pages/CartCheckout";
 import Orders from "./pages/Orders";
 import AllOrders from "./pages/AllOrders";
+import AddMenu from "./pages/AddMenu";
 
 // https://lottie.host/c22c41cc-945d-4128-91cb-e1282306e4b7/DEzt4GBIHb.json
 // https://lottie.host/a959a4d2-6df4-461d-ac5c-f0e82df01c05/N83XjzAzm4.json
@@ -82,6 +83,15 @@ function App() {
           element={
             <AdminRoutes>
               <AllOrders />
+            </AdminRoutes>
+          }
+        />
+         <Route
+          exact
+          path="add/menu"
+          element={
+            <AdminRoutes>
+              <AddMenu />
             </AdminRoutes>
           }
         />
