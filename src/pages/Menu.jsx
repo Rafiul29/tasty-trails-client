@@ -10,10 +10,12 @@ const Menu = () => {
   dispatch(searchCategoryRemove());
 
   return (
-    <div className="main-padding  space-y-4">
+    <div className="main-padding  space-y-2">
       <MenuCategory />
-      <MenuDisplay />
-      <Footer/>
+     <div className="space-y-10">
+     <MenuDisplay />
+     <Footer/>
+     </div>
     </div>
   );
 };

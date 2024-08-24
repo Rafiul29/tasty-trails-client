@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 place-items">
           <div className="lg:col-span-3 place-content-center">
             <div className="lg:space-y-7 space-y-6 ">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider text-gray-700">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider text-gray-900">
                 Embark on a Flavorful Journey{" "}
               </h1>
               <p className="text-gray-600 tracking-wider leading-7">

@@ -10,8 +10,10 @@ const Home = () => {
     <div className="pt-5">
     <MenuCategory/>
     </div>
+    <div className="space-y-10">
     <MenuDisplay/>
     <Footer/>
+    </div>
     </main>
   );
 };

@@ -41,10 +41,11 @@ const MenuItemDetails = () => {
 
   return (
    <>
-    <main className="main-padding pb-12">
+    <main className="main-padding  space-y-10">
       <div className="wrapper ">{content}</div>
+      <Footer/>
     </main>
-    <Footer/>
+   
    </>
   );
 };
