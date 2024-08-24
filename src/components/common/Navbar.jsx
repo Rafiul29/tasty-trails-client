@@ -112,6 +112,25 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+             <li>
+                <Link
+                  to="/about"
+                  className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
+                  duration-500 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  About
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/contact-us"
+                  className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
+                  duration-500 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Contact us
+                </Link>
+              </li>
          
          {isLoggedIn && (
              <li>
@@ -138,8 +157,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/login"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orange-600 md:p-0 dark:text-white 
-                  duration-500 md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
                 >
                   Login
                 </Link>
@@ -150,8 +168,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/register"
-                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-orang-600 md:p-0 dark:text-white
-                  duration-500  md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
                 >
                   Register
                 </Link>
@@ -176,14 +193,7 @@ const Navbar = () => {
                     className="z-10 absolute mt-2 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
                   >
                     <ul className="py-2 text-sm text-gray-700 dark:text-gray-400" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                      <li>
-                        <Link
-                          to="/dashboard"
-                          className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Dashboard
-                        </Link>
-                      </li>
+                   
 
                       {isLoggedIn && isAdmin && (
                         <li>

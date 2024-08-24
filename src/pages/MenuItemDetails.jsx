@@ -4,6 +4,7 @@ import { useGetMenuItemQuery } from "../features/menus/menusApi";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
 import MenuItem from "../components/menu/MenuItem";
+import Footer from "../components/common/Footer";
 
 const MenuItemDetails = () => {
   const { id } = useParams();
@@ -39,9 +40,12 @@ const MenuItemDetails = () => {
   }
 
   return (
-    <main className="main-padding">
-      <div className="wrapper">{content}</div>
+   <>
+    <main className="main-padding pb-12">
+      <div className="wrapper ">{content}</div>
     </main>
+    <Footer/>
+   </>
   );
 };
 
