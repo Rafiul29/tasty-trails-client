@@ -55,18 +55,18 @@ const Registration = () => {
     
   }, [data,responseError,navigate]);
 
-  // useEffect(()=>{
-  //   console.log('success')
-  //   if(data?.success){
-  //     setFirstName("")
-  //     setLastName("")
-  //     setUserName("")
-  //     setEmail("")
-  //     setPhoneNo("")
-  //     setPassword("")
-  //     setConfirmPassword("")
-  //   }
-  // },[data?.success])
+  useEffect(()=>{
+   
+    if(data?.success){
+      setFirstName("")
+      setLastName("")
+      setUserName("")
+      setEmail("")
+      setPhoneNo("")
+      setPassword("")
+      setConfirmPassword("")
+    }
+  },[data?.success])
 
   return (
    <main className="main-padding">
@@ -78,9 +78,11 @@ const Registration = () => {
             <h2 className="text-center text-2xl  md:text-3xl font-extrabold text-gray-900 mb-3">
             Create your account
             </h2>
-            
+            <div>
+
             {error!=='' && <Error message={error}/>}
             {success!=='' && <Success message={success}/>}
+            </div>
             
             <form className="" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 md:gap-6">
@@ -97,6 +99,7 @@ const Registration = () => {
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your first name"
                     required
+                    value={first_name}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
@@ -113,6 +116,7 @@ const Registration = () => {
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your first name"
                     required
+                    value={last_name}
                     onChange={(e) => setLastName(e.target.value)}
                   />
                 </div>
@@ -130,6 +134,7 @@ const Registration = () => {
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your user name"
                   required
+                  value={username}
                   onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
@@ -146,6 +151,7 @@ const Registration = () => {
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your email address"
                   required
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -162,6 +168,7 @@ const Registration = () => {
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                   placeholder="Enter your phone number"
                   required
+                  value={phone_no}
                   onChange={(e) => setPhoneNo(e.target.value)}
                 />
               </div>
@@ -179,6 +186,7 @@ const Registration = () => {
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your password"
                     required
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -195,6 +203,7 @@ const Registration = () => {
                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
                     placeholder="Enter your confirm password"
                     required
+                    value={confirm_password}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                   />
                 </div>
