@@ -57,7 +57,7 @@ const Navbar = () => {
             className="h-8"
             alt="Flowbite Logo"
           />
-          <span className="self-center text-2xl whitespace-nowrap dark:text-white">
+          <span className="self-center text-2xl whitespace-nowrap font-medium dark:text-white">
             Tastytrails
           </span>
         </Link>

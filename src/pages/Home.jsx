@@ -1,4 +1,5 @@
 import MenuCategory from "../components/category/MenuCategory";
+import Footer from "../components/common/Footer";
 import Hero from "../components/Hero/Hero";
 import MenuDisplay from "../components/menu/MenuDisplay";
 
@@ -10,6 +11,7 @@ const Home = () => {
     <MenuCategory/>
     </div>
     <MenuDisplay/>
+    <Footer/>
     </main>
   );
 };
