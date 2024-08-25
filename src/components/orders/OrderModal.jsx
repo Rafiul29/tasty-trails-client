@@ -5,10 +5,11 @@ import notFoundImage from "../../assets/notFound.avif";
 const OrderModal = ({ onClose, orderId }) => {
   const { data: OrderMenus, isLoading, isError } = useOrderItemsQuery(orderId);
 
+ 
   const total = OrderMenus?.reduce((prev, curr) => {
-    return prev + Number(curr.price);
+    return prev + Number(curr.price)*Number(curr.quantity);
   }, 0);
-
+  console.log(total)
   const tax=(total*2/100)
 
   
@@ -48,7 +49,7 @@ const OrderModal = ({ onClose, orderId }) => {
               {orderMenu.quantity}
             </p>
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400 ">
-              {orderMenu.price} ৳
+              {Number(orderMenu.price)*orderMenu.quantity} ৳
             </p>
           </div>
         ))}
