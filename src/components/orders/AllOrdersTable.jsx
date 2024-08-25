@@ -55,6 +55,9 @@ const AllOrdersTable = ({ allOrders }) => {
               <th scope="col" className="px-6 py-3">
                 Status
               </th>
+              <th scope="col" className="px-6 py-3">
+                Price
+              </th>
 
               <th scope="col" className="px-6 py-3">
                 Order Date
@@ -85,7 +88,9 @@ const AllOrdersTable = ({ allOrders }) => {
                 <td className="px-6 py-4 ">
                   {order.delivery_address.address_line_1}
                 </td>
+
                 <td className="px-6 py-4 ">{order.status}</td>
+                <td className="px-6 py-4 ">{order.order_total}৳</td>
                 <td className="px-6 py-4 ">
                 {moment(order.order_date).format("L")}
                 </td>

@@ -9,6 +9,10 @@ const OrderModal = ({ onClose, orderId }) => {
     return prev + Number(curr.price);
   }, 0);
 
+  const tax=(total*2/100)
+
+  
+  
   let content = null;
   if (isLoading) {
     content = (
@@ -86,7 +90,7 @@ const OrderModal = ({ onClose, orderId }) => {
         </div>
         {content}
         <div className="p-2 md:p-4 grid border-t grid-cols-4">
-          <div className="col-span-3">
+          <div className="col-span-2">
             <button
               onClick={onClose}
               type="button"
@@ -95,7 +99,8 @@ const OrderModal = ({ onClose, orderId }) => {
               Close
             </button>
           </div>
-          <p>Total: {total} ৳ </p>
+          <p>Tax: {tax} ৳ </p>
+          <p>Total: {total+tax} ৳ </p>
         </div>
       </div>
     </div>
