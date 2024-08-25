@@ -5,7 +5,7 @@ const FAQAccordion = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqData = GetFaq();
-  console.log(faqData);
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };

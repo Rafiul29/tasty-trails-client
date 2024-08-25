@@ -157,7 +157,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/login"
-                  className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
+                  className="md:inline block mt-2  md:mt-0 text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
                 >
                   Login
                 </Link>
@@ -168,7 +168,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/register"
-                  className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
+                  className="block mt-2 md:inline text-white bg-orange-500 hover:bg-orange-600 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
                 >
                   Register
                 </Link>
@@ -214,6 +214,16 @@ const Navbar = () => {
                       className="py-2 text-sm text-gray-700 dark:text-gray-400"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
+                      {isLoggedIn &&  (
+                        <li>
+                          <Link
+                            to="/profile"
+                            className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          >
+                            Profile
+                          </Link>
+                        </li>
+                      )}
                       {isLoggedIn && isAdmin && (
                         <li>
                           <Link
