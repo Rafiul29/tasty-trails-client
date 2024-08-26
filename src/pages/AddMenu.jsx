@@ -18,11 +18,22 @@ const AddMenu = () => {
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
 
-  const { data: menuCategory, isLoading,  } = useGetCategoriesQuery();
-  const [addMenuItem, { data,isLoading:menuAddLoading, error,isError }] = useAddMenuItemMutation();
+  const [error, setError] = useState("");
+
+  const {
+    data: menuCategory,
+    isLoading,
+    isError: categoryError,
+  } = useGetCategoriesQuery();
+
+  const [
+    addMenuItem,
+    { data, isLoading: menuAddLoading, error: responseError, isError },
+  ] = useAddMenuItemMutation();
 
   const handleAddMenu = (e) => {
     e.preventDefault();
+    setError("");
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -38,25 +49,28 @@ const AddMenu = () => {
     addMenuItem(formData);
   };
 
-  useEffect(()=>{
-    if(data?.id){
-      setName("")
-      setDescription("")
-      setIngredients("")
-      setImage("")
-      setCategory("")
-      setPrice("")
+  useEffect(() => {
+    if (data?.id) {
+      setName("");
+      setDescription("");
+      setIngredients("");
+      setImage("");
+      setCategory("");
+      setPrice("");
+    } else if (responseError?.data && responseError?.data?.name) {
+      setError(responseError?.data?.name[0] || responseError);
+    } else if (responseError?.data && responseError?.data?.slug) {
+      setError(responseError?.data?.slug[0] || responseError);
     }
-  },[data])
-
+  }, [data, responseError]);
 
   return (
     <main className="main-padding ">
       <div className="md:container lg:max-w-5xl mx-auto px-5 md:pt-10 pt-5">
         <h2 className="text-3xl md:text-4xl text-center mb-4">Add New Menu</h2>
         <div>
-          { data?.id && <Success message="Menu added Successfully"/>}
-          { !data?.id && isError && <Error message={error}/>}
+          {data?.id && <Success message="Menu added Successfully" />}
+          {error && isError && <Error message={error} />}
         </div>
         <form onSubmit={(e) => handleAddMenu(e)} encType="multipart/form-data">
           <div className="mb-3">
@@ -121,17 +135,20 @@ const AddMenu = () => {
                 Upload file
               </label>
               <div>
-              <input
-                className="block w-full  text-xs text-orange-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                id="image"
-                name="image"
-                type="file"
-               
-                onChange={(e) => setImage(e.target.files[0])}
-              />
-              <p className=" text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG, JPEG.</p>
+                <input
+                  className="block w-full  text-xs text-orange-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                  id="image"
+                  name="image"
+                  type="file"
+                  onChange={(e) => setImage(e.target.files[0])}
+                />
+                <p
+                  className=" text-sm text-gray-500 dark:text-gray-300"
+                  id="file_input_help"
+                >
+                  PNG, JPG, JPEG.
+                </p>
               </div>
-              
             </div>
             <div>
               <label
@@ -145,7 +162,6 @@ const AddMenu = () => {
                 name="category"
                 value={category}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
-                
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option value="" disabled>
@@ -153,7 +169,7 @@ const AddMenu = () => {
                 </option>{" "}
                 {/* Placeholder */}
                 {!isLoading &&
-                  !isError &&
+                  !categoryError &&
                   menuCategory?.map((category) => (
                     <option key={category.id} value={category.id}>
                       {category.name}
@@ -184,9 +200,7 @@ const AddMenu = () => {
             type="submit"
             className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
           >
-          {
-            !menuAddLoading ? "Submit": <Loading/>
-          }
+            {!menuAddLoading ? "Submit" : <Loading />}
           </button>
         </form>
       </div>

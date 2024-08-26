@@ -22,9 +22,8 @@ import AddMenu from "./pages/AddMenu";
 import About from "./pages/About";
 import ContactUs from "./pages/ContactUs.jsx";
 import Profile from "./pages/Profile.jsx";
-// https://lottie.host/c22c41cc-945d-4128-91cb-e1282306e4b7/DEzt4GBIHb.json
-// https://lottie.host/a959a4d2-6df4-461d-ac5c-f0e82df01c05/N83XjzAzm4.json
-// https://lottie.host/a9f57bd4-918a-420f-9741-ba7fc5993a8d/jcHPusOXoq.json
+import AllMenu from "./pages/AllMenu.jsx";
+
 
 function App() {
   const authChecked = useAuthCheck();
@@ -99,6 +98,16 @@ function App() {
             </AdminRoutes>
           }
         />
+
+        <Route
+          exact
+          path="all/menu"
+          element={
+            <AdminRoutes>
+              <AllMenu />
+            </AdminRoutes>
+          }
+        />
         <Route
           exact
           path="add/menu"
@@ -108,6 +117,7 @@ function App() {
             </AdminRoutes>
           }
         />
+
         {/*some times public */}
         <Route
           exact
