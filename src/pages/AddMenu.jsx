@@ -4,7 +4,6 @@ import { useAddMenuItemMutation } from "../features/menus/menusApi";
 import { useGetCategoriesQuery } from "../features/category/categoryApi";
 import ButtonLoading from "../components/ui/ButtonLoading";
 import Error from "../components/ui/Error";
-import Loading from "../components/ui/Loading";
 import Success from "../components/ui/Success";
 
 const AddMenu = () => {
@@ -200,7 +199,7 @@ const AddMenu = () => {
             type="submit"
             className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
           >
-            {!menuAddLoading ? "Submit" : <Loading />}
+            {!menuAddLoading ? "Submit" : <ButtonLoading />}
           </button>
         </form>
       </div>
