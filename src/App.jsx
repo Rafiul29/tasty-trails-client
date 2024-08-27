@@ -23,7 +23,7 @@ import About from "./pages/About";
 import ContactUs from "./pages/ContactUs.jsx";
 import Profile from "./pages/Profile.jsx";
 import AllMenu from "./pages/AllMenu.jsx";
-
+import Deposit from "./pages/Deposit.jsx";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -87,7 +87,15 @@ function App() {
             </PrivetRoutes>
           }
         />
-
+        <Route
+          exact
+          path="/deposit"
+          element={
+            <PrivetRoutes>
+              <Deposit />
+            </PrivetRoutes>
+          }
+        />
         {/* always admin */}
         <Route
           exact
