@@ -138,7 +138,18 @@ const Navbar = () => {
                 Contact us
               </Link>
             </li>
-
+            {isLoggedIn && (
+              <li>
+                <span
+                  className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
+              duration-500 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  {userAccount?.length > 0 && (
+                    <span>({userAccount[0].balance}৳)</span>
+                  )}
+                </span>
+              </li>
+            )}
             {isLoggedIn && (
               <li>
                 <Link
@@ -162,16 +173,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            <li>
-              <span
-                className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
-                  duration-500 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                {userAccount?.length > 0 && (
-                  <span>({userAccount[0].balance}৳)</span>
-                )}
-              </span>
-            </li>
+           
             {!isLoggedIn && (
               <li>
                 <Link

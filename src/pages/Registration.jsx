@@ -55,8 +55,9 @@ const Registration = () => {
     
   }, [data,responseError,navigate]);
 
+  console.log(responseError)
+
   useEffect(()=>{
-   
     if(data?.success){
       setFirstName("")
       setLastName("")
