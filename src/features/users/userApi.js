@@ -13,8 +13,13 @@ export const userApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+    }),
+
+    getBalance:builder.query({
+      query: (id) => `/user-bank-accounts/?user_id=${id}`
     })
+
   }),
 });
 
-export const {useGetUserProfileQuery,useDepositBalanceMutation  } = userApi;
+export const {useGetUserProfileQuery,useDepositBalanceMutation,useGetBalanceQuery  } = userApi;

@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
+import { useState } from "react";
+
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import useAuth from "../../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { userLoggedOut } from "../../features/auth/authSlice";
 import { useAuthAdmin } from "../../hooks/useAuthAdmin";
 import { useGetUserCartItemQuery } from "../../features/carts/cartsApi";
+import { useGetBalanceQuery } from "../../features/users/userApi";
+import { data } from "autoprefixer";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -15,13 +17,20 @@ const Navbar = () => {
   const isAdmin = useAuthAdmin();
   const dispatch = useDispatch();
 
+  // user information
   const { user, accessToken } = useSelector((state) => state.auth);
   const { user_id } = user || {};
 
+  const { data: userAccount } = useGetBalanceQuery(user_id);
+
+  console.log(userAccount);
+
+  //cart items
   const { data: cartItems } = useGetUserCartItemQuery(user_id, {
     skip: !user_id,
   });
 
+  // logout
   const handleLogout = () => {
     fetch(`${import.meta.env.VITE_APP_API_URL}/api/auth/logout/`, {
       headers: {
@@ -153,6 +162,16 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+            <li>
+              <span
+                className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
+                  duration-500 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                {userAccount?.length > 0 && (
+                  <span>({userAccount[0].balance}৳)</span>
+                )}
+              </span>
+            </li>
             {!isLoggedIn && (
               <li>
                 <Link

@@ -5,7 +5,7 @@ import Error from "../components/ui/Error";
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const { user_id } = user || {};
-  console.log(user_id);
+
 
   const {
     data: userProfile,
