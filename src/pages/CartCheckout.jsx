@@ -4,6 +4,7 @@ import { useAddOrderMutation } from "../features/orders/ordersApi";
 import ButtonLoading from "../components/ui/ButtonLoading";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Error from "../components/ui/Error";
 
 const CartCheckout = () => {
   const { user } = useSelector((state) => state.auth);
@@ -22,11 +23,14 @@ const CartCheckout = () => {
   const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
 
-  const [addOrder, { data: orderData, isLoading, error }] =
+  const [error, setError] = useState("");
+
+  const [addOrder, { data: orderData, isLoading, error: orderResponseError }] =
     useAddOrderMutation();
 
   const handlePay = (e) => {
     e.preventDefault();
+    setError("");
     addOrder({
       user: user_id,
       status: "Pending",
@@ -51,9 +55,10 @@ const CartCheckout = () => {
     if (orderData?.id) {
       navigate("/orders");
     } else {
-      console.log(error);
+      setError(orderResponseError?.data?.error);
+      console.log(orderResponseError);
     }
-  }, [orderData, navigate, error]);
+  }, [orderData, navigate, orderResponseError]);
 
   return (
     <main className="main-padding">
@@ -65,6 +70,7 @@ const CartCheckout = () => {
               <h3 className="text-3xl font-medium  mb-6">
                 Delivery Information
               </h3>
+              <div className="mb-2">{error && <Error message={error} />}</div>
               <div className="mb-3">
                 <label
                   htmlFor="name"
