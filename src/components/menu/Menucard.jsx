@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import menuImage from "../../assets/login.png";
 
 const Menucard = ({ menu }) => {
-  const { id, name, description, image, price } = menu || {};
+  const { id, name, description, image, price, discount } = menu || {};
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -11,10 +11,9 @@ const Menucard = ({ menu }) => {
       </Link>
 
       <div className="p-3">
-       
-          <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
-            {name.slice(0, 20)} ...
-          </h5> 
+        <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
+          {name.slice(0, 20)} ...
+        </h5>
         <p className="mb-3 text-sm  tracking-wider text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>
@@ -41,7 +40,14 @@ const Menucard = ({ menu }) => {
             </svg>
           </Link>
 
-          <p className="text-orange-500 font-semibold">{price} ৳</p>
+          <p className=" flex gap-2">
+            <span className="text-xl text-orange-500 font-medium">
+              ৳{Number(price - (price * discount) / 100)}
+            </span>
+            <span className="mt-3 text-gray-800 text-xs font-medium">
+              {discount !== 0 && `-${discount}%`}
+            </span>
+          </p>
         </div>
       </div>
     </div>

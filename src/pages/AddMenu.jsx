@@ -14,6 +14,7 @@ const AddMenu = () => {
   const [description, setDescription] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [image, setImage] = useState("");
+  const [discount, setDiscount] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
 
@@ -41,6 +42,7 @@ const AddMenu = () => {
       formData.append("image", image);
     }
     formData.append("category", category);
+    formData.append("discount", discount);
     formData.append("price", price);
     formData.append("slug", name.split(" ").join("-"));
     formData.append("user", user_id);
@@ -119,23 +121,23 @@ const AddMenu = () => {
               name="ingredients"
               rows="2"
               className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
-              placeholder="Write ingredients here ....."
+              placeholder="Write ingredients here comma separated value ......."
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
             ></textarea>
           </div>
 
-          <div className="grid gap-3 mb-3 md:grid-cols-2">
-            <div className="col-span-1 md:col-span-2">
+          <div className="grid gap-3 mb-3 grid-cols-1 md:grid-cols-2 place-content-center ">
+            <div>
               <label
-                className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                htmlFor="small_size"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                htmlFor="image"
               >
                 Upload file
               </label>
               <div>
                 <input
-                  className="block w-full  text-xs text-orange-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                  className="block w-full   text-orange-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                   id="image"
                   name="image"
                   type="file"
@@ -148,6 +150,23 @@ const AddMenu = () => {
                   PNG, JPG, JPEG.
                 </p>
               </div>
+            </div>
+            <div>
+              <label
+                htmlFor="price"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Discount %
+              </label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
+                required
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+              />
             </div>
             <div>
               <label

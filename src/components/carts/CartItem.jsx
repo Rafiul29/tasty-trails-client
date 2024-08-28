@@ -8,13 +8,15 @@ import {
 const CartItem = ({ cart }) => {
   const { id, menu_item, user, quantity } = cart || {};
 
+  // single menu
   const { data: menuItemDetails } = useGetMenuItemQuery(menu_item);
+  const { name, image, price, discount } = menuItemDetails || {};
 
   // update quantity
   const [updateCartItem, { data, isError, isLoading, error }] =
     useUpdateCartItemMutation();
 
-    // delete cart item
+  // delete cart item
   const [deleteCartItem] = useDeleteCartItemMutation();
 
   //decrese cart quantity
@@ -51,13 +53,13 @@ const CartItem = ({ cart }) => {
       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td className="p-4">
           <img
-            src={menuItemDetails?.image}
+            src={image}
             className="w-16 h-20 md:w-32 max-w-full max-h-full rounded-md"
             alt="Apple Watch"
           />
         </td>
         <td className="px-6 py-4 font-semibold text-gray-700 dark:text-white">
-          {menuItemDetails?.name}
+          {name}
         </td>
         <td className="px-6 py-4">
           <div className="flex items-center">
@@ -119,8 +121,8 @@ const CartItem = ({ cart }) => {
             </button>
           </div>
         </td>
-        <td className="px-6 py-4 font-semibold text-black">
-          {menuItemDetails?.price * quantity} ৳
+        <td className="px-6 py-4 font-medium text-orange-500">
+          ৳ {Number(price - (price * discount) / 100) * quantity}
         </td>
         <td className="px-6 py-4">
           <button

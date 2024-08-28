@@ -4,7 +4,8 @@ import { useAddFavouriteMutation } from "../../features/favourite/favouriteApi";
 import { useAddToCartItemMutation } from "../../features/carts/cartsApi";
 
 const MenuItem = ({ menuitem }) => {
-  const { id, name, description, ingredients, image, price } = menuitem || {};
+  const { id, name, description, ingredients, image, price, discount } =
+    menuitem || {};
 
   //
   const { user } = useSelector((state) => state.auth);
@@ -66,9 +67,18 @@ const MenuItem = ({ menuitem }) => {
             {name}
           </h3>
           <p className="text-lg tracking-wide text-gray-800">{description}</p>
-          <p className="space-x-3 text-xl">
+          <p className="space-x-3 text-lg">
             <span className="text-gray-900 font-medium">Price:</span>{" "}
-            <span className="text-orange-500 font-semibold">{price} ৳</span>
+            <span className="text-orange-500 font-medium">
+              {" "}
+              ৳{Number(price - (price * discount) / 100)}
+            </span>
+          </p>
+          <p className="space-x-3 text-lg">
+            <span className="text-gray-900 font-medium">Discount:</span>{" "}
+            <span className="">
+              <del className="text-orange-500">৳{price}</del> <span className="text-sm bg-orange-200 text-orange-500 p-1 rounded-lg">-{discount}%</span>
+            </span>
           </p>
           <div className="">
             <button
@@ -110,7 +120,9 @@ const MenuItem = ({ menuitem }) => {
         </div>
       </div>
       <div className="space-y-3">
-        <h4 className="capitalize text-2xl font-medium text-gray-900">ingredients:</h4>
+        <h4 className="capitalize text-2xl font-medium text-gray-900">
+          ingredients:
+        </h4>
         <div className="space-y-1 text-lg tracking-wider text-gray-700">
           {ingredients.split(",").map((item, i) => (
             <p className="flex gap-2 items-center" key={i}>

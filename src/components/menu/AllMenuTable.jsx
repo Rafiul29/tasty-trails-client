@@ -29,6 +29,9 @@ console.log(data)
                 Price
               </th>
               <th scope="col" className="px-6 py-3">
+                Discount
+              </th>
+              <th scope="col" className="px-6 py-3">
                 Action
               </th>
             </tr>
@@ -49,7 +52,7 @@ console.log(data)
                   {menu.description.slice(0,20)}..
                 </td>
                 <td className="px-6 py-4 ">{menu.price}৳</td>
-               
+                <td className="px-6 py-4 ">{menu.discount}%</td>
                
                 <td className="px-6 py-4 space-x-3 flex">
                   <Link   to={`/menu/${menu.id}`}
