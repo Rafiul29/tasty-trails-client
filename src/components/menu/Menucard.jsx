@@ -18,7 +18,7 @@ const Menucard = ({ menu }) => {
         <p className="mb-3 text-sm  tracking-wider text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center gap-4">
           <Link
             to={`/menu/${id}`}
             className="inline-flex uppercase items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-500 rounded-lg hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-500 dark:focus:ring-orange-600"

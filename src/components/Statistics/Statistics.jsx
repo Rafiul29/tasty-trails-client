@@ -25,40 +25,107 @@ const Statistics = () => {
       <div className="flex justify-center items-center ">not impletemted</div>
     );
   } else if (!isLoading && !isError && statistics?.result) {
-    const {total_users,total_menus,complete_orders,total_sales}=statistics?.result||{}
+    const { total_users, total_menus, complete_orders, total_sales } =
+      statistics?.result || {};
     content = (
       <>
         <h2 className="text-3xl md:text-4xl text-center tracking-wider font-semibold mb-5">
           Our Statistics
         </h2>
         <div className="flex justify-around flex-wrap gap-5">
-          <div className="text-center space-y-2">
-            <p className="text-xl font-medium">Total Users</p>
-            <Number n={total_users} />
+          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md text-w">
+            <svg
+              className="w-8 h-8 text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeWidth="2"
+                d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+            </svg>
+
+            <div className="space-y-1">
+              <Number n={total_users} />
+              <p className="text-md "> Users</p>
+            </div>
           </div>
-          <div className="text-center space-y-2">
-            <p className="text-xl font-medium">Total Menus</p>
-            <Number n={total_menus} />
+          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85  w-40 h-40 rounded shadow-md">
+            <svg
+              className="w-8 h-8  text-gray-800 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M10.83 5a3.001 3.001 0 0 0-5.66 0H4a1 1 0 1 0 0 2h1.17a3.001 3.001 0 0 0 5.66 0H20a1 1 0 1 0 0-2h-9.17ZM4 11h9.17a3.001 3.001 0 0 1 5.66 0H20a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H4a1 1 0 1 1 0-2Zm1.17 6H4a1 1 0 1 0 0 2h1.17a3.001 3.001 0 0 0 5.66 0H20a1 1 0 1 0 0-2h-9.17a3.001 3.001 0 0 0-5.66 0Z" />
+            </svg>
+
+            <div className="space-y-1">
+              {" "}
+              <Number n={total_menus} />
+              <p className="text-md"> Menus</p>
+            </div>
           </div>
-          <div className="text-center space-y-2">
-            <p className="text-xl font-medium">Complete Order</p>
-            <Number n={complete_orders} />
+          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md">
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12h6m-6 4h6m-6-8h6m2-4h-8a2 2 0 00-2 2v16a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z"
+              ></path>
+            </svg>
+
+            <div className="space-y-1">
+              <Number n={complete_orders} />
+              <p className="text-md "> Orders</p>
+            </div>
           </div>
-          <div className="text-center space-y-2">
-            <p className="text-xl  font-medium">Total Sales</p>
-            <Number n={total_sales} />
+          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md">
+            <svg
+              className="w-8 h-8 text-gray-800 dark:text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 12h6m2 4h-8m2-10h4m4-2H5a2 2 0 00-2 2v14l3-3h14a2 2 0 002-2V5a2 2 0 00-2-2z"
+              />
+            </svg>
+
+            <div className="space-y-1">
+              <Number n={total_sales} />
+              <p className="text-md "> Sales</p>
+            </div>
           </div>
         </div>
       </>
     );
   }
-  console.log(statistics);
+
 
   return (
     <section className="py-10">
-      <div className="wrapper">
-        {content}
-      </div>
+      <div className="wrapper">{content}</div>
     </section>
   );
 };

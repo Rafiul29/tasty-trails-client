@@ -25,7 +25,6 @@ const Deposit = () => {
     });
   };
 
-
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError.data?.error);
@@ -38,7 +37,6 @@ const Deposit = () => {
       setPromocode("");
     }
   }, [responseError, data]);
-
   
   return (
     <main className="pt-24 space-y-10">
@@ -101,7 +99,7 @@ const Deposit = () => {
                     Expires
                   </label>
                   <input
-                    type="text"
+                    type="date"
                     id="expires"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:orange-blue-500 focus:outline-none focus:ring-0 focus:border-orange-600 peer "
                     placeholder="04/17"
@@ -118,7 +116,7 @@ const Deposit = () => {
                     cvv
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     id="cvv"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:orange-blue-500 focus:outline-none focus:ring-0 focus:border-orange-600 peer "
                     placeholder="123"

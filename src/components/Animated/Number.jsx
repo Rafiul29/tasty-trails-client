@@ -7,7 +7,7 @@ const Number = ({ n }) => {
     delay: 200,
     config: { mass: 1, tension: 10, friction: 5 },
   });
-  return <animated.div className="font-semibold text-4xl text-orange-500">{number.to((n) => n.toFixed(0))}</animated.div>;
+  return <animated.div className="font-semibold text-4xl text-orange-100">{number.to((n) => n.toFixed(0))}</animated.div>;
 };
 
 export default Number;
