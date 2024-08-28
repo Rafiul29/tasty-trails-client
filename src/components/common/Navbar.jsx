@@ -21,9 +21,11 @@ const Navbar = () => {
   const { user, accessToken } = useSelector((state) => state.auth);
   const { user_id } = user || {};
 
-  const { data: userAccount } = useGetBalanceQuery(user_id);
+  const { data: userAccount } = useGetBalanceQuery(user_id, {
+    skip: !user_id,
+  });
 
-  console.log(userAccount);
+
 
   //cart items
   const { data: cartItems } = useGetUserCartItemQuery(user_id, {
