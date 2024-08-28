@@ -74,12 +74,18 @@ const MenuItem = ({ menuitem }) => {
               ৳{Number(price - (price * discount) / 100)}
             </span>
           </p>
-          <p className="space-x-3 text-lg">
-            <span className="text-gray-900 font-medium">Discount:</span>{" "}
-            <span className="">
-              <del className="text-orange-500">৳{price}</del> <span className="text-sm bg-orange-200 text-orange-500 p-1 rounded-lg">-{discount}%</span>
-            </span>
-          </p>
+          {discount !== 0 && (
+            <p className="space-x-3 text-lg">
+              <span className="text-gray-900 font-medium">Discount:</span>{" "}
+              <span>
+                <del className="text-orange-500">৳{price}</del>{" "}
+                <span className="text-sm bg-orange-200 text-orange-500 p-1 rounded-lg">
+                  -{discount}%
+                </span>
+              </span>
+            </p>
+          )}
+
           <div className="">
             <button
               onClick={() => handleAddToCart(id)}

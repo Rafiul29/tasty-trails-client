@@ -44,9 +44,12 @@ const Menucard = ({ menu }) => {
             <span className="text-xl text-orange-500 font-medium">
               ৳{Number(price - (price * discount) / 100)}
             </span>
-            <span className="mt-3 text-gray-800 text-xs font-medium">
-              {discount !== 0 && `-${discount}%`}
-            </span>
+
+            {discount !== 0 && (
+              <span className="mt-3 text-xs font-medium bg-orange-200 text-orange-500 px-[0.2rem] py-[0.1rem] rounded-lg">
+                -{discount}%
+              </span>
+            )}
           </p>
         </div>
       </div>
