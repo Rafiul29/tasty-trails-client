@@ -2,8 +2,8 @@ import Footer from "../components/common/Footer";
 
 const ContactUs = () => {
   return (
-    <main className="pt-24 space-y-10">
-     <section className=" ">
+    <main className="main-padding space-y-10">
+     <section className="pt-6 md:pt-0">
      <div className="md:container lg:max-w-7xl mx-auto px-5  h-[calc(100vh-18rem)] flex flex-col justify-center ">
      {/*  */}
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-10 gap-5">

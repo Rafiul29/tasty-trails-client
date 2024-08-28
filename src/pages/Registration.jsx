@@ -87,7 +87,7 @@ const Registration = () => {
             
             <form className="" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 md:gap-6">
-                <div className="relative z-0 w-full mb-3 group">
+                <div className="relative z-0 w-full mb-2 group">
                   <label
                     htmlFor="first_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -104,7 +104,7 @@ const Registration = () => {
                     onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
-                <div className="relative z-0 w-full mb-3 group">
+                <div className="relative z-0 w-full mb-2 group">
                   <label
                     htmlFor="last_name"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -122,7 +122,7 @@ const Registration = () => {
                   />
                 </div>
               </div>
-              <div className="relative z-0 w-full mb-3 group">
+              <div className="relative z-0 w-full mb-2 group">
                 <label
                   htmlFor="username"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -139,7 +139,7 @@ const Registration = () => {
                   onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
-              <div className="relative z-0 w-full mb-3 group">
+              <div className="relative z-0 w-full mb-2 group">
                 <label
                   htmlFor="email"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -156,7 +156,7 @@ const Registration = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="relative z-0 w-full mb-3 group">
+              <div className="relative z-0 w-full mb-2 group">
                 <label
                   htmlFor="phone_no"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -174,7 +174,7 @@ const Registration = () => {
                 />
               </div>
               <div className="grid md:grid-cols-2 md:gap-6">
-                <div className="relative z-0 w-full mb-3 group">
+                <div className="relative z-0 w-full mb-2 group">
                   <label
                     htmlFor="password"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -191,7 +191,7 @@ const Registration = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div className="relative z-0 w-full mb-3 group">
+                <div className="relative z-0 w-full mb-2 group">
                   <label
                     htmlFor="confirm_password"
                     className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"

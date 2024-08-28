@@ -42,7 +42,7 @@ const Deposit = () => {
     <main className="pt-24 space-y-10">
       <section className="py-12">
         <div className="container md:max-w-xl mx-auto px-5  h-[calc(100vh-18rem)] flex flex-col justify-center">
-          <div className="border p-10 rounded-lg ">
+          <div className="border md:p-10 p-5 rounded-lg ">
             <h2 className="text-3xl font-semibold md:text-4xl  mb-4 border-b pb-4">
               Deposit
             </h2>
@@ -55,7 +55,7 @@ const Deposit = () => {
               )}
             </div>
             <form onSubmit={handelDepositBalance} className="max-w-xl mx-auto">
-              <div className="mb-5">
+              <div className="mb-3">
                 <label
                   htmlFor="email"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -72,7 +72,7 @@ const Deposit = () => {
                   onChange={(e) => setBalance(e.target.value)}
                 />
               </div>
-              <div className="mb-5">
+              <div className="mb-3">
                 <label
                   htmlFor="card_number"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -90,7 +90,7 @@ const Deposit = () => {
                 />
               </div>
 
-              <div className="mb-5 grid md:grid-cols-2 gap-10">
+              <div className="mb-3 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-10">
                 <div>
                   <label
                     htmlFor="expires"
@@ -126,7 +126,7 @@ const Deposit = () => {
                   />
                 </div>
               </div>
-              <div className="mb-5">
+              <div className="mb-3">
                 <label
                   htmlFor="promocode"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"

@@ -71,7 +71,7 @@ const CartCheckout = () => {
                 Delivery Information
               </h3>
               <div className="mb-2">{error && <Error message={error} />}</div>
-              <div className="mb-3">
+              <div className="mb-2">
                 <label
                   htmlFor="name"
                   className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
@@ -88,7 +88,7 @@ const CartCheckout = () => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div className="grid gap-6 mb-3 md:grid-cols-2 ">
+              <div className="grid grid-cols-1 md:gap-6 gap-3 mb-3  md:grid-cols-2 ">
                 <div>
                   <label
                     htmlFor="email"
@@ -125,7 +125,7 @@ const CartCheckout = () => {
                 </div>
               </div>
 
-              <div className="grid gap-6 mb-3 md:grid-cols-2">
+              <div className="grid grid-cols-1 md:gap-6 gap-3 mb-3 md:grid-cols-2">
                 <div>
                   <label
                     htmlFor="address_line_1"
@@ -161,7 +161,7 @@ const CartCheckout = () => {
                   />
                 </div>
               </div>
-              <div className="grid gap-6 mb-3 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 md:gap-6 mb-3 md:grid-cols-2">
                 <div>
                   <label
                     htmlFor="city"
@@ -197,7 +197,7 @@ const CartCheckout = () => {
                   />
                 </div>
               </div>
-              <div className="grid gap-6 mb-3 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-3 md:gap-6 mb-3 md:grid-cols-2">
                 <div>
                   <label
                     htmlFor="postal_code"
@@ -236,7 +236,7 @@ const CartCheckout = () => {
             </div>
             <div className="md:col-span-3   border p-5 rounded-lg shadow-md place-self-start w-full">
               {/* cart checkout information */}
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-4">
                 <h3 className="text-3xl font-medium  mb-6">Order Summery </h3>
                 <div className="flex justify-between">
                   <span className="font-semibold">Total price:</span>
