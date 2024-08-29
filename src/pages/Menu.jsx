@@ -10,7 +10,7 @@ const Menu = () => {
   dispatch(searchCategoryRemove());
 
   return (
-    <div className="main-padding  space-y-2">
+    <div className="main-padding space-y-2">
       <MenuCategory />
      <div className="space-y-10">
      <MenuDisplay />
