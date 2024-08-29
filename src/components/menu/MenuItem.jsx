@@ -77,8 +77,8 @@ const MenuItem = ({ menuitem }) => {
           {discount !== 0 && (
             <p className="space-x-3 text-lg">
               <span className="text-gray-900 font-medium">Discount:</span>{" "}
-              <span>
-                <del className="text-orange-500">৳{price}</del>{" "}
+              <span className="space-x-2">
+                <span className="text-orange-500 line-through">৳{price}</span>
                 <span className="text-sm bg-orange-200 text-orange-500 p-1 rounded-lg">
                   -{discount}%
                 </span>
@@ -86,7 +86,7 @@ const MenuItem = ({ menuitem }) => {
             </p>
           )}
 
-          <div className="">
+          <div>
             <button
               onClick={() => handleAddToCart(id)}
               type="button"

@@ -5,6 +5,7 @@ import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
 import MenuItem from "../components/menu/MenuItem";
 import Footer from "../components/common/Footer";
+import ReviewForm from '../components/Review/ReviewForm'
 
 const MenuItemDetails = () => {
   const { id } = useParams();
@@ -43,7 +44,9 @@ const MenuItemDetails = () => {
    <>
     <main className="main-padding  space-y-10">
       <div className="wrapper ">{content}</div>
+      <ReviewForm/>
       <Footer/>
+     
     </main>
    
    </>
