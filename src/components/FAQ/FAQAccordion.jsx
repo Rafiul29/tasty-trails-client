@@ -11,7 +11,7 @@ const FAQAccordion = () => {
   };
 
   return (
-    <section>
+    <section className="md:py-10 py-5">
       <div className="wrapper">
       <h2 className="text-2xl tracking-wider font-medium mb-3">
       Frequently Asked Questions - Your Guide to Exploring Tastytrails

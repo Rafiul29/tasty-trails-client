@@ -13,7 +13,7 @@ const Home = () => {
       <div className="pt-5">
         <MenuCategory />
       </div>
-      <div className="space-y-10">
+      <div className="">
         <MenuDisplay />
         <Statistics />
         <FAQAccordion />

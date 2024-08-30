@@ -124,7 +124,7 @@ const Statistics = () => {
 
 
   return (
-    <section className="py-10">
+    <section className="md:py-10 py-5">
       <div className="wrapper">{content}</div>
     </section>
   );
