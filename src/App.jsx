@@ -26,9 +26,10 @@ import ContactUs from "./pages/ContactUs.jsx";
 import Profile from "./pages/Profile.jsx";
 import AllMenu from "./pages/AllMenu.jsx";
 import Deposit from "./pages/Deposit.jsx";
+import useScrollToTop from "./hooks/useScrollToTop.js";
 
 function App() {
-
+  useScrollToTop()
   const authChecked = useAuthCheck();
 
   return !authChecked ? (
