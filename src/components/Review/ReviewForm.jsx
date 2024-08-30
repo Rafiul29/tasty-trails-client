@@ -43,8 +43,9 @@ const ReviewForm = () => {
   },[responseError,data?.id])
 
   return (
-    <div className="wrapper">
-      <h2 className="text-center text-4xl md:max-w-lg mx-auto text-gray-800">Please Review here</h2>
+   <section className="py-5">
+     <div className="wrapper">
+      <h2 className="text-center text-xl md:text-3xl md:max-w-lg mx-auto text-gray-900 mb-5 font-medium">Please Review here</h2>
      
       <form className="md:max-w-lg mx-auto" onSubmit={handleSubmitRating}>
       <div>
@@ -99,6 +100,7 @@ const ReviewForm = () => {
         </button>
       </form>
     </div>
+   </section>
   );
 };
 
