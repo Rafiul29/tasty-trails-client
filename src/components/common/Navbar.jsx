@@ -25,8 +25,6 @@ const Navbar = () => {
     skip: !user_id,
   });
 
-
-
   //cart items
   const { data: cartItems } = useGetUserCartItemQuery(user_id, {
     skip: !user_id,
@@ -55,7 +53,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white border-b shadow-md fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl dark:bg-gray-900 dark:border-gray-700 h-18 ">
+    <nav className="bg-white/90 border-b shadow-md fixed top-0 left-0 right-0 z-50  backdrop-blur-2xl dark:bg-gray-900 dark:border-gray-700 h-18 ">
       <div className="wrapper  flex flex-wrap items-center justify-between  py-4 ">
         <Link
           to="/"
@@ -100,7 +98,7 @@ const Navbar = () => {
           } w-full md:block md:w-auto `}
           id="navbar-dropdown"
         >
-          <ul className="flex flex-col md:items-center  p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul className="flex flex-col md:items-center  p-4 md:p-0 mt-4    md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
                 to="/menu"
@@ -175,7 +173,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-           
+
             {!isLoggedIn && (
               <li>
                 <Link

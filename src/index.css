@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* 
 *{
   margin: 0;
   padding: 0;
@@ -12,12 +12,13 @@
   text-decoration: none;
   box-sizing: border-box;
   outline: none;
-}
+} */
 
 
 body {
   overflow-x: hidden; 
   overflow-y: scroll;  
+  scroll-behavior: smooth;
 }
 
 

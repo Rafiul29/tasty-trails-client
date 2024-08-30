@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import menuImage from "../../assets/login.png";
+import { AverageRating } from "../AverageRating/AverageRating";
 
 const Menucard = ({ menu }) => {
-  const { id, name, description, image, price, discount } = menu || {};
+  const { id, name, description, image, price, discount ,rating_sum,count_reviewer} = menu || {};
 
+  console.log(rating_sum)
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/menu/${id}`}>
         <img className="rounded-t-lg h-44 w-full" src={image} alt={name} />
       </Link>
-
+    
       <div className="p-3">
         <h5 className="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
           {name.slice(0, 20)} ...
@@ -17,6 +19,9 @@ const Menucard = ({ menu }) => {
         <p className="mb-3 text-sm  tracking-wider text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>
+        <div className="mb-3">
+        <AverageRating value={Number(rating_sum)/Number(count_reviewer)}/>
+      </div>
         <div className="flex justify-between items-center gap-4">
           <Link
             to={`/menu/${id}`}

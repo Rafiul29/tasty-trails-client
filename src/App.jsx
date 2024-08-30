@@ -7,9 +7,11 @@ import Login from "./pages/Login";
 import { Route, Routes } from "react-router-dom";
 import useAuthCheck from "./hooks/useAuthCheck";
 import Home from "./pages/Home";
-import PublicRoutes from "./routes/PublicRoutes";
-import PrivetRoutes from "./routes/PrivetRoutes";
-import AdminRoutes from "./routes/AdminRoutes";
+
+import PublicRouters from './routes/PublicRoutes.jsx'
+import PrivetRouters from './routes/PrivetRoutes.jsx'
+import AdminRouters from './routes/AdminRoutes.jsx'
+
 import Menu from "./pages/Menu";
 import MenuItemDetails from "./pages/MenuItemDetails";
 import Loading from "./components/ui/Loading";
@@ -26,6 +28,7 @@ import AllMenu from "./pages/AllMenu.jsx";
 import Deposit from "./pages/Deposit.jsx";
 
 function App() {
+
   const authChecked = useAuthCheck();
 
   return !authChecked ? (
@@ -35,119 +38,121 @@ function App() {
   ) : (
     <>
       <Navbar />
-      <Routes>
+     <Routes>
+        
         {/*always public */}
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/menu" element={<Menu />} />
-        <Route exact path="/menu/:id" element={<MenuItemDetails />} />
+       <Route exact path="/" element={<Home />} />
+       <Route exact path="/menu" element={<Menu />} />
+       <Route exact path="/menu/:id" element={<MenuItemDetails />} />
         {/* always privet */}
-        <Route
+       <Route
           exact
           path="favourite"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <Favourite />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="carts"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <Carts />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="cart/checkout"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <CartCheckout />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="orders"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <Orders />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
 
-        <Route
+       <Route
           exact
           path="/profile"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <Profile />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="/deposit"
           element={
-            <PrivetRoutes>
+            <PrivetRouters>
               <Deposit />
-            </PrivetRoutes>
+            </PrivetRouters>
           }
         />
         {/* always admin */}
-        <Route
+       <Route
           exact
           path="all/orders"
           element={
-            <AdminRoutes>
+            <AdminRouters>
               <AllOrders />
-            </AdminRoutes>
+            </AdminRouters>
           }
         />
 
-        <Route
+       <Route
           exact
           path="all/menu"
           element={
-            <AdminRoutes>
+            <AdminRouters>
               <AllMenu />
-            </AdminRoutes>
+            </AdminRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="add/menu"
           element={
-            <AdminRoutes>
+            <AdminRouters>
               <AddMenu />
-            </AdminRoutes>
+            </AdminRouters>
           }
         />
 
         {/*some times public */}
-        <Route
+       <Route
           exact
           path="/login"
           element={
-            <PublicRoutes>
+            <PublicRouters>
               <Login />
-            </PublicRoutes>
+            </PublicRouters>
           }
         />
-        <Route
+       <Route
           exact
           path="/register"
           element={
-            <PublicRoutes>
+            <PublicRouters>
               <Registration />
-            </PublicRoutes>
+            </PublicRouters>
           }
         />
-        <Route exact path="/about" element={<About />} />
+       <Route exact path="/about" element={<About />} />
 
-        <Route exact path="/contact-us" element={<ContactUs />} />
+       <Route exact path="/contact-us" element={<ContactUs />} />
+
       </Routes>
 
       {/* <Header /> */}

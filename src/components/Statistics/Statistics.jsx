@@ -32,10 +32,10 @@ const Statistics = () => {
         <h2 className="text-3xl md:text-4xl text-center tracking-wider font-semibold mb-5">
           Our Statistics
         </h2>
-        <div className="flex justify-around flex-wrap gap-5">
-          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md text-w">
+        <div className="grid grid-cols-1 md:grid-cols-4 place-items-center gap-10 lg:w-5/4 mx-auto">
+          <div className="flex flex-col py-5 items-center justify-center text-center space-y-3  bg-gray-100 w-full h-full rounded">
             <svg
-              className="w-8 h-8 text-gray-800 dark:text-white"
+              className="w-10 h-10 text-orange-500 "
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -56,9 +56,9 @@ const Statistics = () => {
               <p className="text-md "> Users</p>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85  w-40 h-40 rounded shadow-md">
+          <div className="flex flex-col py-5 items-center justify-center text-center space-y-3  bg-gray-100 w-full h-full rounded ">
             <svg
-              className="w-8 h-8  text-gray-800 dark:text-white"
+             className="w-10 h-10 text-orange-500 "
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -75,9 +75,9 @@ const Statistics = () => {
               <p className="text-md"> Menus</p>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md">
+          <div className="flex flex-col py-5 items-center justify-center text-center space-y-3  bg-gray-100 w-full h-full rounded ">
             <svg
-              className="w-8 h-8"
+             className="w-10 h-10 text-orange-500 "
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -96,9 +96,9 @@ const Statistics = () => {
               <p className="text-md "> Orders</p>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center text-center space-y-3 bg-orange-500/85 w-40 h-40 rounded shadow-md">
-            <svg
-              className="w-8 h-8 text-gray-800 dark:text-white"
+          <div className="flex flex-col py-5 items-center justify-center text-center space-y-3  bg-gray-100 w-full h-full rounded ">
+            <svg 
+             className="w-10 h-10 text-orange-500 "
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
