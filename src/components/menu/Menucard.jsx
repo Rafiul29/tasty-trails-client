@@ -19,8 +19,11 @@ const Menucard = ({ menu }) => {
         <p className="mb-3 text-sm  tracking-wider text-gray-700 dark:text-gray-400">
           {description.slice(0, 60)} ....
         </p>
-        <div className="mb-3">
+        <div className="mb-3 flex items-center gap-2">
         <AverageRating value={Number(rating_sum)/Number(count_reviewer)}/>
+       {
+        count_reviewer!==0 &&  <span className="text-gray-600">({count_reviewer})</span>
+       }
       </div>
         <div className="flex justify-between items-center gap-4">
           <Link

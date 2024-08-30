@@ -195,13 +195,14 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+
             <li>
               <div className="relative">
                 {isLoggedIn && (
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     id="dropdownNavbarLink"
-                    className="flex items-center justify-center w-10 h-10 p-2 text-gray-900 rounded-full md:hover:bg-transparent md:border-0 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:focus:text-white  
+                    className="flex items-center justify-center w-8 h-8 p-2 text-gray-900 rounded-full md:hover:bg-transparent md:border-0 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:focus:text-white  
                     hover:bg-orange-600 
                     duration-500 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
                   >
