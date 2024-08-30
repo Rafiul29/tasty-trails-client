@@ -47,16 +47,17 @@ export const ordersApi = apiSlice.injectEndpoints({
       ],
     }),
 
-    getAllOrdersItems:builder.query({
-      query: () => `/orders/items/`,
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: "OrderItem", id })),
-              { type: "OrderItems" },
-            ]
-          : ["OrderItems"],
+    getAllRecentOrderItems:builder.query({
+      query: () => `/orders/items/recent_order/`,
+      // providesTags: (result) =>
+        // result
+        //   ? [
+        //       ...result.map(({ id }) => ({ type: "OrderItem", id })),
+        //       { type: "OrderItems" },
+        //     ]
+        //   : ["OrderItems"],
     }),
+
     orderItems: builder.query({
       query: (id) => `/orders/items/?order_id=${id}`,
       providesTags: (result, error, id) =>
@@ -77,4 +78,5 @@ export const {
   useGetUserOrdersQuery,
   useUpdateOrdersStatusMutation,
   useOrderItemsQuery,
+  useGetAllRecentOrderItemsQuery
 } = ordersApi;

@@ -56,4 +56,5 @@ export const {
   useAddFavouriteMutation,
   useGetUserFavouriteMenuQuery,
   useDeleteFavouriteMutation,
+  useGetAllFavouriteMenuQuery,
 } = favouriteApi;

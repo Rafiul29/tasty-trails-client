@@ -27,6 +27,7 @@ import Profile from "./pages/Profile.jsx";
 import AllMenu from "./pages/AllMenu.jsx";
 import Deposit from "./pages/Deposit.jsx";
 import useScrollToTop from "./hooks/useScrollToTop.js";
+import Partice from "./pages/Partice.jsx";
 
 function App() {
   useScrollToTop()
@@ -43,6 +44,7 @@ function App() {
         
         {/*always public */}
        <Route exact path="/" element={<Home />} />
+       <Route exact path="/p" element={<Partice />} />
        <Route exact path="/menu" element={<Menu />} />
        <Route exact path="/menu/:id" element={<MenuItemDetails />} />
         {/* always privet */}
