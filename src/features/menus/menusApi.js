@@ -39,6 +39,10 @@ export const menusApi = apiSlice.injectEndpoints({
         { type: "Menu", id: arg.id },
       ],
     }),
+
+    getAllDiscountedMenus: builder.query({
+      query: () => `/menu/list/discounted/`,
+    }),
   }),
 });
 

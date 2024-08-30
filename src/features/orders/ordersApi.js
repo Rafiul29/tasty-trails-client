@@ -1,7 +1,7 @@
 import { apiSlice } from "../api/apiSlice";
 
 export const ordersApi = apiSlice.injectEndpoints({
-  tagTypes: ["Orders", "Order", "OrderItems"],  
+  tagTypes: ["Orders", "Order", "OrderItems",'OrderItem'],  
   endpoints: (builder) => ({
 
     getAllOrders: builder.query({
@@ -47,13 +47,23 @@ export const ordersApi = apiSlice.injectEndpoints({
       ],
     }),
 
+    getAllOrdersItems:builder.query({
+      query: () => `/orders/items/`,
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "OrderItem", id })),
+              { type: "OrderItems" },
+            ]
+          : ["OrderItems"],
+    }),
     orderItems: builder.query({
       query: (id) => `/orders/items/?order_id=${id}`,
       providesTags: (result, error, id) =>
         result
           ? [
               ...result.map(({ id }) => ({ type: "OrderItems", id })),
-              { type: "OrderItems", id },
+              { type: "OrderItem", id },
             ]
           : [{ type: "OrderItems", id }],
     }),

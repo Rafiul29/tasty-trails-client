@@ -2,10 +2,19 @@ import { apiSlice } from "../api/apiSlice";
 
 export const favouriteApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-  
     tagTypes: ["Favourites", "Favourite"],
 
-  
+    getAllFavouriteMenu: builder.query({
+      query: () => `/menu/favourite/`,
+      keepUnusedDataFor: 600,
+      providesTags: (result, error, id) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Favourite", id })),
+              "Favourites",
+            ]
+          : ["Favourites"],
+    }),
     getUserFavouriteMenu: builder.query({
       query: (id) => `/menu/favourite/?user_id=${id}`,
       keepUnusedDataFor: 600,
@@ -18,7 +27,6 @@ export const favouriteApi = apiSlice.injectEndpoints({
           : ["Favourites"],
     }),
 
-   
     addFavourite: builder.mutation({
       query: (data) => ({
         url: "/menu/favourite/",
@@ -31,7 +39,6 @@ export const favouriteApi = apiSlice.injectEndpoints({
       ],
     }),
 
-  
     deleteFavourite: builder.mutation({
       query: (favId) => ({
         url: `/menu/favourite/${favId}/`,
