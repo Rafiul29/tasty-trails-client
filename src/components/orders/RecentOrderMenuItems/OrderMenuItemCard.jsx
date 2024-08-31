@@ -15,7 +15,7 @@ const OrderMenuItemCard = ({ orderdMenuItem }) => {
         </div>
         <div className="content-center">
           {/* show small and medium device */}
-          <h3 className="text-sm block  lg:hidden">{name.slice(0, 15)}..</h3>
+          <h3 className="text-sm block  lg:hidden">{name}</h3>
           {/* show only large device */}
 
           <h3 className="text-sm hidden lg:block">{name.slice(0, 20)}..</h3>

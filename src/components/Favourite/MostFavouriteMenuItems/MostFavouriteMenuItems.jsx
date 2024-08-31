@@ -3,10 +3,15 @@ import { useGetAllMostFavouriteMenuQuery } from '../../../features/favourite/fav
 import Loading from '../../ui/Loading';
 import Error from '../../ui/Error';
 import MostFavoruriteMenuCard from './MostFavoruriteMenuCard';
+import useDeviceSize from '../../../hooks/useDeviceSize';
 
 const MostFavouriteMenuItems = () => {
-  
-  const {data:allFavouriteMenuItems,isLoading,isError,error}=useGetAllMostFavouriteMenuQuery({'page':1,'page_size':10})
+
+  const deviceSize=useDeviceSize()
+
+  const pageSize = deviceSize === 'large' ? 10 : deviceSize === 'medium' ? 5 : 5;
+
+  const {data:allFavouriteMenuItems,isLoading,isError,error}=useGetAllMostFavouriteMenuQuery({'page':1,'page_size':pageSize})
 
   console.log(allFavouriteMenuItems)
 
