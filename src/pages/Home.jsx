@@ -1,5 +1,6 @@
 import MenuCategory from "../components/category/MenuCategory";
 import Footer from "../components/common/Footer";
+import ExploreSection from "../components/ExploreSection/ExploreSection";
 import FAQAccordion from "../components/FAQ/FAQAccordion";
 import Hero from "../components/Hero/Hero";
 import MenuDisplay from "../components/menu/MenuDisplay";
@@ -11,6 +12,7 @@ const Home = () => {
       <Hero />
 
       <div className="pt-5">
+        <ExploreSection/>
         <MenuCategory />
       </div>
       <div className="">

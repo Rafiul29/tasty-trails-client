@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const OrderMenuItemCard = ({ orderdMenuItem }) => {
   const { price, menu_item: { id, name, image } = {} } = orderdMenuItem || {};
-
   return (
     <Link to={`/menu/${id}`}>
       <div className="p-2  rounded-md flex gap-3 bg-orange-100/50 hover:bg-orange-200/50 duration-500">
@@ -20,7 +19,9 @@ const OrderMenuItemCard = ({ orderdMenuItem }) => {
 
           <h3 className="text-sm hidden lg:block">{name.slice(0, 20)}..</h3>
 
-          <p className="text-md text-orange-500 font-medium">৳ {price}</p>
+          <p className="text-md text-orange-500 font-medium">
+            ৳ {Number(price) + (price * 2) / 100}
+          </p>
         </div>
       </div>
     </Link>

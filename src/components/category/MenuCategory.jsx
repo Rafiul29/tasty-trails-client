@@ -113,9 +113,7 @@ const MenuCategory = () => {
     <section className="section">
       <div className="wrapper">
         <div className="section-title space-y-2 mb-4 md:mb-0">
-          <h2 className="text-2xl tracking-wider font-medium">
-            Taste the Extraordinary Explore Our Menu
-          </h2>
+        
           <p className="text-gray-600 text-lg">
             Browse our menu for a taste of expertly crafted meals that promise
             to delight.

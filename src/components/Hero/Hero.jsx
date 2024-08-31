@@ -31,7 +31,7 @@ const Hero = () => {
               </p>
               <Link
                 to="/menu"
-                className="text-white bg-orange-500 hover:bg-orange-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                className="text-white bg-orange-500  hover:bg-orange-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
               >
                 Explore Menu
                 <svg
