@@ -44,7 +44,7 @@ export const menusApi = apiSlice.injectEndpoints({
       query: () => `/menu/list/discounted/`,
       providesTags: (result, error, id) =>
         result
-          ? [...result.map(({ id }) => ({ type: "Menu", id })), "Menus"]
+          ? [...result.results.map(({ id }) => ({ type: "Menu", id })), "Menus"]
           : ["Menus"],
     }),
   }),

@@ -56,7 +56,7 @@ const RecentOrderMenuItems = () => {
             ))}
           </div>
 
-          <div className=" flex justify-center mt-4">
+          {/* <div className=" flex justify-center mt-4">
             <button
               onClick={handlePreviousPage}
               disabled={page === 1}
@@ -72,12 +72,12 @@ const RecentOrderMenuItems = () => {
             >
               Next
             </button>
-          </div>
+          </div> */}
         </div>
       </>
     );
   }
-  return <div className="min-h-[calc(100vh-25rem)]">{content}</div>;
+  return <div className="">{content}</div>;
 };
 
 export default RecentOrderMenuItems;

@@ -18,9 +18,9 @@ const OrderMenuItemCard = ({ orderdMenuItem }) => {
           <h3 className="text-sm block  lg:hidden">{name.slice(0, 15)}..</h3>
           {/* show only large device */}
 
-          <h3 className="text-sm hidden lg:block">{name.slice(0, 25)}..</h3>
+          <h3 className="text-sm hidden lg:block">{name.slice(0, 20)}..</h3>
 
-          <p className="text-xl text-orange-500 font-medium">৳ {price}</p>
+          <p className="text-md text-orange-500 font-medium">৳ {price}</p>
         </div>
       </div>
     </Link>

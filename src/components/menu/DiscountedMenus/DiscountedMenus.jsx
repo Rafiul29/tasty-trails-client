@@ -1,6 +1,7 @@
 import { useGetAllDiscountedMenusQuery } from "../../../features/menus/menusApi";
 import Error from "../../ui/Error";
 import Loading from "../../ui/Loading";
+import DiscountedMenuCard from "./DiscountedMenuCard";
 
 const DiscountedMenus = () => {
   const {
@@ -21,13 +22,27 @@ const DiscountedMenus = () => {
     );
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
-  } else if (!isLoading && !isError && discountMenus?.length === 0) {
+  } else if (!isLoading && !isError && discountMenus?.results?.length === 0) {
     content = <div className="flex justify-center items-center "></div>;
-  } else if (!isLoading && !isError && discountMenus.length > 0) {
-    content = <>de</>;
+  } else if (!isLoading && !isError && discountMenus?.results?.length > 0) {
+    content = (
+      <>
+        <h2 className=" text-md md:text-lg  text-gray-900 mb-3 font-medium">
+          Discount menu items
+        </h2>
+        <div className="flex flex-col gap-2 h-full  ">
+          {discountMenus?.results?.map((dicountmenu) => (
+            <DiscountedMenuCard
+              key={dicountmenu.id}
+              dicountmenu={dicountmenu}
+            />
+          ))}
+        </div>
+      </>
+    );
   }
   console.log(discountMenus);
-  return <div>wr3f3</div>;
+  return <div>{content}</div>;
 };
 
 export default DiscountedMenus;
