@@ -1,21 +1,15 @@
-import { useGetMenuItemQuery } from "../../features/menus/menusApi";
 import { Link } from "react-router-dom";
 import { useDeleteFavouriteMutation } from "../../features/favourite/favouriteApi";
 
 const FavouriteMenuTable = ({ favMenu }) => {
-  const { id: favId, menu_item } = favMenu || {};
-
-  const { data: menuItemDetails } = useGetMenuItemQuery(menu_item);
-
-  const { id, name, price } = menuItemDetails || {};
+  const { id: favId, menu_item: { id: menuId, name, price, image,discount } = {} } =
+    favMenu || {};
 
   const [deleteFavourite, { data }] = useDeleteFavouriteMutation();
 
   const handleFavourite = (favId) => {
     deleteFavourite(favId);
-
   };
-
 
   return (
     <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
@@ -23,13 +17,22 @@ const FavouriteMenuTable = ({ favMenu }) => {
         scope="row"
         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        {name}{" "}
+        <div className="h-10 w-16 overflow-hidden">
+          <img
+            src={image}
+            alt={name}
+            className="h-full w-full object-cover rounded-md"
+          />
+        </div>
       </th>
-      <td className="px-6 py-4 text-orange-500 font-semibold">{price}৳</td>
+      <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {name}{" "}
+      </td>
+      <td className="px-6 py-4 text-orange-500 font-semibold">{Number(price-price*discount/100)}৳</td>
 
-      <td className="px-6 py-4 flex gap-3">
+      <td className="px-6 py-4 flex  items-center gap-3 ">
         <Link
-          to={`/menu/${id}`}
+          to={`/menu/${menuId}`}
           className=" text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
         >
           <svg
