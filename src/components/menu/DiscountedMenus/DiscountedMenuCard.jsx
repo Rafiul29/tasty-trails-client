@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const DiscountedMenuCard = ({ dicountmenu }) => {
-  console.log();
+  console.log(dicountmenu);
   const { id, name, price, image, discount } = dicountmenu || {};
 
   return (
@@ -14,8 +14,11 @@ const DiscountedMenuCard = ({ dicountmenu }) => {
 
           <h3 className="text-sm hidden lg:block">{name.slice(0, 30)}..</h3>
 
-          <div className="flex items-center justify-between gap-10 ">
-            <p className="text-md text-orange-500 font-medium">৳ {price}</p>
+          <div className="flex items-center justify-between gap-10 f">
+            <p className="text-md text-orange-500 font-medium flex gap-3">
+              <span className="line-through">৳{Number(price)}</span>
+              <span>৳{Number(price-price*discount/100)}</span>
+            </p>
 
             <p className="text-xs font-medium bg-orange-200 text-orange-500 px-[0.2rem] py-[0.1rem] rounded-lg">
               {" "}
