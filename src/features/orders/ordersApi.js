@@ -1,9 +1,8 @@
 import { apiSlice } from "../api/apiSlice";
 
 export const ordersApi = apiSlice.injectEndpoints({
-  tagTypes: ["Orders", "Order", "OrderItems",'OrderItem'],  
+  tagTypes: ["Orders", "Order", "OrderItems", "OrderItem"],
   endpoints: (builder) => ({
-
     getAllOrders: builder.query({
       query: () => `/orders/list/`,
       providesTags: (result) =>
@@ -32,7 +31,7 @@ export const ordersApi = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Orders"], 
+      invalidatesTags: ["Orders"],
     }),
 
     updateOrdersStatus: builder.mutation({
@@ -42,20 +41,21 @@ export const ordersApi = apiSlice.injectEndpoints({
         body: data,
       }),
       invalidatesTags: (result, error, { id }) => [
-        { type: "Order", id },  
-        "Orders",  
+        { type: "Order", id },
+        "Orders",
       ],
     }),
 
-    getAllRecentOrderItems:builder.query({
-      query: () => `/orders/items/recent_order/`,
-      // providesTags: (result) =>
-        // result
-        //   ? [
-        //       ...result.map(({ id }) => ({ type: "OrderItem", id })),
-        //       { type: "OrderItems" },
-        //     ]
-        //   : ["OrderItems"],
+    getAllRecentOrderItems: builder.query({
+      query: (page=1) => `/orders/items/recent_order/?page=${page}`,
+
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.results.map(({ id }) => ({ type: "OrderItem", id })),
+              { type: "OrderItems" },
+            ]
+          : ["OrderItems"],
     }),
 
     orderItems: builder.query({
@@ -68,7 +68,6 @@ export const ordersApi = apiSlice.injectEndpoints({
             ]
           : [{ type: "OrderItems", id }],
     }),
-
   }),
 });
 
@@ -78,5 +77,5 @@ export const {
   useGetUserOrdersQuery,
   useUpdateOrdersStatusMutation,
   useOrderItemsQuery,
-  useGetAllRecentOrderItemsQuery
+  useGetAllRecentOrderItemsQuery,
 } = ordersApi;
