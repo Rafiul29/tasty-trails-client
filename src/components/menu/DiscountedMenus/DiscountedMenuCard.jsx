@@ -6,7 +6,7 @@ const DiscountedMenuCard = ({ dicountmenu }) => {
 
   return (
     <Link to={`/menu/${id}`}>
-      <div className="p-2  rounded-md flex justify-between lg:gap-5 gap-3 hover:bg-orange-200/50 duration-500">
+      <div className="p-2  rounded-md flex justify-between lg:gap-5 gap-3 bg-orange-100/50 hover:bg-orange-200/50 duration-500">
         <div className="flex flex-col justify-center w-full">
           {/* show small and medium device */}
           <h3 className="text-sm block  lg:hidden">{name.slice(0, 25)}..</h3>

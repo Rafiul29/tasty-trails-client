@@ -5,7 +5,7 @@ const OrderMenuItemCard = ({ orderdMenuItem }) => {
 
   return (
     <Link to={`/menu/${id}`}>
-      <div className="p-2  rounded-md flex lg:gap-5 gap-3 hover:bg-orange-200/50 duration-500">
+      <div className="p-2  rounded-md flex gap-3 bg-orange-100/50 hover:bg-orange-200/50 duration-500">
         <div className="lg:h-20 lg:w-20  md:h-16 md:w-16 h-14 w-14  overflow-hidden">
           <img
             className="h-full w-full  object-cover rounded-lg"

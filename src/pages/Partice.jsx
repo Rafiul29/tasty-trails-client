@@ -11,7 +11,7 @@ const Partice = () => {
             <div className="lg:col-span-3 md:col-span-4 bg-gray-100/90 lg:p-4  p-3 rounded-md">
               <RecentOrderMenuItems />
             </div>
-            <div className="lg:col-span-6 md:col-span-4 bg-orange-500">
+            <div className="lg:col-span-6 md:col-span-4 bg-gray-100/90 lg:p-4  p-3 rounded-md">
               <MostFavouriteMenuItems />
             </div>
             <div className="lg:col-span-3 md:col-span-4  bg-gray-100/90 lg:p-4  p-3 rounded-md">

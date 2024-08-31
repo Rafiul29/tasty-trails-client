@@ -44,7 +44,7 @@ const RecentOrderMenuItems = () => {
     content = (
       <>
         <h2 className=" text-md md:text-lg  text-gray-900 mb-3 font-medium">
-          Recent Order menu items
+          Recent Order  items
         </h2>
         <div className="flex flex-col justify-between">
           <div className="flex flex-col gap-2 h-full  ">
