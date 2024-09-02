@@ -41,7 +41,7 @@ const DiscountedMenus = () => {
     content = (
       <div className="h-full flex flex-col gap-2 justify-between">
         <div className="flex flex-col">
-          <h2 className=" text-md md:text-lg  text-gray-900 mb-3 font-medium">
+          <h2 className="text-md md:text-lg  text-gray-900 mb-3 font-medium">
             Discount menu items
           </h2>
           <div className="flex flex-col gap-2 h-full">

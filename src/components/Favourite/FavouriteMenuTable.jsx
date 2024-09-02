@@ -17,7 +17,7 @@ const FavouriteMenuTable = ({ favMenu }) => {
         scope="row"
         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
       >
-        <div className="h-10 w-16 overflow-hidden">
+        <div className="h-8 w-12 overflow-hidden">
           <img
             src={image}
             alt={name}

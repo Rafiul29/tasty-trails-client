@@ -29,12 +29,12 @@ export const favouriteApi = apiSlice.injectEndpoints({
 
 
     getUserFavouriteMenu: builder.query({
-      query: (id) => `/menu/favourite/?user_id=${id}`,
+      query: (page=1) => `/menu/favourite/user_favourite/?page=${page}`,
       keepUnusedDataFor: 600,
       providesTags: (result, error, id) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: "Favourite", id })),
+              ...result.results.map(({ id }) => ({ type: "Favourite", id })),
               "Favourites",
             ]
           : ["Favourites"],

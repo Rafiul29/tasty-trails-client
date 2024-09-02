@@ -47,7 +47,7 @@ const RecentOrderMenuItems = () => {
           <h2 className=" text-md md:text-lg  text-gray-900 mb-3 font-medium">
             Recent Order items
           </h2>
-          <div className="flex flex-col gap-2 h-full  ">
+          <div className="flex flex-col gap-2 h-full">
             {orderdMenuItems?.results?.map((orderdMenuItem) => (
               <OrderMenuItemCard
                 key={orderdMenuItem.id}
