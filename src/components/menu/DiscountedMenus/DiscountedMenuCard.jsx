@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const DiscountedMenuCard = ({ dicountmenu }) => {
-  console.log(dicountmenu);
+
   const { id, name, price, image, discount } = dicountmenu || {};
 
   return (

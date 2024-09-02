@@ -41,7 +41,7 @@ export const menusApi = apiSlice.injectEndpoints({
     }),
 
     getAllDiscountedMenus: builder.query({
-      query: () => `/menu/list/discounted/`,
+      query: (page=1) => `/menu/list/discounted/?page=${page}`,
       providesTags: (result, error, id) =>
         result
           ? [...result.results.map(({ id }) => ({ type: "Menu", id })), "Menus"]
