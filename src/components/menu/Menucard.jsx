@@ -3,15 +3,27 @@ import menuImage from "../../assets/login.png";
 import { AverageRating } from "../AverageRating/AverageRating";
 
 const Menucard = ({ menu }) => {
-  const { id, name, description, image, price, discount ,rating_sum,count_reviewer} = menu || {};
-
+  const {
+    id,
+    name,
+    description,
+    image,
+    price,
+    discount,
+    rating_sum,
+    count_reviewer,
+  } = menu || {};
 
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <Link to={`/menu/${id}`}>
-        <img className="rounded-t-lg h-36 w-full object-cover overflow-hidden" src={image} alt={name} />
+        <img
+          className="rounded-t-lg h-36 w-full object-cover overflow-hidden"
+          src={image}
+          alt={name}
+        />
       </Link>
-    
+
       <div className="p-3">
         <h5 className="mb-1 text-md font-medium tracking-tight text-gray-900 dark:text-white">
           {name.slice(0, 20)} ...
@@ -20,11 +32,11 @@ const Menucard = ({ menu }) => {
           {description.slice(0, 60)} ....
         </p>
         <div className="mb-2 flex items-center gap-2">
-        <AverageRating value={Number(rating_sum)/Number(count_reviewer)}/>
-       {
-        count_reviewer!==0 &&  <span className="text-gray-600">({count_reviewer})</span>
-       }
-      </div>
+          <AverageRating value={Number(rating_sum) / Number(count_reviewer)} />
+          {count_reviewer !== 0 && (
+            <span className="text-gray-600">({count_reviewer})</span>
+          )}
+        </div>
         <div className="flex justify-between items-center gap-4">
           <Link
             to={`/menu/${id}`}

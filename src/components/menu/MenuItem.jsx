@@ -2,9 +2,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAddFavouriteMutation } from "../../features/favourite/favouriteApi";
 import { useAddToCartItemMutation } from "../../features/carts/cartsApi";
+import { AverageRating } from "../AverageRating/AverageRating";
 
 const MenuItem = ({ menuitem }) => {
-  const { id, name, description, ingredients, image, price, discount } =
+  const { id, name, description, ingredients, image, price, discount, rating_sum,
+    count_reviewer, } =
     menuitem || {};
 
   //
@@ -34,7 +36,7 @@ const MenuItem = ({ menuitem }) => {
 
   const [addToCartItem, { data: addToCartData }] = useAddToCartItemMutation();
 
-  console.log(addToCartData);
+
 
   const handleAddToCart = (id) => {
     if (!user_id) {
@@ -68,6 +70,12 @@ const MenuItem = ({ menuitem }) => {
             {name}
           </h3>
           <p className="text-lg tracking-wide text-gray-800">{description}</p>
+          <div className="mb-2 flex items-center gap-2">
+          <AverageRating value={Number(rating_sum) / Number(count_reviewer)} />
+          {count_reviewer !== 0 && (
+            <span className="text-gray-600">({count_reviewer})</span>
+          )}
+        </div>
           <p className="space-x-3 text-lg">
             <span className="text-gray-900 font-medium">Price:</span>{" "}
             <span className="text-orange-500 font-medium">
