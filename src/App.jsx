@@ -28,6 +28,7 @@ import AllMenu from "./pages/AllMenu.jsx";
 import Deposit from "./pages/Deposit.jsx";
 import useScrollToTop from "./hooks/useScrollToTop.js";
 import Partice from "./pages/Partice.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
   useScrollToTop()
@@ -150,6 +151,13 @@ function App() {
             <PublicRouters>
               <Registration />
             </PublicRouters>
+          }
+        />
+         <Route
+          exact
+          path="*"
+          element={
+            <NotFound/>
           }
         />
        <Route exact path="/about" element={<About />} />
