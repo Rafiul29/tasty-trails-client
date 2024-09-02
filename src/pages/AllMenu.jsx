@@ -6,8 +6,9 @@ import Error from "../components/ui/Error";
 import AllMenuTable from "../components/menu/AllMenuTable";
 
 const AllMenu = () => {
-  const { data: menulists, isLoading, isError, error } = useGetAllMenusQuery();
+  const { data: menulists, isLoading, isError, error } = useGetAllMenusQuery({search:"",page:1,page_size:10});
 
+  console.log(menulists)
   // decide what to render
   let content = null;
 

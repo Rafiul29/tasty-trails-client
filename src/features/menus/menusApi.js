@@ -5,11 +5,11 @@ export const menusApi = apiSlice.injectEndpoints({
     tagTypes: ["Menus", "Menu"],
 
     getAllMenus: builder.query({
-      query: (search = "") => `/menu/list/?search=${search}`,
+      query: ({search ="",page=1,page_size=10}) => `/menu/list/?search=${search}&page=${page}&page_size=${page_size}`,
       keepUnusedDataFor: 600,
       providesTags: (result, error, id) =>
         result
-          ? [...result.map(({ id }) => ({ type: "Menu", id })), "Menus"]
+          ? [...result.results.map(({ id }) => ({ type: "Menu", id })), "Menus"]
           : ["Menus"],
     }),
 

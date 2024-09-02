@@ -4,11 +4,11 @@ export const ordersApi = apiSlice.injectEndpoints({
   tagTypes: ["Orders", "Order", "OrderItems", "OrderItem"],
   endpoints: (builder) => ({
     getAllOrders: builder.query({
-      query: () => `/orders/list/`,
+      query: ({page=1,page_size=8}) => `/orders/list/?page=${page}&page_size=${page_size}`,
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: "Order", id })),
+              ...result.results.map(({ id }) => ({ type: "Order", id })),
               { type: "Orders" },
             ]
           : ["Orders"],

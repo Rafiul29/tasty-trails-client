@@ -112,8 +112,7 @@ const MenuCategory = () => {
   return (
     <section className="section">
       <div className="wrapper">
-        <div className="section-title space-y-2 mb-4 md:mb-0">
-        
+        <div className="section-title space-y-2 mb-2 md:mb-0">
           <p className="text-gray-600 text-lg">
             Browse our menu for a taste of expertly crafted meals that promise
             to delight.

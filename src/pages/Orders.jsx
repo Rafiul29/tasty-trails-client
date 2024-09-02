@@ -47,7 +47,7 @@ const Orders = () => {
   } else if (!isLoading && !isError && orders?.results?.length > 0) {
     content = (
       <>
-        <h2 className="text-center text-3xl md:text-4xl text-gray-700 ">
+       <h2 className="text-center text-2xl md:text-3xl lg:text-4xl text-gray-700">
           Your Orders
         </h2>
         <UserOrderTable orders={orders} />
