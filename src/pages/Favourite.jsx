@@ -1,4 +1,4 @@
-import notFoundImage from "../assets/notFound.avif";
+import notFoundImage from "../assets/notfound.png";
 import { useGetUserFavouriteMenuQuery } from "../features/favourite/favouriteApi";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";
@@ -40,11 +40,13 @@ const Favourite = () => {
   } else if (!isLoading && !isError && favouriteMenu?.results?.length === 0) {
     content = (
       <div className="flex flex-col justify-center items-center ">
-        <img
-          className="object-cover"
-          src={notFoundImage}
-          alt="Not found image"
-        />
+        <div className="w-72">
+          <img
+            className="w-full h-full object-cover"
+            src={notFoundImage}
+            alt="Not found image"
+          />
+        </div>
         <Link
           to="/menu"
           className="flex items-center  text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"

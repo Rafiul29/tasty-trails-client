@@ -1,4 +1,4 @@
-import notFoundImage from "../assets/notFound.avif";
+import notFoundImage from "../assets/notfound.png";
 import { useParams } from "react-router-dom";
 import { useGetMenuItemQuery } from "../features/menus/menusApi";
 import Loading from "../components/ui/Loading";
@@ -26,7 +26,7 @@ const MenuItemDetails = () => {
     );
   } else if (!isLoading && isError) {
     content = (
-      <div className=" h-25 w-25 flex flex-col justify-center items-center">
+      <div className=" h-25 w-25 flex flex-col justify-center items-center h-[calc(100vh-25rem)]">
         <img
           style={{ width: "400px" }}
           className=" object-cover"
@@ -45,8 +45,11 @@ const MenuItemDetails = () => {
       <main className="main-padding  space-y-10">
         <div className="wrapper">{content}</div>
         <div>
-          <ReviewForm />
-          <MenuItemReviews />
+
+         {
+          !isError && <ReviewForm />
+         }
+         {!isError && <MenuItemReviews />}
         </div>
         <Footer />
       </main>
