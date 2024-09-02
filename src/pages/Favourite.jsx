@@ -7,26 +7,24 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Favourite = () => {
-
-  // 
-  const[page,setPage]=useState(1)
+  //
+  const [page, setPage] = useState(1);
 
   const {
     data: favouriteMenu,
     isLoading,
     isError,
     error,
-  } = useGetUserFavouriteMenuQuery(page);
-  
-   // Pagination controls
-   const handleNextPage = () => {
+  } = useGetUserFavouriteMenuQuery({ page: page, page_size: 8 });
+
+  // Pagination controls
+  const handleNextPage = () => {
     if (favouriteMenu?.next) setPage((prevPage) => prevPage + 1);
   };
 
   const handlePreviousPage = () => {
     if (page > 1) setPage((prevPage) => prevPage - 1);
   };
-
 
   // decide what to render
   let content = null;
@@ -101,7 +99,6 @@ const Favourite = () => {
               ))}
             </tbody>
           </table>
-         
         </div>
         <div className="flex items-center justify-center">
           <button
@@ -157,7 +154,7 @@ const Favourite = () => {
   }
 
   return (
-    <main className="main-padding md:-mt-8">
+    <main className="main-padding">
       <div className="wrapper space-y-5">{content}</div>
     </main>
   );

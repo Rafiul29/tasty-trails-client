@@ -15,11 +15,12 @@ export const ordersApi = apiSlice.injectEndpoints({
     }),
 
     getUserOrders: builder.query({
-      query: (id) => `/orders/list/?user_id=${id}`,
+      query: ({ page = 1, page_size = 8 }) =>
+        `/orders/list/user_orders/?page=${page}&page_size=${page_size}`,
       providesTags: (result, error, id) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: "Order", id })),
+              ...result.results.map(({ id }) => ({ type: "Order", id })),
               { type: "Orders" },
             ]
           : ["Orders"],
@@ -47,7 +48,7 @@ export const ordersApi = apiSlice.injectEndpoints({
     }),
 
     getAllRecentOrderItems: builder.query({
-      query: (page=1) => `/orders/items/recent_order/?page=${page}`,
+      query: (page = 1) => `/orders/items/recent_order/?page=${page}`,
 
       providesTags: (result) =>
         result

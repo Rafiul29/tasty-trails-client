@@ -24,7 +24,7 @@ const OrderMenuItemCard = ({ orderdMenuItem }) => {
          <span className="text-md text-orange-500 font-medium">
             ৳ {parseInt(Number(price) + (price * 2) / 100)}
           </span>
-          <span className="text-xs">{moment(created_at).format('L')}</span>
+          <span className="text-xs text-gray-700">{moment(created_at).fromNow()}</span>
          </div>
         </div>
       </div>

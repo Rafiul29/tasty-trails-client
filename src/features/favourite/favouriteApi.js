@@ -29,7 +29,7 @@ export const favouriteApi = apiSlice.injectEndpoints({
 
 
     getUserFavouriteMenu: builder.query({
-      query: (page=1) => `/menu/favourite/user_favourite/?page=${page}`,
+      query: ({page=1,page_size=8}) => `/menu/favourite/user_favourite/?page=${page}&page_size=${page_size}`,
       keepUnusedDataFor: 600,
       providesTags: (result, error, id) =>
         result

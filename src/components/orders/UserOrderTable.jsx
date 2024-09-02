@@ -18,7 +18,7 @@ const UserOrderTable = ({ orders }) => {
           <OrderModal orderId={orderId} onClose={() => setIsModalOpen(false)} />
         )}
       </div>
-      <h2 className="text-center text-3xl md:text-4xl text-gray-700 ">Your Orders</h2>
+     
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -26,12 +26,6 @@ const UserOrderTable = ({ orders }) => {
               <th scope="col" className="px-6 py-3">
                 Order Number
               </th>
-              {/* <th scope="col" className="px-6 py-3">
-                  Name 
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Email 
-                </th> */}
               <th scope="col" className="px-6 py-3">
                 Phone
               </th>
@@ -56,7 +50,7 @@ const UserOrderTable = ({ orders }) => {
             </tr>
           </thead>
           <tbody>
-            {orders?.map((order) => (
+            {orders?.results?.map((order) => (
               <tr
                 key={order.id}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
@@ -74,10 +68,11 @@ const UserOrderTable = ({ orders }) => {
                   {order.delivery_address.address_line_1}
                 </td>
                 <td className="px-6 py-4 ">{order.status}</td>
-                <td className="px-6 py-4 ">৳ {order.total_discount}</td>
+                
                 <td className="px-6 py-4 ">৳ {order.order_total}</td>
+                <td className="px-6 py-4 ">৳ {order.total_discount}</td>
                 <td className="px-6 py-4 ">
-                  {moment(order.order_date).format("L")}
+                  {moment(order.order_date).fromNow()}
                 </td>
 
                 <td className="px-6 py-4 space-x-3">
