@@ -95,7 +95,7 @@ const Login = () => {
                   <span >Don't have an account? </span>
                   <Link
                     to="/register"
-                    className="font-medium text-blue-600 ml-2 underline"
+                    className="font-medium text-orange-500 ml-2 underline"
                   >
                     Register Now
                   </Link>
