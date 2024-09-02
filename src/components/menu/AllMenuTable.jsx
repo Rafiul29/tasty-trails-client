@@ -9,8 +9,7 @@ const AllMenuTable = ({ menulists }) => {
   const handleDeleteMenu=(id)=>{
     deleteMenuItem(id) 
    }
-   
-console.log(data)
+
   return (
     <>
       <h2 className="text-3xl md:text-4xl text-center"></h2>
@@ -37,7 +36,7 @@ console.log(data)
             </tr>
           </thead>
           <tbody>
-            {menulists?.map((menu) => (
+            {menulists?.results?.map((menu) => (
               <tr
                 key={menu.id}
                 className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
