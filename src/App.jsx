@@ -29,6 +29,7 @@ import Deposit from "./pages/Deposit.jsx";
 import useScrollToTop from "./hooks/useScrollToTop.js";
 import Partice from "./pages/Partice.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import Verified from "./pages/Verified.jsx";
 
 function App() {
   useScrollToTop()
@@ -150,6 +151,15 @@ function App() {
           element={
             <PublicRouters>
               <Registration />
+            </PublicRouters>
+          }
+        />
+        <Route
+          exact
+          path="/verified"
+          element={
+            <PublicRouters>
+              <Verified />
             </PublicRouters>
           }
         />
