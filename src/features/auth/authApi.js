@@ -37,7 +37,7 @@ export const authApi=apiSlice.injectEndpoints({
               user: result.data.user,
             })
           );
-
+          localStorage.removeItem("userEmail");
         } catch (err) {
           //do nothing
         }

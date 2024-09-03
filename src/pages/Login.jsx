@@ -26,8 +26,8 @@ const Login = () => {
       setError(responseError?.data?.error);
     }
     if (data?.token && data?.user) {
-      navigate("/");
-      localStorage.removeItem('userEmail')
+      localStorage.removeItem("userEmail");
+        navigate("/");
     }
   }, [data, responseError, navigate]);
 

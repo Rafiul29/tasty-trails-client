@@ -62,7 +62,7 @@ const MenuDisplay = () => {
           <div className="flex items-center justify-center mt-4">
             <Link
               to="/menu"
-              class="border  border-orange-500 hover:bg-orange-500 focus:ring-4 hover:text-white
+              className="border  border-orange-500 hover:bg-orange-500 focus:ring-4 hover:text-white
                  focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 duration-500 shadow-lg hover:shadow-orange-200"
             >
               See More
