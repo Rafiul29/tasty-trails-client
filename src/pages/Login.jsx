@@ -20,17 +20,14 @@ const Login = () => {
       password,
     });
   };
-
   const navigate = useNavigate();
-
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError?.data?.error);
     }
-
     if (data?.token && data?.user) {
-      console.log(data);
       navigate("/");
+      localStorage.removeItem('userEmail')
     }
   }, [data, responseError, navigate]);
 

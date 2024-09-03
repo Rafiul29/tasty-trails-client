@@ -30,6 +30,7 @@ import useScrollToTop from "./hooks/useScrollToTop.js";
 import Partice from "./pages/Partice.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Verified from "./pages/Verified.jsx";
+import AccountActivation from "./pages/AccountActivation.jsx";
 
 function App() {
   useScrollToTop()
@@ -160,6 +161,15 @@ function App() {
           element={
             <PublicRouters>
               <Verified />
+            </PublicRouters>
+          }
+        />
+        <Route
+          exact
+          path="/account-activation"
+          element={
+            <PublicRouters>
+              <AccountActivation />
             </PublicRouters>
           }
         />

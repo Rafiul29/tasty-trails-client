@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Verified = () => {
+  
   return (
     <main className="main-padding">
-      <div className="flex flex-col justify-center items-center gap-3">
+      <div className="md:mt-10 flex flex-col justify-center items-center gap-3">
         <svg
           className="w-28 h-28 text-orange-500 dark:text-white"
           aria-hidden="true"
