@@ -20,7 +20,7 @@ const AccountActivation = () => {
           if <span className="font-medium text-orange-600">{userEmail &&userEmail}</span> is
           not your email <br />
           address. Please{" "}
-          <Link to='/login' className=" underline text-orange-600">
+          <Link to='/register' className=" underline text-orange-600">
             Go back
           </Link>{" "}
           and enter the correct <br />
