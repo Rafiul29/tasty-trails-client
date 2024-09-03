@@ -12,12 +12,12 @@ const AccountActivation = () => {
         </h2>
         <p className="text-gray-700">
           Please check email(
-          <span className="font-semibold">{userEmail&& userEmail}</span>) <br />{" "}
+          <span className="font-medium text-orange-600">{userEmail&& userEmail}</span>) <br />{" "}
           to confirm your account
         </p>
         <hr />
         <p className="text-gray-700">
-          if <span className="font-semibold ">{userEmail &&userEmail}</span> is
+          if <span className="font-medium text-orange-600">{userEmail &&userEmail}</span> is
           not your email <br />
           address. Please{" "}
           <Link to='/login' className=" underline text-orange-600">
@@ -28,7 +28,8 @@ const AccountActivation = () => {
         </p>
         <p className=" text-gray-700">
           Still can't find it? Try searchcing email for <br /> "in: all subject:
-          (confirm your account on <br /> Tasty Trails)"
+          (confirm your account on <br /> <span className="text-orange-600">
+            Tasty Trails</span>)"
         </p>
       </div>
     </main>

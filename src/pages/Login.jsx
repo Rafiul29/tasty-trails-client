@@ -27,6 +27,7 @@ const Login = () => {
     }
     if (data?.token && data?.user) {
       navigate("/");
+      localStorage.removeItem('userEmail')
     }
   }, [data, responseError, navigate]);
 
