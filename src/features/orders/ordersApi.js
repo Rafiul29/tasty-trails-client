@@ -1,10 +1,12 @@
 import { apiSlice } from "../api/apiSlice";
+import { userApi } from "../users/userApi";
 
 export const ordersApi = apiSlice.injectEndpoints({
   tagTypes: ["Orders", "Order", "OrderItems", "OrderItem"],
   endpoints: (builder) => ({
     getAllOrders: builder.query({
-      query: ({page=1,page_size=8}) => `/orders/list/?page=${page}&page_size=${page_size}`,
+      query: ({ page = 1, page_size = 8 }) =>
+        `/orders/list/?page=${page}&page_size=${page_size}`,
       providesTags: (result) =>
         result
           ? [
@@ -33,6 +35,24 @@ export const ordersApi = apiSlice.injectEndpoints({
         body: data,
       }),
       invalidatesTags: ["Orders"],
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          // Wait for the add order mutation to be fulfilled
+          const { data: order } = await queryFulfilled;
+          
+          // Extract the user ID from the order data
+          const userId = order?.user;
+
+          if (userId) {
+            // Fetch the latest balance by dispatching the getBalance query
+            dispatch(
+              userApi.endpoints.getBalance.initiate(userId, { forceRefetch: true })
+            );
+          }
+        } catch (err) {
+          console.error("Order creation failed", err);
+        }
+      },
     }),
 
     updateOrdersStatus: builder.mutation({

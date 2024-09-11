@@ -12,9 +12,9 @@ const DiscountedMenuCard = ({ dicountmenu }) => {
           <h3 className="text-sm block  lg:hidden">{name}</h3>
           {/* show only large device */}
 
-          <h3 className="text-sm hidden lg:block">{name.slice(0, 30)}..</h3>
+          <h3 className="text-sm hidden lg:block ">{name.slice(0, 30)}..</h3>
 
-          <div className="flex items-center justify-between gap-10 mt-1">
+          <div className="flex items-center justify-between gap-10 mt-1 ">
             <p className="text-md text-orange-500 font-medium flex gap-3">
               <span className="line-through">৳{Number(price)}</span>
               <span>৳{Number(price-price*discount/100)}</span>
