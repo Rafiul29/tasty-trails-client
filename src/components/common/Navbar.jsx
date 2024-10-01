@@ -7,7 +7,6 @@ import { userLoggedOut } from "../../features/auth/authSlice";
 import { useAuthAdmin } from "../../hooks/useAuthAdmin";
 import { useGetUserCartItemQuery } from "../../features/carts/cartsApi";
 import { useGetBalanceQuery } from "../../features/users/userApi";
-import { data } from "autoprefixer";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

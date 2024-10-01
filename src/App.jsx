@@ -41,7 +41,7 @@ function App() {
       <Loading />
     </div>
   ) : (
-    <>
+    <div className="">
       <Navbar />
      <Routes>
         
@@ -188,7 +188,7 @@ function App() {
 
       {/* <Header /> */}
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
 
