@@ -17,21 +17,21 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 place-items">
           <div className="lg:col-span-3 place-content-center">
             <div className="lg:space-y-7 space-y-6 ">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider text-gray-900">
-                Embark on a Flavorful Journey{" "}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider text-gray-900 dark:text-gray-100">
+                Embark on a Flavorful Journey
               </h1>
-              <p className="text-gray-600 tracking-wider leading-7">
+              <p className="text-gray-700 dark:text-gray-300 tracking-wider leading-7">
                 Discover a world of culinary delights with Tastytrails, where
                 every dish tells a story. Explore, taste, and savor the best
                 flavors from around the globe, right at your fingertips.
               </p>
-              <p className="text-gray-600 tracking-wider leading-7">
+              <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">
                 Feel free to mix and match elements from both options if you
                 like!
               </p>
               <Link
                 to="/menu"
-                className="text-white bg-orange-500  hover:bg-orange-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
+                className="text-white bg-orange-500 hover:bg-orange-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
               >
                 Explore Menu
                 <svg
@@ -53,7 +53,6 @@ const Hero = () => {
             </div>
           </div>
           <div className="lg:col-span-2 overflow-hidden ">
-            {" "}
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -66,7 +65,6 @@ const Hero = () => {
               className="mySwiper"
             >
               <SwiperSlide>
-                {" "}
                 <div className="h-100">
                   <Player
                     src="https://lottie.host/a959a4d2-6df4-461d-ac5c-f0e82df01c05/N83XjzAzm4.json"
@@ -81,7 +79,6 @@ const Hero = () => {
                 </div>
               </SwiperSlide>
               <SwiperSlide>
-                {" "}
                 <div className="h-100">
                   <Player
                     src="https://lottie.host/61c0e164-07fd-4800-91d6-012b12870c63/rzdd8hTOOd.json"

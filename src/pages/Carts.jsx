@@ -18,10 +18,9 @@ const Carts = () => {
     isError,
     error,
   } = useGetUserCartItemQuery(user_id);
-
   // what do render
   let content = null;
-  if (isLoading) {
+  if (isLoading ) {
     content = content = (
       <div className="my-2 w-full h-full flex justify-center items-center">
         <Loading />

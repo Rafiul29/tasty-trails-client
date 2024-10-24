@@ -1,5 +1,4 @@
 import menuNotFoundImage from "../assets/notFoundMenu.png";
-import { useSelector } from "react-redux";
 import { useGetAllMenusQuery } from "../features/menus/menusApi";
 import Loading from "../components/ui/Loading";
 import Error from "../components/ui/Error";

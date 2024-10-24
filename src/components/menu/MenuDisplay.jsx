@@ -1,5 +1,4 @@
 import menuNotFoundImage from "../../assets/notFoundMenu.png";
-
 import { useSelector } from "react-redux";
 import { useGetAllMenusQuery } from "../../features/menus/menusApi";
 import Error from "../ui/Error";
@@ -33,6 +32,7 @@ const MenuDisplay = () => {
   // decide what to render
   let content = null;
   if (isLoading) {
+   
     content = (
       <div className="my-2 h-56">
         <Loading />
