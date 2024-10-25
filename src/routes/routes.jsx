@@ -23,6 +23,10 @@ import NotFound from "../pages/NotFound";
 import Registration from "../pages/Registration";
 import PublicRoutes from "../routes/PublicRoutes";
 import PrivetRoutes from "../routes/PrivetRoutes";
+import AdminDashBoardLayout from "../Layout/AdminDashBoardLayout";
+import AdminDashboard from "../Dashboard/admin/AdminDashboard";
+import UserDashBoard from "../Dashboard/users/UserDashBoard";
+import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -145,5 +149,17 @@ export const router = createBrowserRouter([
         element: <NotFound />,
       },
     ],
+  },
+  {
+    path: "/dashboard/admin",
+    element: <AdminDashBoardLayout />, // Main layout
+    errorElement: <Error />,
+    children: [{ path: "/dashboard/admin", element: <AdminDashboard /> }],
+  },
+  {
+    path: "/dashboard/user",
+    element: <UserDashBoardLayout />, // Main layout
+    errorElement: <Error />,
+    children: [{ path: "/dashboard/user", element: <UserDashBoard /> }],
   },
 ]);
