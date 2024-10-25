@@ -46,7 +46,7 @@ const AllMenuTable = ({ menulists }) => {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center gap-1"
                 >
-                  <img src={menu.image} alt="" className="h-8 w-8 overflow-hidden"  />
+                  <img src={menu.image} alt="" className="h-8 w-8 overflow-hidden object-cover rounded-md"  />
                  {menu.name}
                  
                 </th>
