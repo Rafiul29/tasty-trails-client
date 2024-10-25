@@ -6,6 +6,7 @@ const Sidebar = () => {
   const [isMenuDropdownOpen, setMenuDropdownOpen] = useState(false);
   const [isOrdersDropdownOpen, setOrdersDropdownOpen] = useState(false);
 
+
   const toggleMenuDropdown = () => {
     setMenuDropdownOpen(!isMenuDropdownOpen);
   };
@@ -17,7 +18,7 @@ const Sidebar = () => {
   return (
     <aside
       id="sidebar-multi-level-sidebar"
-      className="w-48 h-screen border-r"
+      className="w-64 h-screen border-r"
       aria-label="Sidebar"
     >
       <div className="h-full pb-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -30,6 +31,30 @@ const Sidebar = () => {
           </Link>
         </div>
         <ul className="space-y-2 font-normal pt-5 px-4">
+          <li>
+            <Link
+              to="/dashboard/admin"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            >
+              <svg
+                className="w-6 h-6 text-gray-800 dark:text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm4.996 2a1 1 0 0 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 8a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 11a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 14a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+
+              <span className="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+            </Link>
+          </li>
           {/* Menu Dropdown */}
           <li>
             <button

@@ -53,7 +53,7 @@ const Statistics = () => {
 
             <div className="space-y-1">
               <Number n={total_users} />
-              <p className="text-md "> Users</p>
+              <p className="text-md ">Customers</p>
             </div>
           </div>
           <div className="flex flex-col py-5 items-center justify-center text-center space-y-3  bg-gray-100 w-full h-full rounded ">

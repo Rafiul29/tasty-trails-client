@@ -1,7 +1,16 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useSelector } from "react-redux";
+
 const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const isLoggedIn = useAuth();
+  const { user } = useSelector((state) => state.auth);
+
   return (
-    <header className="py-3 text-gray-900  dark:text-white  dark:hover:bg-gray-700 group  flex justify-between items-center border-b px-5">
-      <form className="flex items-center max-w-sm">
+    <header className="py-3 text-gray-900  dark:text-white  dark:hover:bg-gray-700 group  flex justify-between items-center  border-b px-8">
+      {/* <form className="flex items-center max-w-sm">
         <label htmlFor="simple-search" className="sr-only">
           Search
         </label>
@@ -52,12 +61,87 @@ const Header = () => {
           </svg>
           <span className="sr-only">Search</span>
         </button>
-      </form>
+      </form> */}
+      <span></span>
       <div className="flex items-center">
-        <span className="mr-4">Welcome, Admin</span>
-        <button className="bg-red-500 px-4 py-2 rounded text-white hover:bg-red-600">
-          Logout
-        </button>
+        <div className="relative">
+          <div className="flex gap-1">
+            <small className="text-sm flex flex-col items-center">
+              <span className="font-medium">
+                {user?.first_name} {user?.last_name}
+              </span>
+              <span>{user?.role}</span>
+            </small>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              id="dropdownNavbarLink"
+              className="flex items-center justify-center w-8 h-8 p-2 text-gray-900 rounded-full md:hover:bg-transparent md:border-0 md:hover:text-orange-600 md:p-0 dark:text-white md:dark:hover:text-orange-400 dark:focus:text-white  
+                    hover:bg-orange-600 
+                    duration-500 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            >
+              {!isDropdownOpen ? (
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m19 9-7 7-7-7"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m9 5 7 7-7 7"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+          {isDropdownOpen && (
+            <div
+              id="dropdownNavbar"
+              className="z-10 absolute mt-2 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700 dark:divide-gray-600"
+            >
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-400">
+                {isLoggedIn && (
+                  <li>
+                    <Link
+                      to="/dashboard/admin/profile"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                )}
+
+                <button className="block px-3 py-2 w-full text-start text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                  Sign out
+                </button>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

@@ -27,6 +27,7 @@ import AdminDashBoardLayout from "../Layout/AdminDashBoardLayout";
 import AdminDashboard from "../Dashboard/admin/AdminDashboard";
 import UserDashBoard from "../Dashboard/users/UserDashBoard";
 import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
+import AdminRoutes from "./AdminRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -134,32 +135,40 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/admin",
         element: (
-          <PrivetRoutes>
+          <AdminRoutes>
             <AdminDashboard />
-          </PrivetRoutes>
+          </AdminRoutes>
         ),
       },
       {
         path: "/dashboard/admin/all/menu",
         element: (
-          <PrivetRoutes>
+          <AdminRoutes>
             <AllMenu />
-          </PrivetRoutes>
+          </AdminRoutes>
         ),
       },
       {
         path: "/dashboard/admin/add/menu",
         element: (
-          <PrivetRoutes>
+          <AdminRoutes>
             <AddMenu />
-          </PrivetRoutes>
+          </AdminRoutes>
         ),
       },
       {
         path: "/dashboard/admin/all/orders",
         element: (
-          <PrivetRoutes>
+          <AdminRoutes>
             <AllOrders />
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/admin/profile",
+        element: (
+          <PrivetRoutes>
+            <Profile />
           </PrivetRoutes>
         ),
       },
