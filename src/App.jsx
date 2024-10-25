@@ -3,7 +3,9 @@ import { router } from './routes/routes.jsx';
 import useAuthCheck from './hooks/useAuthCheck';
 import Loading from './components/ui/Loading';
 
+
 function App() {
+  // useScrollToTop()
   const authChecked = useAuthCheck();
 
   return !authChecked ? (

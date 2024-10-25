@@ -102,8 +102,8 @@ const AllMenu = () => {
   }
 
   return (
-    <main className="main-padding md:-mt-6">
-      <div className="wrapper space-y-5 pb-20">{content}</div>
+    <main className=" ">
+      <div className="space-y-3 w-full">{content}</div>
     </main>
   );
 };

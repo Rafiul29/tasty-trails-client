@@ -6,7 +6,6 @@ import AllOrdersTable from "../components/orders/AllOrdersTable";
 import { useState } from "react";
 
 const AllOrders = () => {
-
   const [page, setPage] = useState(1);
   const {
     data: allOrders,
@@ -15,15 +14,14 @@ const AllOrders = () => {
     error,
   } = useGetAllOrdersQuery({ page: page, page_size: 8 });
 
+  // Pagination controls
+  const handleNextPage = () => {
+    if (allOrders?.next) setPage((prevPage) => prevPage + 1);
+  };
 
-    // Pagination controls
-    const handleNextPage = () => {
-      if (allOrders?.next) setPage((prevPage) => prevPage + 1);
-    };
-  
-    const handlePreviousPage = () => {
-      if (page > 1) setPage((prevPage) => prevPage - 1);
-    };
+  const handlePreviousPage = () => {
+    if (page > 1) setPage((prevPage) => prevPage - 1);
+  };
 
   // decide what to render
   let content = null;
@@ -103,8 +101,8 @@ const AllOrders = () => {
   }
 
   return (
-    <main className="main-padding">
-      <div className="wrapper space-y-5">{content}</div>
+    <main className="">
+      <div className=" space-y-5">{content}</div>
     </main>
   );
 };

@@ -80,34 +80,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/all/orders",
-        element: (
-          <PrivetRoutes>
-            <AllOrders />
-          </PrivetRoutes>
-        ),
-      },
-      {
         path: "/orders",
         element: (
           <PrivetRoutes>
             <Orders />
-          </PrivetRoutes>
-        ),
-      },
-      {
-        path: "all/menu",
-        element: (
-          <PrivetRoutes>
-            <AllMenu />
-          </PrivetRoutes>
-        ),
-      },
-      {
-        path: "add/menu",
-        element: (
-          <PrivetRoutes>
-            <AddMenu />
           </PrivetRoutes>
         ),
       },
@@ -154,7 +130,40 @@ export const router = createBrowserRouter([
     path: "/dashboard/admin",
     element: <AdminDashBoardLayout />, // Main layout
     errorElement: <Error />,
-    children: [{ path: "/dashboard/admin", element: <AdminDashboard /> }],
+    children: [
+      {
+        path: "/dashboard/admin",
+        element: (
+          <PrivetRoutes>
+            <AdminDashboard />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/admin/all/menu",
+        element: (
+          <PrivetRoutes>
+            <AllMenu />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/admin/add/menu",
+        element: (
+          <PrivetRoutes>
+            <AddMenu />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/admin/all/orders",
+        element: (
+          <PrivetRoutes>
+            <AllOrders />
+          </PrivetRoutes>
+        ),
+      },
+    ],
   },
   {
     path: "/dashboard/user",

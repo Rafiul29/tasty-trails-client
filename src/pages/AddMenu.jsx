@@ -66,7 +66,7 @@ const AddMenu = () => {
   }, [data, responseError]);
 
   return (
-    <main className="main-padding ">
+    <main className="">
       <div className="md:container lg:max-w-5xl mx-auto px-5 md:pt-10 pt-5">
         <h2 className="text-3xl md:text-4xl text-center mb-4">Add New Menu</h2>
         <div>
