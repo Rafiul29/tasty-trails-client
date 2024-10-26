@@ -1,122 +1,79 @@
 # TastyTrails Food Delivery App
 
-Welcome to the backend repository for **TastyTrails**, your ultimate guide to delightful culinary experiences! This backend is built using the Django REST framework and provides all the necessary APIs for user management, menu browsing, detailed menu viewing, cart management, and order processing.
+The **TastyTrails Food Delivery App** frontend is built with modern web technologies to deliver a smooth, user-friendly experience. Users can browse and view detailed menus, manage their favorites, add items to their cart, and place orders. Admin users have additional functionalities to manage menu items and orders.
 
 ## Features
 
 ### User Management
-- **User Registration**: New users can register an account.
-- **User Login**: Existing users can log in using their credentials.
-- **User Logout**: Users can log out of their account.
-- **User Profile**: Users can view their profile information.
+- **User Registration**: New users can register an account. An email verification link is sent upon registration.
+- **User Login**: Existing users can log in with their credentials.
 
 ### Menu Browsing and Categories
-- **Home Page**: Users can browse through a list of available menu items.
-- **Menu**: Click on a restaurant to view its menu and other details.
-- **Product Details**: Users can view details of specific products.
-- **Menu Categories**: Filter items by categories.
+- **Home Page**: Users can browse available menu items.
+- **Menu**: Full list of menu items available for browsing.
+- **Menu Categories**: Users can filter menu items by categories such as Appetizers, Main Courses, Desserts, and Beverages.
+- **Menu Details**: Detailed information, including ingredients and pricing, is available for each menu item.
 
-### Favourite Management
-- **Save as Favourite**: Users can add a menu item to their favourites.
-- **Remove from Favourites**: Users can remove a menu item from their favourites list.
+### Favourites Management
+- **Add to Favourites**: Users can save menu items for easy access later.
+- **Remove from Favourites**: Users can remove items from their favorites list.
 
-### Cart Management and Orders
-- **Add to Cart**: Users can add items to their cart from the menu.
-- **View Cart**: Users can view the items added to their cart.
-- **Edit Cart**: Users can modify the quantity of items in their cart or remove items.
-- **Checkout**: Users can proceed to purchase the items in their cart.
-- **Order**: Users can place an order for the items in their cart.
+### Cart Management and Ordering
+- **Add to Cart**: Add items to the cart directly from the menu.
+- **View Cart**: Review items added to the cart.
+- **Edit Cart**: Modify item quantities or remove items.
+- **Delete from Cart**: Delete specific items from the cart.
 
----
+### Order and Checkout
+- **Place Order**: Users can proceed to purchase items in their cart.
+- **Checkout**: Finalize the order by entering delivery details and selecting a payment method.
 
-## API Endpoints
+### Profile Management
+- **Profile Page**: Users can view and update profile information.
 
-**Backend API Base URL**: `https://tasty-trails-server.onrender.com`
+### Menu Management (Admin)
+- **All Menu**: Admins can view the entire menu.
+- **Add Menu Item**: Admins can add new items to the menu.
+- **Delete Menu Item**: Admins can delete specific menu items.
 
-### User Management
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login/` - User login
-- `GET /api/auth/logout/` - User Logout
-- `GET /users/:id/` - User Profile
+### Order Management (Admin)
+- **View All Orders**: Admins can view a list of all orders placed.
+- **Update Order Status**: Admins can update the order status (Processing, Cancelled, Delivered, etc.).
 
-### Menu Category
-- `GET /category/list/` - List all menu categories
-- `GET /category/list/:id` - Get details of a specific menu category
+## Environment Variables
 
-### Menu Browsing
-- `GET /menu/list/` - List all menu items
-- `POST /menu/list/` - Add new menu item
-- `GET /menu/list/:id/` - Get details of a specific menu item
-- `DELETE /menu/list/:id/` - Delete a specific menu item
-- `GET /menu/list/?search=” ”` - Filter the menu by category
+The app requires the following environment variables:
 
-### Favourite Menu
-- `GET /menu/favourite/` - List all favourite menu items
-- `POST /menu/favourite/` - Add a menu item to favourites
-- `DELETE /menu/favourite/:id/` - Remove a menu item from favourites
-- `GET /menu/favourite/?user_id=2` - User-specific favourite menu list
+| Variable          | Description                    |
+|-------------------|--------------------------------|
+| `VITE_APP_API_URL` | API base URL for backend services |
 
-### Cart Management
-- `GET /carts/list/` - View all cart items
-- `GET /carts/list/?user_id=” ”` - View cart for a specific user
-- `POST /carts/list/` - Add item to cart
-- `PUT /carts/list/:id/` - Update cart item
-- `DELETE /carts/list/:id/` - Remove item from cart
-- `GET /carts/checkout/` - Cart checkout details
+## Getting Started
 
-### Order Management
-- `GET /orders/list/` - View all orders
-- `POST /orders/list/` - Place an order
-- `PATCH /orders/list/:id/` - Update order status
-- `GET /orders/list/:id/` - Get details of a specific order
-- `GET /orders/list/?user_id=” ”` - Get specific user’s order
-- `GET /orders/items/?order_id=” ”` - Get specific order items
+### Prerequisites
+- Node.js (version 14 or above)
+- Vite
 
----
-
-## Prerequisites
-- Python 3.x
-- Django
-- Django REST framework
-
-## Installation
-
-1. **Clone the repository**
- ```sh
-   git clone https://github.com/Rafiul29/tasty-trails-server.git
-```
-2. **Navigate to the project directory**
+### Installation
+1. Clone the repository :
 ```sh
-cd tasty-trails-server
+  git clone  https://github.com/Rafiul29/tasty-trails-client.git
 ```
-3. **Create a virtual environment**
 ```sh
-python3 -m venv venv
+ cd tastytrails-frontend
 ```
-4. **Activate the virtual environment**
 ```sh
-source venv/bin/activate
+  npm install
 ```
-5. **Install dependencies**
+ Set up environment variables:
+
+ Create a .env file in the root directory.
+ Add the API URL:
+```bash
+VITE_APP_API_URL=http://your-api-url.com
+```
+
+Running the Application
 ```sh
-pip install -r requirements.txt
+npm run dev
 ```
-6. **Set up environment variables**
-- Create a .env file in the root directory and add the following variables:
-```sh
-EMAIL_HOST=
-EMAIL_PASSWORD=
-APP_LOGIN_URL=
-APP_REGISTER_URL=
-APP_VERIFIED_URL=
-```
-7. **Run migrations**
- ```sh
-python manage.py migrate
-```
-8. **Start the server**
-```sh
-python manage.py runserver
-```
-### Running the App
-The server will be running on http://localhost:8000/
