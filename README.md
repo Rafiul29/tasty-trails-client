@@ -55,9 +55,9 @@ The app requires the following environment variables:
 - Vite
 
 ### Installation
-1. Clone the repository:
-   ```sh
-  git clone https://github.com/Rafiul29/tasty-trails-client.git
+1. Clone the repository :
+```sh
+  git clone  https://github.com/Rafiul29/tasty-trails-client.git
 ```
 ```sh
  cd tastytrails-frontend
