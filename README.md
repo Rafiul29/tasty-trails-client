@@ -56,11 +56,14 @@ The app requires the following environment variables:
 
 ### Installation
 1. Clone the repository:
-   ```bash
+   ```sh
   git clone https://github.com/Rafiul29/tasty-trails-client.git
-  cd tastytrails-frontend
+```
+```sh
+ cd tastytrails-frontend
+```
+```sh
   npm install
-
 ```
  Set up environment variables:
 
