@@ -109,10 +109,10 @@ const AdminDashboard = () => {
         </div>
         <div className=" border  p-3 bg bg-white space-y-3 rounded-lg shadow-md">
           <div className="flex justify-between items-center border-b pb-3 ">
-            <h2 className="text-3xl">Recent Menus</h2>
+            <h6 className="text-sm lg:text-3xl ">Recent Menus</h6>
 
             <Link to="/dashboard/admin/all/menu" className="flex items-center">
-              <span>Views All</span>
+              <span className="text-sm ">Views All</span>
               <svg
                 className="w-6 h-6 text-gray-800 dark:text-white"
                 aria-hidden="true"
