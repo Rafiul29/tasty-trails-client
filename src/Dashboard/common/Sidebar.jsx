@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { FaClipboard, FaTachometerAlt, FaInbox, FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useAuthAdmin } from "../../hooks/useAuthAdmin";
 
 const Sidebar = () => {
   const [isMenuDropdownOpen, setMenuDropdownOpen] = useState(false);
   const [isOrdersDropdownOpen, setOrdersDropdownOpen] = useState(false);
 
+  const isAdmin = useAuthAdmin();
 
   const toggleMenuDropdown = () => {
     setMenuDropdownOpen(!isMenuDropdownOpen);
@@ -31,7 +33,7 @@ const Sidebar = () => {
           </Link>
         </div>
         <ul className="space-y-2 font-normal pt-5 px-4">
-          <li>
+          {isAdmin && (<li>
             <Link
               to="/dashboard/admin"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -54,56 +56,83 @@ const Sidebar = () => {
 
               <span className="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
             </Link>
-          </li>
-          {/* Menu Dropdown */}
-          <li>
-            <button
-              type="button"
-              className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-              onClick={toggleMenuDropdown}
+          </li>)}
+
+          {!isAdmin &&(<li>
+            <Link
+              to="/dashboard/user"
+              className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
             >
-              <FaClipboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
-              <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
-                Menu
-              </span>
               <svg
-                className="w-3 h-3"
+                className="w-6 h-6 text-gray-800 dark:text-white"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
               >
                 <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 1 4 4 4-4"
+                  fillRule="evenodd"
+                  d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm4.996 2a1 1 0 0 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 8a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 11a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Zm-4.004 3a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM11 14a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2h-6Z"
+                  clipRule="evenodd"
                 />
               </svg>
-            </button>
-            {/* Dropdown content */}
-            {isMenuDropdownOpen && (
-              <ul className="py-2 space-y-2">
-                <li>
-                  <Link
-                    to="/dashboard/admin/all/menu"
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
-                    All Menus
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/dashboard/admin/add/menu"
-                    className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
-                    Add Menu
-                  </Link>
-                </li>
-              </ul>
-            )}
-          </li>
+
+              <span className="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+            </Link>
+          </li>)}
+          {/* Menu Dropdown */}
+          {isAdmin && (
+            <li>
+              <button
+                type="button"
+                className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                onClick={toggleMenuDropdown}
+              >
+                <FaClipboard className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+                <span className="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
+                  Menu
+                </span>
+                <svg
+                  className="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              {/* Dropdown content */}
+              {isMenuDropdownOpen && (
+                <ul className="py-2 space-y-2">
+                  <li>
+                    <Link
+                      to="/dashboard/admin/all/menu"
+                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >
+                      All Menus
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/admin/add/menu"
+                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >
+                      Add Menu
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+          )}
 
           {/* Orders Dropdown */}
           <li>
@@ -152,12 +181,22 @@ const Sidebar = () => {
             {/* Dropdown content */}
             {isOrdersDropdownOpen && (
               <ul className="py-2 space-y-2">
+                {isAdmin && (
+                  <li>
+                    <Link
+                      to="/dashboard/admin/all/orders"
+                      className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                    >
+                      All Orders
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link
-                    to="/dashboard/admin/all/orders"
+                    to="/dashboard/user/orders"
                     className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   >
-                    All Orders
+                    Order
                   </Link>
                 </li>
                 {/* Add more order-related links here */}
@@ -166,7 +205,7 @@ const Sidebar = () => {
           </li>
 
           {/* Other Sidebar Items */}
-          <li>
+          {/* <li>
             <Link
               to="/inbox"
               className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -186,7 +225,7 @@ const Sidebar = () => {
               <FaUsers className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
               <span className="flex-1 ms-3 whitespace-nowrap">Users</span>
             </Link>
-          </li>
+          </li> */}
           {/* Add more sidebar items here */}
         </ul>
       </div>

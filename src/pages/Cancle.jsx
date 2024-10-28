@@ -1,7 +1,6 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Cancle = () => {
-  
   return (
     <main className="main-padding">
       <div className="md:mt-10 flex flex-col justify-center items-center gap-3">
@@ -19,7 +18,7 @@ const Cancle = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            d="M6 18 17.94 6M18 18 6.06 6"
           />
         </svg>
 
@@ -28,7 +27,7 @@ const Cancle = () => {
           to="/carts"
           className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800"
         >
-         go back to carts
+          go back to carts
         </Link>
       </div>
     </main>

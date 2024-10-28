@@ -106,8 +106,8 @@ const Orders = () => {
   }
 
   return (
-    <main className="main-padding">
-      <div className="wrapper space-y-5">{content}
+    <main className="">
+      <div className=" space-y-5">{content}
       </div>
 
     </main>

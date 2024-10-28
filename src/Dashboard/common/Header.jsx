@@ -1,12 +1,40 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useAuthAdmin } from "../../hooks/useAuthAdmin";
+import { userLoggedOut } from "../../features/auth/authSlice";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const isLoggedIn = useAuth();
-  const { user } = useSelector((state) => state.auth);
+  const isAdmin = useAuthAdmin();
+  const { user, accessToken } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+  const navigate=useNavigate();
+  // logout
+  const handleLogout = () => {
+    fetch(`${import.meta.env.VITE_APP_API_URL}/api/auth/logout/`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Token ${accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.success) {
+          dispatch(userLoggedOut());
+          localStorage.removeItem("auth");
+          setIsDropdownOpen(!isDropdownOpen);
+        } else {
+          dispatch(userLoggedOut());
+          localStorage.removeItem("auth");
+          setIsDropdownOpen(!isDropdownOpen);
+        }
+        navigate('/')
+      });
+  };
 
   return (
     <header className="py-3 text-gray-900  dark:text-white  dark:hover:bg-gray-700 group  flex justify-between items-center  border-b px-8">
@@ -124,7 +152,7 @@ const Header = () => {
               className="z-10 absolute mt-2 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700 dark:divide-gray-600"
             >
               <ul className="py-2 text-sm text-gray-700 dark:text-gray-400">
-                {isLoggedIn && (
+                {isLoggedIn && isAdmin && (
                   <li>
                     <Link
                       to="/dashboard/admin/profile"
@@ -134,8 +162,21 @@ const Header = () => {
                     </Link>
                   </li>
                 )}
+                {isLoggedIn && !isAdmin && (
+                  <li>
+                    <Link
+                      to="/dashboard/user/profile"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                )}
 
-                <button className="block px-3 py-2 w-full text-start text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                <button
+                  onClick={handleLogout}
+                  className="block px-3 py-2 w-full text-start text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >
                   Sign out
                 </button>
               </ul>

@@ -75,22 +75,7 @@ export const router = createBrowserRouter([
           </PrivetRoutes>
         ),
       },
-      {
-        path: "/profile",
-        element: (
-          <PrivetRoutes>
-            <Profile />
-          </PrivetRoutes>
-        ),
-      },
-      {
-        path: "/orders",
-        element: (
-          <PrivetRoutes>
-            <Orders />
-          </PrivetRoutes>
-        ),
-      },
+
       {
         path: "/success",
         element: (
@@ -124,7 +109,7 @@ export const router = createBrowserRouter([
           </PublicRoutes>
         ),
       },
-      
+
       {
         path: "/account-activation",
         element: (
@@ -206,6 +191,24 @@ export const router = createBrowserRouter([
     path: "/dashboard/user",
     element: <UserDashBoardLayout />, // Main layout
     errorElement: <Error />,
-    children: [{ path: "/dashboard/user", element: <UserDashBoard /> }],
+    children: [
+      { path: "/dashboard/user", element: <UserDashBoard /> },
+      {
+        path: "/dashboard/user/orders",
+        element: (
+          <PrivetRoutes>
+            <Orders />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/dashboard/user/profile",
+        element: (
+          <PrivetRoutes>
+            <Profile />
+          </PrivetRoutes>
+        ),
+      },
+    ],
   },
 ]);

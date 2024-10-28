@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useGetAllMenusQuery } from "../../features/menus/menusApi";
 import { useGetStatisticsQuery } from "../../features/statistics/statisticsApi";
 import RecentMenus from "../RecentMenus";
-import BarChart from "./Barchart";
+import BarChart from "../common/Barchart";
 
 const AdminDashboard = () => {
   const {
