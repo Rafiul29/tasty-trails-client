@@ -137,7 +137,7 @@ const Navbar = () => {
                 Contact us
               </Link>
             </li>
-            {isLoggedIn && (
+            {/* {isLoggedIn && (
               <li>
                 <span
                   className="block py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 
@@ -148,7 +148,7 @@ const Navbar = () => {
                   )}
                 </span>
               </li>
-            )}
+            )} */}
             {isLoggedIn && (
               <li>
                 <Link
@@ -235,7 +235,7 @@ const Navbar = () => {
                       className="py-2 text-sm text-gray-700 dark:text-gray-400"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
-                      {isLoggedIn && (
+                      {/* {isLoggedIn && (
                         <li>
                           <Link
                             to="/deposit"
@@ -244,7 +244,7 @@ const Navbar = () => {
                             Deposit
                           </Link>
                         </li>
-                      )}
+                      )} */}
 
                       {isLoggedIn && isAdmin && (
                         <li>

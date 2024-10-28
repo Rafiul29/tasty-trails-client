@@ -9,6 +9,7 @@ import ReviewForm from "../components/Review/ReviewForm";
 import MenuItemReviews from "../components/Review/MenuItemReviews";
 
 const MenuItemDetails = () => {
+  
   const { id } = useParams();
   const {
     data: menuItemDetails,

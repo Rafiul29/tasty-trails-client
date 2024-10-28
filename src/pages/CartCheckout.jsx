@@ -5,6 +5,7 @@ import ButtonLoading from "../components/ui/ButtonLoading";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Error from "../components/ui/Error";
+import { useCreatePaymentMutation } from "../features/payment/paymentApi";
 
 const CartCheckout = () => {
   const { user } = useSelector((state) => state.auth);
@@ -22,43 +23,79 @@ const CartCheckout = () => {
   const [state, setState] = useState("");
   const [postal_code, setPostalCode] = useState("");
   const [country, setCountry] = useState("");
+  const [payment_type, setPaymentType] = useState("");
 
   const [error, setError] = useState("");
 
   const [addOrder, { data: orderData, isLoading, error: orderResponseError }] =
     useAddOrderMutation();
 
+  const [
+    createPayment,
+    { data: paymentData, isLoadig: paymentLoading, error: paymentError },
+  ] = useCreatePaymentMutation();
+
   const handlePay = (e) => {
     e.preventDefault();
     setError("");
-    addOrder({
-      user: user_id,
-      status: "Pending",
-      delivery_address: {
-        name,
-        email,
-        phone_no,
-        address_line_1,
-        address_line_2,
-        city,
-        state,
-        postal_code,
-        country,
+    if (payment_type === "Cash On Delivary") {
+      addOrder({
         user: user_id,
-      },
-    });
+        payment_type: payment_type,
+        status: "Pending",
+        delivery_address: {
+          name,
+          email,
+          phone_no,
+          address_line_1,
+          address_line_2,
+          city,
+          state,
+          postal_code,
+          country,
+          user: user_id,
+        },
+      });
+    }
+    if (payment_type === "Online Payment") {
+      createPayment({
+        total_amount: grand_total,
+      });
+    }
   };
 
   const navigate = useNavigate();
 
   useEffect(() => {
     if (orderData?.id) {
-      navigate("/orders");
+      navigate("/success");
     } else {
       setError(orderResponseError?.data?.error);
       console.log(orderResponseError);
     }
-  }, [orderData, navigate, orderResponseError]);
+    if (paymentData?.url) {
+      window.location.href = paymentData.url;
+      addOrder({
+        user: user_id,
+        payment_type: payment_type,
+        status: "Pending",
+        payment_status:"Success",
+        payment_id:paymentData?.tran_id,
+        delivery_address: {
+          name,
+          email,
+          phone_no,
+          address_line_1,
+          address_line_2,
+          city,
+          state,
+          postal_code,
+          country,
+          user: user_id,
+        },
+      });
+    }
+  }, [orderData, navigate, orderResponseError, paymentData]);
 
   return (
     <main className="main-padding">
@@ -249,6 +286,26 @@ const CartCheckout = () => {
                 <div className="flex justify-between">
                   <span className="font-medium">Total</span>
                   <span className="font-medium">{grand_total} ৳</span>
+                </div>
+                <div className="mb-2">
+                  <label
+                    htmlFor="payment_type"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Payment Type
+                  </label>
+                  <select
+                    id="payment_type"
+                    name="payment_type"
+                    value={payment_type}
+                    className="mt-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500"
+                    onChange={(e) => setPaymentType(e.target.value)}
+                    required
+                  >
+                    <option value="">selete payment method</option>
+                    <option value="Cash On Delivary">Cash On Delivary</option>
+                    <option value="Online Payment">Online Payment</option>
+                  </select>
                 </div>
                 <button
                   disabled={isLoading || !data?.result}

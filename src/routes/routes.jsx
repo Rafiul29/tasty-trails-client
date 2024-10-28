@@ -28,6 +28,7 @@ import AdminDashboard from "../Dashboard/admin/AdminDashboard";
 import UserDashBoard from "../Dashboard/users/UserDashBoard";
 import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
 import AdminRoutes from "./AdminRoutes";
+import Success from "../pages/Success";
 
 export const router = createBrowserRouter([
   {
@@ -88,6 +89,14 @@ export const router = createBrowserRouter([
           </PrivetRoutes>
         ),
       },
+      {
+        path: "/success",
+        element: (
+          <PrivetRoutes>
+            <Success />
+          </PrivetRoutes>
+        ),
+      },
       // public routes
       {
         path: "/verified",
@@ -97,6 +106,7 @@ export const router = createBrowserRouter([
           </PublicRoutes>
         ),
       },
+      
       {
         path: "/account-activation",
         element: (
