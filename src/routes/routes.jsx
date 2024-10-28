@@ -29,6 +29,8 @@ import UserDashBoard from "../Dashboard/users/UserDashBoard";
 import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
 import AdminRoutes from "./AdminRoutes";
 import Success from "../pages/Success";
+import Cancle from "../pages/Cancle";
+import Fail from "../pages/Fail";
 
 export const router = createBrowserRouter([
   {
@@ -94,6 +96,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivetRoutes>
             <Success />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/cancle",
+        element: (
+          <PrivetRoutes>
+            <Cancle />
+          </PrivetRoutes>
+        ),
+      },
+      {
+        path: "/fail",
+        element: (
+          <PrivetRoutes>
+            <Fail />
           </PrivetRoutes>
         ),
       },
