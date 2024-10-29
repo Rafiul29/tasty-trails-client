@@ -59,7 +59,19 @@ const CartCheckout = () => {
     }
     if (payment_type === "Online Payment") {
       createPayment({
+        user: user_id,
         total_amount: grand_total,
+        payment_type: payment_type,
+        status: "Pending",
+        name,
+        email,
+        phone_no,
+        address_line_1,
+        address_line_2,
+        city,
+        state,
+        postal_code,
+        country,
       });
     }
   };
@@ -75,25 +87,6 @@ const CartCheckout = () => {
     }
     if (paymentData?.url) {
       window.location.href = paymentData.url;
-      addOrder({
-        user: user_id,
-        payment_type: payment_type,
-        status: "Pending",
-        payment_status:"Success",
-        payment_id:paymentData?.tran_id,
-        delivery_address: {
-          name,
-          email,
-          phone_no,
-          address_line_1,
-          address_line_2,
-          city,
-          state,
-          postal_code,
-          country,
-          user: user_id,
-        },
-      });
     }
   }, [orderData, navigate, orderResponseError, paymentData]);
 
