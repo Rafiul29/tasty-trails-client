@@ -18,6 +18,7 @@ const Carts = () => {
     isError,
     error,
   } = useGetUserCartItemQuery(user_id);
+
   // what do render
   let content = null;
   if (isLoading ) {

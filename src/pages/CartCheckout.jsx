@@ -32,8 +32,9 @@ const CartCheckout = () => {
 
   const [
     createPayment,
-    { data: paymentData, isLoadig: paymentLoading, error: paymentError },
+    { data: paymentData, isLoading: paymentLoading, error: paymentError },
   ] = useCreatePaymentMutation();
+ 
 
   const handlePay = (e) => {
     e.preventDefault();
@@ -43,7 +44,7 @@ const CartCheckout = () => {
         user: user_id,
         payment_type: payment_type,
         status: "Pending",
-        payment_status:"Pending",
+        payment_status: "Pending",
         delivery_address: {
           name,
           email,
@@ -76,20 +77,20 @@ const CartCheckout = () => {
       });
     }
   };
-
+  console.log("paymentLoading", isLoading , !data?.result , paymentLoading,orderResponseError,paymentError?.data?.error);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (orderData?.id) {
       navigate("/success");
     } else {
-      setError(orderResponseError?.data?.error);
-      console.log(orderResponseError);
+      setError(orderResponseError?.data?.error || orderResponseError?.data[0]|| paymentError?.data?.error);
+  
     }
     if (paymentData?.url) {
       window.location.href = paymentData.url;
     }
-  }, [orderData, navigate, orderResponseError, paymentData]);
+  }, [orderData, navigate, orderResponseError, paymentData,paymentError]);
 
   return (
     <main className="main-padding">
@@ -302,11 +303,14 @@ const CartCheckout = () => {
                   </select>
                 </div>
                 <button
-                  disabled={isLoading || !data?.result}
+                  disabled={isLoading || !data?.result || paymentLoading}
                   type="submit"
                   className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 py-2 me-2  dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 uppercase"
                 >
-                  {!isLoading ? "Pay Now" : <ButtonLoading />}
+          
+                  {
+                     (!paymentLoading && !isLoading)? "Pay Now" : <ButtonLoading />
+                  }
                 </button>
               </div>
             </div>
