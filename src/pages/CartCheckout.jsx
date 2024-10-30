@@ -43,6 +43,7 @@ const CartCheckout = () => {
         user: user_id,
         payment_type: payment_type,
         status: "Pending",
+        payment_status:"Pending",
         delivery_address: {
           name,
           email,
