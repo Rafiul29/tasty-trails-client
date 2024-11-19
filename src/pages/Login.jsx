@@ -37,12 +37,12 @@ const Login = () => {
 
   return (
     <main className="pt-24">
-      <section className=" h-[calc(100vh-16rem)] flex items-center">
+      <section className=" h-[calc(100vh-16rem)] flex items-center"  >
         <div className="wrapper lg:w-3/5  ">
         {isModalOpen &&  (
           <LoginCredentialsModal  onClose={() => setIsModalOpen(false)} />
         )}
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center" >
             {/* col-1  login form*/}
             <div>
               <h2 className="text-center text-2xl  md:text-3xl font-extrabold text-gray-900 mb-3">
