@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import { useLoginMutation } from "../features/auth/authApi";
 import ButtonLoading from "../components/ui/ButtonLoading";
 import Error from "../components/ui/Error";
+import LoginCredentialsModal from "../components/Login/LoginCredentialsModal";
+
 
 const Login = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,6 +39,9 @@ const Login = () => {
     <main className="pt-24">
       <section className=" h-[calc(100vh-16rem)] flex items-center">
         <div className="wrapper lg:w-3/5  ">
+        {isModalOpen &&  (
+          <LoginCredentialsModal  onClose={() => setIsModalOpen(false)} />
+        )}
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center">
             {/* col-1  login form*/}
             <div>
@@ -96,8 +103,10 @@ const Login = () => {
                       Register Now
                     </Link>
                   </p>
+                  <p onClick={()=>setIsModalOpen(!isModalOpen)} className="cursor-pointer underline text-orange-500">Login Credentials</p>
                 </div>
               </form>
+
             </div>
 
             {/* col-2 */}

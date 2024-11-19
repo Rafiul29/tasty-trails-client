@@ -55,7 +55,7 @@ const CartItem = ({ cart }) => {
           <img
             src={image}
             className="w-16 h-20 md:w-32 max-w-full max-h-full rounded-md"
-            alt="Apple Watch"
+            alt= {name}
           />
         </td>
         <td className="px-6 py-4 font-semibold text-gray-700 dark:text-white">
