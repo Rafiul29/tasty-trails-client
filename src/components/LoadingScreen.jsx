@@ -27,7 +27,7 @@ export function LoadingScreen({ isLoading }) {
             transition={{ delay: 0.2 }}
             className="mt-4 text-zinc-400 font-medium tracking-widest uppercase text-xs"
           >
-            Loading UrbanHut
+            Loading Tasty Trails
           </motion.p>
         </motion.div>
       )}
