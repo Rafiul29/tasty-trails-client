@@ -10,9 +10,8 @@ const Home = () => {
   return (
     <main className="pt-28">
       <Hero />
-
       <div className="pt-5">
-        <ExploreSection/>
+        <ExploreSection />
         <MenuCategory />
       </div>
       <div className="">
