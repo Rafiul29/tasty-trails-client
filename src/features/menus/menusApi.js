@@ -6,7 +6,7 @@ export const menusApi = apiSlice.injectEndpoints({
 
     getAllMenus: builder.query({
       query: ({search ="",page=1,page_size=10}) => `/menu/list/?search=${search}&page=${page}&page_size=${page_size}`,
-      keepUnusedDataFor: 600,
+      keepUnusedDataFor: 3600, // Keep data for 1 hour to avoid refetching on every visit
       providesTags: (result, error, id) =>
         result
           ? [...result.results.map(({ id }) => ({ type: "Menu", id })), "Menus"]
@@ -42,6 +42,7 @@ export const menusApi = apiSlice.injectEndpoints({
 
     getAllDiscountedMenus: builder.query({
       query: (page=1) => `/menu/list/discounted/?page=${page}`,
+      keepUnusedDataFor: 3600,
       providesTags: (result, error, id) =>
         result
           ? [...result.results.map(({ id }) => ({ type: "Menu", id })), "Menus"]

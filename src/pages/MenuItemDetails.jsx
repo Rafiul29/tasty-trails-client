@@ -21,7 +21,7 @@ const MenuItemDetails = () => {
 
   if (isLoading) {
     content = (
-      <div className="my-10">
+      <div className="my-5">
         <MenuItemSkeleton />
       </div>
     );

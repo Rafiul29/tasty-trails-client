@@ -2,7 +2,7 @@ import menuNotFoundImage from "../../assets/notFoundMenu.png";
 import { useSelector } from "react-redux";
 import { useGetAllMenusQuery } from "../../features/menus/menusApi";
 import Error from "../ui/Error";
-import Loading from "../ui/Loading";
+import MenuCardSkeleton from "./MenuCardSkeleton";
 import Menucard from "./Menucard";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -32,10 +32,11 @@ const MenuDisplay = () => {
   // decide what to render
   let content = null;
   if (isLoading) {
-   
     content = (
-      <div className="my-2 h-56">
-        <Loading />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 md:gap-5 gap-4 place-items-center">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <MenuCardSkeleton key={index} />
+        ))}
       </div>
     );
   } else if (!isLoading && isError) {

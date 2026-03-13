@@ -6,7 +6,7 @@ export const favouriteApi = apiSlice.injectEndpoints({
 
     getAllFavouriteMenu: builder.query({
       query: () => `/menu/favourite/`,
-      keepUnusedDataFor: 600,
+      keepUnusedDataFor: 3600,
       providesTags: (result, error, id) =>
         result
           ? [
@@ -17,7 +17,7 @@ export const favouriteApi = apiSlice.injectEndpoints({
     }),
     getAllMostFavouriteMenu: builder.query({
       query: ({page=1,page_size=12}) => `/menu/favourite/most_favourite/?page=${page}&page_size=${page_size}`,
-      keepUnusedDataFor: 600,
+      keepUnusedDataFor: 3600,
       providesTags: (result, error, id) =>
         result
           ? [
@@ -30,7 +30,7 @@ export const favouriteApi = apiSlice.injectEndpoints({
 
     getUserFavouriteMenu: builder.query({
       query: ({page=1,page_size=8}) => `/menu/favourite/user_favourite/?page=${page}&page_size=${page_size}`,
-      keepUnusedDataFor: 600,
+      keepUnusedDataFor: 3600,
       providesTags: (result, error, id) =>
         result
           ? [

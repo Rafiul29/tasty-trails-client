@@ -14,6 +14,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import CategoryCardSkeleton from "./CategoryCardSkeleton";
 
 const MenuCategory = () => {
   const {
@@ -35,7 +36,9 @@ const MenuCategory = () => {
   if (isLoading) {
     content = content = (
       <div className="my-2 h-56">
-        <Loading />
+        {Array.from({ length: 13 }).map((_, index) => (
+          <CategoryCardSkeleton key={index} />
+        ))}
       </div>
     );
   } else if (!isLoading && isError) {
@@ -61,7 +64,7 @@ const MenuCategory = () => {
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
-            // loop={true}
+            loop={true}
             modules={[Navigation]}
             breakpoints={{
               350: {
@@ -98,12 +101,12 @@ const MenuCategory = () => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="button-arrangemnt">
+          {/* <div className="button-arrangemnt">
             <div className="button-swiper">
               <div className="swiper-button-prev border-2 text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium = text-sm p-5 h-10 w-10 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 rounded-full"></div>
               <div className="swiper-button-next border-2 text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:ring-orange-300 font-medium = text-sm p-5 h-10 w-10 dark:bg-orange-600 dark:hover:bg-orange-700 focus:outline-none dark:focus:ring-orange-800 rounded-full"></div>
             </div>
-          </div>
+          </div> */}
         </div>
       </>
     );
@@ -112,7 +115,7 @@ const MenuCategory = () => {
   return (
     <section className="section">
       <div className="wrapper">
-        <div className="section-title space-y-2 mb-2 md:mb-0">
+        <div className="section-title space-y-2 mb-2">
           <p className="text-gray-600 text-lg">
             Browse our menu for a taste of expertly crafted meals that promise
             to delight.

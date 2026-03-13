@@ -2,7 +2,8 @@ import { useParams } from "react-router-dom";
 import { useGetMenuReviewsQuery } from "../../features/reviews/reviewsApi";
 import Loading from "../ui/Loading";
 import Error from "../ui/Error";
-import  ReviewCard  from "./ReviewCard";
+import ReviewCard from "./ReviewCard";
+import ReviewSkeleton from "./ReviewSkeleton";
 
 const MenuItemReviews = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const MenuItemReviews = () => {
   if (isLoading) {
     content = (
       <div className="my-2 h-56">
-        <Loading />
+        <ReviewSkeleton />
       </div>
     );
   } else if (!isLoading && isError) {
@@ -36,11 +37,11 @@ const MenuItemReviews = () => {
           Menu item all reviews
         </h2>
         <div className="flex flex-col gap-5">
-        {
-          reviews?.map(review=>(
-            <ReviewCard key={review.id} review={review}/>
-          ))
-        }
+          {
+            reviews?.map(review => (
+              <ReviewCard key={review.id} review={review} />
+            ))
+          }
         </div>
 
       </>

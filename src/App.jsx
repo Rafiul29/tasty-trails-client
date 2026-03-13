@@ -13,7 +13,6 @@ function App() {
 
   useScrollToTop();
 
-  // If auth isn't checked yet, we show the loading state
   if (!authChecked) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-zinc-950">
@@ -25,7 +24,7 @@ function App() {
   return (
     <>
       <LoadingScreen isLoading={isLoading} />
-      {!isLoading && <RouterProvider router={router} />}
+      <RouterProvider router={router} />
     </>
   );
 }

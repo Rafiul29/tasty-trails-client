@@ -16,10 +16,10 @@
 
 
 body {
-  overflow-x: hidden; 
-  overflow-y: scroll;  
+  overflow-x: hidden;
+  overflow-y: scroll;
   scroll-behavior: smooth;
-  
+
 }
 
 
@@ -35,34 +35,34 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color:#f97316;
+  background-color: #f97316;
   height: 8%;
   border-radius: 10px;
 }
 
-.wrapper{
- @apply container mx-auto px-4 md:px-5;
+.wrapper {
+  @apply container mx-auto px-4 md:px-5;
 }
 
-.main-padding{
-  @apply pt-28 md:pt-36 lg:pt-40 
+.main-padding {
+  @apply pt-28 md:pt-36 lg:pt-40
 }
 
-.slider{
-position: relative;
+.slider {
+  position: relative;
 }
 
-.button-swiper{
+.button-swiper {
   /* padding: 20px; */
   display: flex !important;
   justify-content: center;
   align-items: center;
   gap: 1rem !important;
-  
+
 }
 
 .swiper-button-prev,
-.swiper-button-next{
+.swiper-button-next {
   top: unset !important;
   left: unset !important;
   right: unset !important;
@@ -71,14 +71,14 @@ position: relative;
   font-size: unset !important;
 }
 
-.button-arrangemnt{
+.button-arrangemnt {
   position: absolute;
-  top:20px;
+  top: 20px;
   right: 0;
 }
 
 .swiper-button-prev::after,
-.swiper-button-next::after{
+.swiper-button-next::after {
   font-size: 1rem;
   font-weight: bold;
 }

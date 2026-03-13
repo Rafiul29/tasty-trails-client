@@ -1,5 +1,5 @@
 import React from "react";
-import ratingStarConversion from "../../utlis/ratingStarConversion";
+import ratingStarConversion from "../../utils/ratingStarConversion";
 import Star from "./Star";
 import moment from "moment";
 

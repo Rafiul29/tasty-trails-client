@@ -2,7 +2,7 @@ import emtyCartImage from "../assets/emtyCart.png";
 
 import { useSelector } from "react-redux";
 import { useGetUserCartItemQuery } from "../features/carts/cartsApi";
-import Loading from "../components/ui/Loading";
+import CartTableSkeleton from "../components/carts/CartTableSkeleton";
 import Error from "../components/ui/Error";
 import CartItem from "../components/carts/CartItem";
 import { Link } from "react-router-dom";
@@ -21,12 +21,8 @@ const Carts = () => {
 
   // what do render
   let content = null;
-  if (isLoading ) {
-    content = content = (
-      <div className="my-2 w-full h-full flex justify-center items-center">
-        <Loading />
-      </div>
-    );
+  if (isLoading) {
+    content = <CartTableSkeleton />;
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
   } else if (!isLoading && !isError && cartItems?.length === 0) {
@@ -99,7 +95,7 @@ const Carts = () => {
             </div>
           </div>
           <div className="lg:col-span-2 ">
-            <CheckOutDetails/>
+            <CheckOutDetails />
           </div>
         </div>
       </>

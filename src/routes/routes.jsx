@@ -1,36 +1,56 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Error from "../components/ui/Error";
-import Main from "../Layout/Main";
-import Home from "../pages/Home";
-import Menu from "../pages/Menu";
-import MenuItemDetails from "../pages/MenuItemDetails";
-import Favourite from "../pages/Favourite";
-import Carts from "../pages/Carts";
-import CartCheckout from "../pages/CartCheckout";
-import Deposit from "../pages/Deposit";
-import Profile from "../pages/Profile";
-import AllOrders from "../pages/AllOrders";
-import Orders from "../pages/Orders";
-import AllMenu from "../pages/AllMenu";
-import AddMenu from "../pages/AddMenu";
-import Verified from "../pages/Verified";
-import AccountActivation from "../pages/AccountActivation";
-import About from "../pages/About";
-import ContactUs from "../pages/ContactUs";
-import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
+import Loading from "../components/ui/Loading";
 
-import Registration from "../pages/Registration";
+// Layouts
+import Main from "../Layout/Main";
+import AdminDashBoardLayout from "../Layout/AdminDashBoardLayout";
+import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
+
+// Lazy Loaded Pages
+const Home = lazy(() => import("../pages/Home"));
+const Menu = lazy(() => import("../pages/Menu"));
+const MenuItemDetails = lazy(() => import("../pages/MenuItemDetails"));
+const Favourite = lazy(() => import("../pages/Favourite"));
+const Carts = lazy(() => import("../pages/Carts"));
+const CartCheckout = lazy(() => import("../pages/CartCheckout"));
+const Deposit = lazy(() => import("../pages/Deposit"));
+const Profile = lazy(() => import("../pages/Profile"));
+const AllOrders = lazy(() => import("../pages/AllOrders"));
+const Orders = lazy(() => import("../pages/Orders"));
+const AllMenu = lazy(() => import("../pages/AllMenu"));
+const AddMenu = lazy(() => import("../pages/AddMenu"));
+const Verified = lazy(() => import("../pages/Verified"));
+const AccountActivation = lazy(() => import("../pages/AccountActivation"));
+const About = lazy(() => import("../pages/About"));
+const ContactUs = lazy(() => import("../pages/ContactUs"));
+const Login = lazy(() => import("../pages/Login"));
+const Registration = lazy(() => import("../pages/Registration"));
+const Success = lazy(() => import("../pages/Success"));
+const Cancle = lazy(() => import("../pages/Cancle"));
+const Fail = lazy(() => import("../pages/Fail"));
+const NotFound = lazy(() => import("../pages/NotFound"));
+
+// Dashboard Components
+const AdminDashboard = lazy(() => import("../Dashboard/admin/AdminDashboard"));
+const UserDashBoard = lazy(() => import("../Dashboard/users/UserDashBoard"));
+
+// Route Wrappers
 import PublicRoutes from "../routes/PublicRoutes";
 import PrivetRoutes from "../routes/PrivetRoutes";
-import AdminDashBoardLayout from "../Layout/AdminDashBoardLayout";
-import AdminDashboard from "../Dashboard/admin/AdminDashboard";
-import UserDashBoard from "../Dashboard/users/UserDashBoard";
-import UserDashBoardLayout from "../Layout/UserDashBoardLayout";
 import AdminRoutes from "./AdminRoutes";
-import Success from "../pages/Success";
-import Cancle from "../pages/Cancle";
-import Fail from "../pages/Fail";
+
+// Helper component for Suspense
+const SuspenseWrapper = ({ children }) => (
+  <Suspense fallback={
+    <div className="min-h-screen flex justify-center items-center">
+      <Loading />
+    </div>
+  }>
+    {children}
+  </Suspense>
+);
 
 export const router = createBrowserRouter([
   {
@@ -38,16 +58,16 @@ export const router = createBrowserRouter([
     element: <Main />, // Main layout
     errorElement: <Error />, // Error page
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/menu", element: <Menu /> },
-      { path: "/menu/:id", element: <MenuItemDetails /> },
-      { path: "/about", element: <About /> },
-      { path: "/contact-us", element: <ContactUs /> },
+      { path: "/", element: <SuspenseWrapper><Home /></SuspenseWrapper> },
+      { path: "/menu", element: <SuspenseWrapper><Menu /></SuspenseWrapper> },
+      { path: "/menu/:id", element: <SuspenseWrapper><MenuItemDetails /></SuspenseWrapper> },
+      { path: "/about", element: <SuspenseWrapper><About /></SuspenseWrapper> },
+      { path: "/contact-us", element: <SuspenseWrapper><ContactUs /></SuspenseWrapper> },
       {
         path: "/favourite",
         element: (
           <PrivetRoutes>
-            <Favourite />
+            <SuspenseWrapper><Favourite /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -55,7 +75,7 @@ export const router = createBrowserRouter([
         path: "/carts",
         element: (
           <PrivetRoutes>
-            <Carts />
+            <SuspenseWrapper><Carts /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -63,7 +83,7 @@ export const router = createBrowserRouter([
         path: "/cart/checkout",
         element: (
           <PrivetRoutes>
-            <CartCheckout />
+            <SuspenseWrapper><CartCheckout /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -71,7 +91,7 @@ export const router = createBrowserRouter([
         path: "/deposit",
         element: (
           <PrivetRoutes>
-            <Deposit />
+            <SuspenseWrapper><Deposit /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -80,7 +100,7 @@ export const router = createBrowserRouter([
         path: "/success",
         element: (
           <PrivetRoutes>
-            <Success />
+            <SuspenseWrapper><Success /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -88,7 +108,7 @@ export const router = createBrowserRouter([
         path: "/cancle",
         element: (
           <PrivetRoutes>
-            <Cancle />
+            <SuspenseWrapper><Cancle /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -96,7 +116,7 @@ export const router = createBrowserRouter([
         path: "/fail",
         element: (
           <PrivetRoutes>
-            <Fail />
+            <SuspenseWrapper><Fail /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -105,7 +125,7 @@ export const router = createBrowserRouter([
         path: "/verified",
         element: (
           <PublicRoutes>
-            <Verified />
+            <SuspenseWrapper><Verified /></SuspenseWrapper>
           </PublicRoutes>
         ),
       },
@@ -114,7 +134,7 @@ export const router = createBrowserRouter([
         path: "/account-activation",
         element: (
           <PublicRoutes>
-            <AccountActivation />
+            <SuspenseWrapper><AccountActivation /></SuspenseWrapper>
           </PublicRoutes>
         ),
       },
@@ -122,7 +142,7 @@ export const router = createBrowserRouter([
         path: "/login",
         element: (
           <PublicRoutes>
-            <Login />
+            <SuspenseWrapper><Login /></SuspenseWrapper>
           </PublicRoutes>
         ),
       },
@@ -130,13 +150,13 @@ export const router = createBrowserRouter([
         path: "/register",
         element: (
           <PublicRoutes>
-            <Registration />
+            <SuspenseWrapper><Registration /></SuspenseWrapper>
           </PublicRoutes>
         ),
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: <SuspenseWrapper><NotFound /></SuspenseWrapper>,
       },
     ],
   },
@@ -149,7 +169,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/admin",
         element: (
           <AdminRoutes>
-            <AdminDashboard />
+            <SuspenseWrapper><AdminDashboard /></SuspenseWrapper>
           </AdminRoutes>
         ),
       },
@@ -157,7 +177,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/admin/all/menu",
         element: (
           <AdminRoutes>
-            <AllMenu />
+            <SuspenseWrapper><AllMenu /></SuspenseWrapper>
           </AdminRoutes>
         ),
       },
@@ -165,7 +185,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/admin/add/menu",
         element: (
           <AdminRoutes>
-            <AddMenu />
+            <SuspenseWrapper><AddMenu /></SuspenseWrapper>
           </AdminRoutes>
         ),
       },
@@ -173,7 +193,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/admin/all/orders",
         element: (
           <AdminRoutes>
-            <AllOrders />
+            <SuspenseWrapper><AllOrders /></SuspenseWrapper>
           </AdminRoutes>
         ),
       },
@@ -181,7 +201,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/admin/profile",
         element: (
           <PrivetRoutes>
-            <Profile />
+            <SuspenseWrapper><Profile /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -192,12 +212,12 @@ export const router = createBrowserRouter([
     element: <UserDashBoardLayout />, // Main layout
     errorElement: <Error />,
     children: [
-      { path: "/dashboard/user", element: <UserDashBoard /> },
+      { path: "/dashboard/user", element: <SuspenseWrapper><UserDashBoard /></SuspenseWrapper> },
       {
         path: "/dashboard/user/orders",
         element: (
           <PrivetRoutes>
-            <Orders />
+            <SuspenseWrapper><Orders /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },
@@ -205,7 +225,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/user/profile",
         element: (
           <PrivetRoutes>
-            <Profile />
+            <SuspenseWrapper><Profile /></SuspenseWrapper>
           </PrivetRoutes>
         ),
       },

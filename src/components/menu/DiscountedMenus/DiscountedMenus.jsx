@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useGetAllDiscountedMenusQuery } from "../../../features/menus/menusApi";
 import Error from "../../ui/Error";
-import Loading from "../../ui/Loading";
 import DiscountedMenuCard from "./DiscountedMenuCard";
+import DiscountedMenuSkeleton from "./DiscountedMenuSkeleton";
 
 const DiscountedMenus = () => {
 
@@ -29,8 +29,11 @@ const DiscountedMenus = () => {
 
   if (isLoading) {
     content = (
-      <div className="my-2 h-56">
-        <Loading />
+      <div className="flex flex-col gap-2">
+        <div className="h-6 bg-gray-200 rounded w-48 mb-2 animate-pulse"></div>
+        {Array.from({ length: 4 }).map((_, index) => (
+          <DiscountedMenuSkeleton key={index} />
+        ))}
       </div>
     );
   } else if (!isLoading && isError) {

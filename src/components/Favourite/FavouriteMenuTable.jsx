@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useDeleteFavouriteMutation } from "../../features/favourite/favouriteApi";
 
 const FavouriteMenuTable = ({ favMenu }) => {
-  const { id: favId, menu_item: { id: menuId, name, price, image,discount } = {} } =
+  const { id: favId, menu_item: { id: menuId, name, price, image, discount } = {} } =
     favMenu || {};
 
   const [deleteFavourite, { data }] = useDeleteFavouriteMutation();
@@ -28,9 +28,9 @@ const FavouriteMenuTable = ({ favMenu }) => {
       <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
         {name}{" "}
       </td>
-      <td className="px-6 py-4 text-orange-500 font-semibold">{Number(price-price*discount/100)}৳</td>
+      <td className="px-6 py-4 text-orange-500 font-semibold">{Number(price - price * discount / 100)}৳</td>
 
-      <td className="px-6 py-4 flex  items-center gap-3 ">
+      <td className="px-6 py-4 flex  items-right gap-3 ">
         <Link
           to={`/menu/${menuId}`}
           className=" text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"

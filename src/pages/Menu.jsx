@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MenuCategory from "../components/category/MenuCategory";
 import MenuDisplay from "../components/menu/MenuDisplay";
@@ -7,7 +8,10 @@ import { searchCategoryRemove } from "../features/category/categorySlice";
 const Menu = () => {
   // remove category
   const dispatch = useDispatch();
-  dispatch(searchCategoryRemove());
+  
+  useEffect(() => {
+    dispatch(searchCategoryRemove());
+  }, [dispatch]);
 
   return (
     <div className="main-padding space-y-2">

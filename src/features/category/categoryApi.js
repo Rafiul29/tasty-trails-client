@@ -13,4 +13,4 @@ export const categoryApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetCategoryQuery,useGetCategoriesQuery } = categoryApi;
+export const { useGetCategoryQuery, useGetCategoriesQuery } = categoryApi;

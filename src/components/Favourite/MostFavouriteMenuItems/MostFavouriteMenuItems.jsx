@@ -1,7 +1,7 @@
 import { useGetAllMostFavouriteMenuQuery } from "../../../features/favourite/favouriteApi";
-import Loading from "../../ui/Loading";
 import Error from "../../ui/Error";
 import MostFavoruriteMenuCard from "./MostFavoruriteMenuCard";
+import MostFavouriteMenuSkeleton from "./MostFavouriteMenuSkeleton";
 import useDeviceSize from "../../../hooks/useDeviceSize";
 import { useState } from "react";
 
@@ -34,8 +34,13 @@ const MostFavouriteMenuItems = () => {
 
   if (isLoading) {
     content = (
-      <div className="my-2 h-56">
-        <Loading />
+      <div className="flex flex-col">
+        <div className="h-6 bg-gray-200 rounded w-48 mb-4 animate-pulse"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-2 lg:gap-4 overflow-hidden">
+          {Array.from({ length: pageSize }).map((_, index) => (
+            <MostFavouriteMenuSkeleton key={index} />
+          ))}
+        </div>
       </div>
     );
   } else if (!isLoading && isError) {

@@ -1,7 +1,7 @@
 import { useGetStatisticsQuery } from "../../features/statistics/statisticsApi";
 import Number from "../Animated/Number";
 import Error from "../ui/Error";
-import Loading from "../ui/Loading";
+import StatisticsSkeleton from "./StatisticsSkeleton";
 const Statistics = () => {
   const {
     data: statistics,
@@ -13,10 +13,8 @@ const Statistics = () => {
   // what do render
   let content = null;
   if (isLoading) {
-    content = content = (
-      <div className="my-2 h-56">
-        <Loading />
-      </div>
+    content = (
+      <StatisticsSkeleton />
     );
   } else if (!isLoading && isError) {
     content = <Error message={error?.data} />;
