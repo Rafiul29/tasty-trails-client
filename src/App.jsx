@@ -13,13 +13,6 @@ function App() {
 
   useScrollToTop();
 
-  if (!authChecked) {
-    return (
-      <div className="min-h-screen flex justify-center items-center bg-zinc-950">
-        <Loading />
-      </div>
-    );
-  }
 
   return (
     <>

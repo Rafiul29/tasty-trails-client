@@ -7,120 +7,99 @@ import Error from "../components/ui/Error";
 import LoginCredentialsModal from "../components/Login/LoginCredentialsModal";
 
 
+import AuthLayout from "../components/common/AuthLayout";
+
 const Login = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState("");
 
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({
-      username,
-      password,
-    });
+    login({ username, password });
   };
-  const navigate = useNavigate();
+
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError?.data?.error);
     }
     if (data?.token && data?.user) {
       localStorage.removeItem("userEmail");
-        navigate("/");
+      navigate("/");
     }
   }, [data, responseError, navigate]);
 
   return (
-    <main className="pt-24">
-      <section className=" h-[calc(100vh-16rem)] flex items-center"  >
-        <div className="wrapper lg:w-3/5  ">
-        {isModalOpen &&  (
-          <LoginCredentialsModal  onClose={() => setIsModalOpen(false)} />
-        )}
-          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-3 gap-0  items-center" >
-            {/* col-1  login form*/}
-            <div>
-              <h2 className="text-center text-2xl  md:text-3xl font-extrabold text-gray-900 mb-3">
-                Sign in to your account
-              </h2>
-              <div className="max-w-md mx-auto">
-                {error !== "" && <Error message={error} />}
-              </div>
-              <form className="max-w-md mx-auto" onSubmit={handleLogin}>
-                <div className="relative z-0 w-full mb-3 group">
-                  <label
-                    htmlFor="username"
-                    className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    User Name
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
-                    placeholder="Enter your user name"
-                    required
-                    onChange={(e) => setUserName(e.target.value)}
-                  />
-                </div>
+    <AuthLayout
+      title="Welcome Back"
+      subtitle="Sign in to continue your tasty journey"
+      image={LoginImage}
+      imageAlt="Login"
+    >
+      {isModalOpen && (
+        <LoginCredentialsModal onClose={() => setIsModalOpen(false)} />
+      )}
 
-                <div className="relative z-0 w-full mb-3 group">
-                  <label
-                    htmlFor="password"
-                    className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 dark:shadow-sm-light"
-                    placeholder="Enter your password"
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
+      <div className="space-y-6">
+        {error !== "" && <Error message={error} />}
 
-                <div className="flex flex-col gap-1">
-                  <button
-                    disabled={isLoading}
-                    type="submit"
-                    className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800"
-                  >
-                    {!isLoading ? "Submit" : <ButtonLoading />}
-                  </button>
-                  <p className="">
-                    <span>Don't have an account? </span>
-                    <Link
-                      to="/register"
-                      className="font-medium text-orange-500 ml-2 underline"
-                    >
-                      Register Now
-                    </Link>
-                  </p>
-                  <p onClick={()=>setIsModalOpen(!isModalOpen)} className="cursor-pointer underline text-orange-500">Login Credentials</p>
-                </div>
-              </form>
-
-            </div>
-
-            {/* col-2 */}
-            <div className="overflow-hidden md:block hidden">
-              <img
-                className="h-full w-full object-cover"
-                src={LoginImage}
-                alt="Login image"
-              />
-            </div>
+        <form className="space-y-5" onSubmit={handleLogin}>
+          <div className="space-y-1">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-zinc-300">
+              User Name
+            </label>
+            <input
+              type="text"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 outline-none transition-all dark:text-white"
+              placeholder="Enter your user name"
+              required
+              onChange={(e) => setUserName(e.target.value)}
+            />
           </div>
-        </div>
-      </section>
-    </main>
+
+          <div className="space-y-1">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-zinc-300">
+              Password
+            </label>
+            <input
+              type="password"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-950/50 focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 outline-none transition-all dark:text-white"
+              placeholder="Enter your password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <button
+            disabled={isLoading}
+            type="submit"
+            className="w-full py-3.5 bg-orange-500 hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700 text-white font-bold rounded-xl shadow-lg shadow-orange-500/30 transition-all active:scale-[0.98] disabled:opacity-70"
+          >
+            {!isLoading ? "Sign In" : <ButtonLoading />}
+          </button>
+
+          <div className="text-center space-y-3">
+            <p className="text-sm text-gray-600 dark:text-zinc-400">
+              Don't have an account?{" "}
+              <Link to="/register" className="text-orange-500 hover:text-orange-600 font-bold underline-offset-4 hover:underline transition-all">
+                Register Now
+              </Link>
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsModalOpen(true)}
+              className="text-xs font-medium text-orange-500/80 hover:text-orange-500 underline transition-all"
+            >
+              View Login Credentials
+            </button>
+          </div>
+        </form>
+      </div>
+    </AuthLayout>
   );
 };
 

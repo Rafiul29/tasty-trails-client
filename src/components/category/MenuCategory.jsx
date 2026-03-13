@@ -35,7 +35,7 @@ const MenuCategory = () => {
   let content = null;
   if (isLoading) {
     content = content = (
-      <div className="my-2 h-56">
+      <div className="my-2 h-32 flex gap-4">
         {Array.from({ length: 13 }).map((_, index) => (
           <CategoryCardSkeleton key={index} />
         ))}
